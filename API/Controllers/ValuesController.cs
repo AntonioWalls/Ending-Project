@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using API.Comun.Modelos;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -10,9 +11,16 @@ namespace API.Controllers
     {
         // GET: api/<ValuesController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<itemUsuariosDto> Get()
         {
-            return new string[] { "value1", "value2" };
+            //Esto es para dar respuesta de la api
+            IEnumerable<itemUsuariosDto> values = new List<itemUsuariosDto>();
+            itemUsuariosDto itemUsuariosDto = new itemUsuariosDto();
+            itemUsuariosDto.nombre = "A";
+            itemUsuariosDto.apellidos = "A";
+            values.Append(itemUsuariosDto);
+            return values;
+
         }
 
         // GET api/<ValuesController>/5
