@@ -1,0 +1,11 @@
+{
+  "name": "ending-project",
+  "version": "1.0.0",
+  "description": "The real project for web development course, a web for a realstate company",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
