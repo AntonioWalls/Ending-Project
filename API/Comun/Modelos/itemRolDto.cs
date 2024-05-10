@@ -1,8 +1,8 @@
-﻿using System;
-
-public class Class1
+﻿namespace API.Infraestructura.Modelos
 {
-	public Class1()
-	{
-	}
+    public class itemRolDto
+    {
+        public int idrol { get; set;}
+        public string descripcion { get; set;}
+    }
 }

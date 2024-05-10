@@ -9,6 +9,12 @@ namespace API.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private readonly IAplicacionBdContext _contexto;
+
+        public ValuesController(IAplicacionBdContext context)
+        {
+            _contexto = context;
+        }
         // GET: api/<ValuesController>
         [HttpGet]
         public IEnumerable<itemUsuariosDto> Get()
