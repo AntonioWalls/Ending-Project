@@ -18,7 +18,7 @@ const Sidebar = () => {
             className="text-decoration-none"
             style={{ color: "inherit" }}
           >
-            <i data-test="fa" class="fa fa-cog"></i> Sistema Base
+            <i data-test="fa" class="fa fa-cog"></i> Ending App
           </a>
         </CDBSidebarHeader>
 
