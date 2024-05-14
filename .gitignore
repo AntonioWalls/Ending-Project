@@ -2,3 +2,5 @@
 /API/.vs
 /API/obj
 API/appsettings.Development.json
+.vs/Ending-Project/config/applicationhost.config
+/.vs
