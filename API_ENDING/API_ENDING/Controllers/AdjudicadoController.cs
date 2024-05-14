@@ -131,7 +131,7 @@ namespace API_ENDING.Controllers
 
             if (adjudicados == null)
             {
-                return BadRequest("Inmobiliaria no encontrada");
+                return BadRequest("Adjudicado no encontrada");
             }
 
             try
