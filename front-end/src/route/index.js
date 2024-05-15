@@ -1,6 +1,7 @@
 import Inicio from "../components/pages/Inicio";
 import Usuarios from "../components/pages/users";
 import Role from "../components/pages/Role";
+import Inmobiliarias from "../components/pages/realestate";
 
 const Routes = [
     {
@@ -12,8 +13,12 @@ const Routes = [
         component: Usuarios
     },
     {
-        path: 'Roles',
+        path: 'Role',
         component: Role
+    },
+    {
+        path: 'Inmobiliarias',
+        component: Inmobiliarias
     }
 ];
 export default Routes;

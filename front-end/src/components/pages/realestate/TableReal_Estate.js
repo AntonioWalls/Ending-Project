@@ -15,7 +15,7 @@ const DATA_ITEM_KEY = "idUsuario";
 const SELECTED_FIELD = "selected";
 const idGetter = getter(DATA_ITEM_KEY);
 
-function TableUser({ showForm, idUserEdit }) {
+function TableReal_Estate({ showForm, idUserEdit }) {
     const dispatch = useDispatch();
     const [selectedState, setSelectedState] = useState({});
     const { users } = useSelector((state) => state.getUsers);
@@ -97,8 +97,8 @@ function TableUser({ showForm, idUserEdit }) {
 
     return (
         <>
-        <h1>Estas en usuarios</h1>
             <Row className='m-1'>
+                <h1>Esta en Inmobiliarias</h1>
                 <Col>
                     <Button variant='primary' onClick={handleNew}>Nuevo Usuario</Button>
                 </Col>
@@ -143,4 +143,4 @@ function TableUser({ showForm, idUserEdit }) {
     );
 }
 
-export default TableUser;
+export default TableReal_Estate;

@@ -18,7 +18,7 @@ const Sidebar = () => {
             className="text-decoration-none"
             style={{ color: "inherit" }}
           >
-            <i data-test="fa" class="fa fa-cog"></i> Ending App
+            Ending App
           </a>
         </CDBSidebarHeader>
 
@@ -27,18 +27,14 @@ const Sidebar = () => {
             <NavLink exact to="/" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="home">Inicio</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/Roles" activeClassName="activeClicked">
+            <NavLink exact to="/Role" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="users">Roles</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/Usuarios" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="user">Usuarios</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink
-              exact
-              to="/hero404"
-              target="_blank"
-              activeClassName="activeClicked"
-            >
+            <NavLink exact to="/Inmobiliarias" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="home">Inmobiliarias</CDBSidebarMenuItem>
             </NavLink>
           </CDBSidebarMenu>
         </CDBSidebarContent>
