@@ -28,7 +28,12 @@ namespace API_ENDING.Controllers
 
             try
             {
-                incluyes = webcontext.Incluyes.ToList();
+                incluyes = webcontext.Incluyes
+                    .Include(i => i.oPropiedad)
+                    .Include(i => i.oLitigioso)
+                    .Include(i => i.oLitigio)
+                    .Include(i => i.oAdjudicado)
+                    .ToList();
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = incluyes });
             }
             catch (Exception ex)
@@ -39,30 +44,40 @@ namespace API_ENDING.Controllers
 
 
         //EDITA DATOS DE UNA RELACION
-        [HttpPost]
+        [HttpPut]
         [Route("Editar")]
-        public IActionResult Editar([FromBody] Incluye objeto)
+        public IActionResult EditarIncluye([FromBody] Incluye objeto)
         {
-            Incluye incluyes = webcontext.Incluyes.Find(objeto.IdPropiedad, objeto.IdLitigio, objeto.IdLitigioso, objeto.oAdjudicado);
-            
-            
+            // Buscar el registro en la tabla Incluye
+            var incluye = webcontext.Incluyes
+                .FirstOrDefault(i => i.IdPropiedad == objeto.IdPropiedad);
 
-            if (incluyes == null)
+            if (incluye == null)
             {
-                return BadRequest("relacion no encontrada");
+                return BadRequest("Registro no encontrado");
             }
 
             try
             {
-                //valida si el campo que va cambiar el usuario, queda vacio, lo rellena con el dato
-                //que ya existia en la base de datos
-                //quiero editar solo el telefono, ps telefono cambia y los demás datos quedan igual
-                incluyes.IdPropiedad = objeto.IdPropiedad is >=1 ? incluyes.IdPropiedad : objeto.IdPropiedad;
-                incluyes.IdAdjudicado = objeto.IdAdjudicado is >= 1 ? incluyes.IdAdjudicado : objeto.IdAdjudicado;
-                incluyes.IdLitigio = objeto.IdLitigio is >= 1 ? incluyes.IdLitigio : objeto.IdLitigio;
-                incluyes.IdLitigioso = objeto.IdLitigioso is >= 1 ? incluyes.IdLitigioso : objeto.IdLitigioso;
+                // Guardar los valores actuales de IdLitigioso, IdLitigio e IdAdjudicado
+                var idLitigiosoActual = incluye.IdLitigioso;
+                var idLitigioActual = incluye.IdLitigio;
+                var idAdjudicadoActual = incluye.IdAdjudicado;
 
-                webcontext.Incluyes.Update(incluyes);
+                // Eliminar el registro existente
+                webcontext.Incluyes.Remove(incluye);
+                webcontext.SaveChanges();
+
+                // Crear un nuevo registro con los nuevos valores
+                var nuevoIncluye = new Incluye
+                {
+                    IdPropiedad = objeto.IdPropiedad,
+                    IdLitigioso = objeto.IdLitigioso == 0 ? idLitigiosoActual : objeto.IdLitigioso,
+                    IdLitigio = objeto.IdLitigio == 0 ? idLitigioActual : objeto.IdLitigio,
+                    IdAdjudicado = objeto.IdAdjudicado == 0 ? idAdjudicadoActual : objeto.IdAdjudicado
+                };
+
+                webcontext.Incluyes.Add(nuevoIncluye);
                 webcontext.SaveChanges();
 
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
@@ -73,31 +88,6 @@ namespace API_ENDING.Controllers
             }
         }
 
-        //Elimina datos de un adjudicado por medio de un ID
-        [HttpDelete]
-        [Route("Eliminar/{idAdjudicado:int}")]
-        public IActionResult Eliminar(int idAdjudicado)
-        {
-            Adjudicado adjudicados = webcontext.Adjudicado.Find(idAdjudicado);
-
-            if (adjudicados == null)
-            {
-                return BadRequest("Adjudicado no encontrada");
-            }
-
-            try
-            {
-                webcontext.Adjudicado.Remove(adjudicados);
-                webcontext.SaveChanges();
-
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = ex.Message });
-            }
-
-        }
 
     }
 }
