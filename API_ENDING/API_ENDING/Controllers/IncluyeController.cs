@@ -1,4 +1,4 @@
-﻿using API_ENDING.Models;
+using API_ENDING.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -88,7 +88,57 @@ namespace API_ENDING.Controllers
             }
         }
 
+<<<<<<< HEAD
+=======
+        //Elimina datos de un adjudicado por medio de un ID
+        [HttpDelete]
+        [Route("Eliminar/{idAdjudicado:int}")]
+        public IActionResult Eliminar(int idAdjudicado)
+        {
+            Adjudicado adjudicados = webcontext.Adjudicado.Find(idAdjudicado);
+
+            if (adjudicados == null)
+            {
+                return BadRequest("Adjudicado no encontrada");
+            }
+
+            try
+            {
+                webcontext.Adjudicado.Remove(adjudicados);
+                webcontext.SaveChanges();
+
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = ex.Message });
+            }
+
+        }
+        [HttpGet]
+        [Route("max")]
+        public IActionResult Max_register()
+        {
+            List<Incluye> incluyes = new List<Incluye>();
+            incluyes = webcontext.Incluyes.ToList();
+            int incluyeCounter = incluyes.Count;
+
+            try
+            {
+                if (incluyeCounter > 0)
+                {
+                    return StatusCode(StatusCodes.Status200OK, new { mensaje = "el total de los registros es:", Response = incluyeCounter });
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = ex.Message });
+            }
+            return StatusCode(StatusCodes.Status200OK, new { mensaje = "No hay registros en la lista" });
+
+
+        }
+>>>>>>> main
 
     }
 }
-
