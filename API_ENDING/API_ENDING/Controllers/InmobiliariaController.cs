@@ -23,14 +23,14 @@ namespace API_ENDING.Controllers
         //Muestra una lista de las inmobiliarias creadas en la base de datos
         //Junto a sus remates
         [HttpGet]
-        [Route("inmobiliaria lista")]
+        [Route("lista")]
         public IActionResult Lista()
         {
             List<Inmobiliaria> inmobiliarias = new List<Inmobiliaria>();
 
             try
             {
-                inmobiliarias = webcontext.Inmobiliaria.Include(r => r.Remates).ToList();
+                inmobiliarias = webcontext.Inmobiliaria.ToList();
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = inmobiliarias });
             }
             catch (Exception ex)
@@ -42,7 +42,7 @@ namespace API_ENDING.Controllers
 
         //BUSCA UNA INMOBILIARIA POR MEDIO DE SU ID
         [HttpGet]
-        [Route("Obtener Inmobiliaria/{idInmobiliaria:int}")]
+        [Route("Obtener/{idInmobiliaria:int}")]
         public IActionResult Obtener(int idInmobiliaria)
         {
             //busca dentro de la tabla inmobiliaria por medio del web context usando el idInmobiliaria
