@@ -1,70 +1,74 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\",
+  "WorkspaceRootPath": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\antoniowalls\\documents\\proyecto final web\\ending-project\\api_ending\\api_ending\\controllers\\incluyecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\controllers\\incluyecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\antoniowalls\\documents\\proyecto final web\\ending-project\\api_ending\\api_ending\\controllers\\adjudicadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\fabia\\onedrive\\documentos\\proyecto web final\\ending-project\\api_ending\\api_ending\\controllers\\adjudicadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\controllers\\adjudicadocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\antoniowalls\\documents\\proyecto final web\\ending-project\\api_ending\\api_ending\\controllers\\litigiosocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\controllers\\litigiosocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\fabia\\onedrive\\documentos\\proyecto web final\\ending-project\\api_ending\\api_ending\\controllers\\incluyecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\controllers\\incluyecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\antoniowalls\\documents\\proyecto final web\\ending-project\\api_ending\\api_ending\\controllers\\litigiocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\controllers\\litigiocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\antoniowalls\\documents\\proyecto final web\\ending-project\\api_ending\\api_ending\\controllers\\inmobiliariacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\fabia\\onedrive\\documentos\\proyecto web final\\ending-project\\api_ending\\api_ending\\controllers\\inmobiliariacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\controllers\\inmobiliariacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\antoniowalls\\documents\\proyecto final web\\ending-project\\api_ending\\api_ending\\models\\proyectowebcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\models\\proyectowebcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\fabia\\onedrive\\documentos\\proyecto web final\\ending-project\\api_ending\\api_ending\\controllers\\litigiocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\controllers\\litigiocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\antoniowalls\\documents\\proyecto final web\\ending-project\\api_ending\\api_ending\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\fabia\\onedrive\\documentos\\proyecto web final\\ending-project\\api_ending\\api_ending\\controllers\\litigiosocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\controllers\\litigiosocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\antoniowalls\\documents\\proyecto final web\\ending-project\\api_ending\\api_ending\\models\\incluye.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\models\\incluye.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\antoniowalls\\documents\\proyecto final web\\ending-project\\api_ending\\api_ending\\models\\inmobiliaria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\models\\inmobiliaria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\antoniowalls\\documents\\proyecto final web\\ending-project\\api_ending\\api_ending\\controllers\\propiedadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\fabia\\onedrive\\documentos\\proyecto web final\\ending-project\\api_ending\\api_ending\\controllers\\propiedadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\controllers\\propiedadcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\antoniowalls\\documents\\proyecto final web\\ending-project\\api_ending\\api_ending\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\antoniowalls\\documents\\proyecto final web\\ending-project\\api_ending\\api_ending\\models\\litigioso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\models\\litigioso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\antoniowalls\\documents\\proyecto final web\\ending-project\\api_ending\\api_ending\\models\\litigio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\models\\litigio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\antoniowalls\\documents\\proyecto final web\\ending-project\\api_ending\\api_ending\\models\\adjudicado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\models\\adjudicado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\antoniowalls\\documents\\proyecto final web\\ending-project\\api_ending\\api_ending\\models\\propiedad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\fabia\\onedrive\\documentos\\proyecto web final\\ending-project\\api_ending\\api_ending\\models\\propiedad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\models\\propiedad.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\antoniowalls\\documents\\proyecto final web\\ending-project\\api_ending\\api_ending\\models\\remate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\fabia\\onedrive\\documentos\\proyecto web final\\ending-project\\api_ending\\api_ending\\models\\proyectowebcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\models\\proyectowebcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\fabia\\onedrive\\documentos\\proyecto web final\\ending-project\\api_ending\\api_ending\\models\\remate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\models\\remate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\fabia\\onedrive\\documentos\\proyecto web final\\ending-project\\api_ending\\api_ending\\api_ending.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\api_ending.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\fabia\\onedrive\\documentos\\proyecto web final\\ending-project\\api_ending\\api_ending\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\fabia\\onedrive\\documentos\\proyecto web final\\ending-project\\api_ending\\api_ending\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\fabia\\onedrive\\documentos\\proyecto web final\\ending-project\\api_ending\\api_ending\\models\\incluye.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\models\\incluye.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\fabia\\onedrive\\documentos\\proyecto web final\\ending-project\\api_ending\\api_ending\\models\\inmobiliaria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\models\\inmobiliaria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\fabia\\onedrive\\documentos\\proyecto web final\\ending-project\\api_ending\\api_ending\\models\\litigioso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\models\\litigioso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\fabia\\onedrive\\documentos\\proyecto web final\\ending-project\\api_ending\\api_ending\\models\\litigio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\models\\litigio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|c:\\users\\fabia\\onedrive\\documentos\\proyecto web final\\ending-project\\api_ending\\api_ending\\models\\adjudicado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7A265383-D8AC-48CC-AB5A-47B55FFE6652}|API_ENDING\\API_ENDING.csproj|solutionrelative:api_ending\\models\\adjudicado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -74,64 +78,80 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 9,
+              "Title": "API_ENDING.http",
+              "DocumentMoniker": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\API_ENDING.http",
+              "RelativeDocumentMoniker": "API_ENDING\\API_ENDING.http",
+              "ToolTip": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\API_ENDING.http",
+              "RelativeToolTip": "API_ENDING\\API_ENDING.http",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2024-05-17T15:26:07.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "IncluyeController.cs",
-              "DocumentMoniker": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Controllers\\IncluyeController.cs",
+              "DocumentMoniker": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Controllers\\IncluyeController.cs",
               "RelativeDocumentMoniker": "API_ENDING\\Controllers\\IncluyeController.cs",
-              "ToolTip": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Controllers\\IncluyeController.cs",
+              "ToolTip": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Controllers\\IncluyeController.cs",
               "RelativeToolTip": "API_ENDING\\Controllers\\IncluyeController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC8AAAAWAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAIsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-15T03:46:01.863Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 5,
               "Title": "PropiedadController.cs",
-              "DocumentMoniker": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Controllers\\PropiedadController.cs",
+              "DocumentMoniker": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Controllers\\PropiedadController.cs",
               "RelativeDocumentMoniker": "API_ENDING\\Controllers\\PropiedadController.cs",
-              "ToolTip": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Controllers\\PropiedadController.cs",
+              "ToolTip": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Controllers\\PropiedadController.cs",
               "RelativeToolTip": "API_ENDING\\Controllers\\PropiedadController.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABYAAAAkAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-15T03:15:46.593Z"
+              "WhenOpened": "2024-05-15T03:15:46.593Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "LitigiosoController.cs",
-              "DocumentMoniker": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Controllers\\LitigiosoController.cs",
+              "DocumentMoniker": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Controllers\\LitigiosoController.cs",
               "RelativeDocumentMoniker": "API_ENDING\\Controllers\\LitigiosoController.cs",
-              "ToolTip": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Controllers\\LitigiosoController.cs",
+              "ToolTip": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Controllers\\LitigiosoController.cs",
               "RelativeToolTip": "API_ENDING\\Controllers\\LitigiosoController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAH8AAAAJAAAA",
+              "ViewState": "AQIAACQAAAAAAAAAAAAYwH8AAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-14T23:12:16.924Z"
+              "WhenOpened": "2024-05-14T23:12:16.924Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "LitigioController.cs",
-              "DocumentMoniker": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Controllers\\LitigioController.cs",
+              "DocumentMoniker": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Controllers\\LitigioController.cs",
               "RelativeDocumentMoniker": "API_ENDING\\Controllers\\LitigioController.cs",
-              "ToolTip": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Controllers\\LitigioController.cs",
+              "ToolTip": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Controllers\\LitigioController.cs",
               "RelativeToolTip": "API_ENDING\\Controllers\\LitigioController.cs",
-              "ViewState": "AQIAAHgAAAAAAAAAAAAmwGQAAAA1AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGQAAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-14T20:23:16.121Z"
+              "WhenOpened": "2024-05-14T20:23:16.121Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "AdjudicadoController.cs",
-              "DocumentMoniker": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Controllers\\AdjudicadoController.cs",
+              "DocumentMoniker": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Controllers\\AdjudicadoController.cs",
               "RelativeDocumentMoniker": "API_ENDING\\Controllers\\AdjudicadoController.cs",
-              "ToolTip": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Controllers\\AdjudicadoController.cs",
+              "ToolTip": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Controllers\\AdjudicadoController.cs",
               "RelativeToolTip": "API_ENDING\\Controllers\\AdjudicadoController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -140,23 +160,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "InmobiliariaController.cs",
-              "DocumentMoniker": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Controllers\\InmobiliariaController.cs",
+              "DocumentMoniker": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Controllers\\InmobiliariaController.cs",
               "RelativeDocumentMoniker": "API_ENDING\\Controllers\\InmobiliariaController.cs",
-              "ToolTip": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Controllers\\InmobiliariaController.cs",
+              "ToolTip": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Controllers\\InmobiliariaController.cs",
               "RelativeToolTip": "API_ENDING\\Controllers\\InmobiliariaController.cs",
-              "ViewState": "AQIAAGoAAAAAAAAAAAAcwCwAAAAXAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACwAAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-12T21:51:09.423Z"
+              "WhenOpened": "2024-05-12T21:51:09.423Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 12,
               "Title": "Incluye.cs",
-              "DocumentMoniker": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Incluye.cs",
+              "DocumentMoniker": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Incluye.cs",
               "RelativeDocumentMoniker": "API_ENDING\\Models\\Incluye.cs",
-              "ToolTip": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Incluye.cs",
+              "ToolTip": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Incluye.cs",
               "RelativeToolTip": "API_ENDING\\Models\\Incluye.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAA+AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -164,11 +185,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "Adjudicado.cs",
-              "DocumentMoniker": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Adjudicado.cs",
+              "DocumentMoniker": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Adjudicado.cs",
               "RelativeDocumentMoniker": "API_ENDING\\Models\\Adjudicado.cs",
-              "ToolTip": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Adjudicado.cs",
+              "ToolTip": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Adjudicado.cs",
               "RelativeToolTip": "API_ENDING\\Models\\Adjudicado.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -176,11 +197,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "Litigioso.cs",
-              "DocumentMoniker": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Litigioso.cs",
+              "DocumentMoniker": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Litigioso.cs",
               "RelativeDocumentMoniker": "API_ENDING\\Models\\Litigioso.cs",
-              "ToolTip": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Litigioso.cs",
+              "ToolTip": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Litigioso.cs",
               "RelativeToolTip": "API_ENDING\\Models\\Litigioso.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -188,11 +209,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "Litigio.cs",
-              "DocumentMoniker": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Litigio.cs",
+              "DocumentMoniker": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Litigio.cs",
               "RelativeDocumentMoniker": "API_ENDING\\Models\\Litigio.cs",
-              "ToolTip": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Litigio.cs",
+              "ToolTip": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Litigio.cs",
               "RelativeToolTip": "API_ENDING\\Models\\Litigio.cs",
               "ViewState": "AQIAAAQAAAAAAAAAAAAAwAcAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -200,11 +221,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 13,
               "Title": "Inmobiliaria.cs",
-              "DocumentMoniker": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Inmobiliaria.cs",
+              "DocumentMoniker": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Inmobiliaria.cs",
               "RelativeDocumentMoniker": "API_ENDING\\Models\\Inmobiliaria.cs",
-              "ToolTip": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Inmobiliaria.cs",
+              "ToolTip": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Inmobiliaria.cs",
               "RelativeToolTip": "API_ENDING\\Models\\Inmobiliaria.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -212,63 +233,68 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 6,
               "Title": "Propiedad.cs",
-              "DocumentMoniker": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Propiedad.cs",
+              "DocumentMoniker": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Propiedad.cs",
               "RelativeDocumentMoniker": "API_ENDING\\Models\\Propiedad.cs",
-              "ToolTip": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Propiedad.cs",
+              "ToolTip": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Propiedad.cs",
               "RelativeToolTip": "API_ENDING\\Models\\Propiedad.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAA9wAAAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-12T21:44:27.248Z"
+              "WhenOpened": "2024-05-12T21:44:27.248Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 8,
               "Title": "Remate.cs",
-              "DocumentMoniker": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Remate.cs",
+              "DocumentMoniker": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Remate.cs",
               "RelativeDocumentMoniker": "API_ENDING\\Models\\Remate.cs",
-              "ToolTip": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Remate.cs",
+              "ToolTip": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\Remate.cs",
               "RelativeToolTip": "API_ENDING\\Models\\Remate.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-12T21:44:24.906Z"
+              "WhenOpened": "2024-05-12T21:44:24.906Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 11,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Program.cs",
               "RelativeDocumentMoniker": "API_ENDING\\Program.cs",
-              "ToolTip": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Program.cs",
+              "ToolTip": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Program.cs",
               "RelativeToolTip": "API_ENDING\\Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-12T21:39:59.282Z"
+              "WhenOpened": "2024-05-12T21:39:59.282Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
               "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\appsettings.json",
+              "DocumentMoniker": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\appsettings.json",
               "RelativeDocumentMoniker": "API_ENDING\\appsettings.json",
-              "ToolTip": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\appsettings.json",
+              "ToolTip": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\appsettings.json",
               "RelativeToolTip": "API_ENDING\\appsettings.json",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-05-12T21:38:28.263Z"
+              "WhenOpened": "2024-05-12T21:38:28.263Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "ProyectoWebContext.cs",
-              "DocumentMoniker": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\ProyectoWebContext.cs",
+              "DocumentMoniker": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\ProyectoWebContext.cs",
               "RelativeDocumentMoniker": "API_ENDING\\Models\\ProyectoWebContext.cs",
-              "ToolTip": "C:\\Users\\AntonioWalls\\Documents\\proyecto final web\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\ProyectoWebContext.cs",
+              "ToolTip": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Models\\ProyectoWebContext.cs",
               "RelativeToolTip": "API_ENDING\\Models\\ProyectoWebContext.cs",
-              "ViewState": "AQIAAGUAAAAAAAAAAAAswBUAAABBAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAABBAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-12T21:35:55.187Z"
+              "WhenOpened": "2024-05-12T21:35:55.187Z",
+              "EditorCaption": ""
             }
           ]
         }
