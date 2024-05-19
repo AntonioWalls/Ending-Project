@@ -101,7 +101,11 @@
               "RelativeDocumentMoniker": "API_ENDING\\Controllers\\IncluyeController.cs",
               "ToolTip": "C:\\Users\\fabia\\OneDrive\\Documentos\\Proyecto web final\\Ending-Project\\API_ENDING\\API_ENDING\\Controllers\\IncluyeController.cs",
               "RelativeToolTip": "API_ENDING\\Controllers\\IncluyeController.cs",
+<<<<<<< HEAD
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAzAAAA",
+=======
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAIsAAAAAAAAA",
+>>>>>>> 413bd8f20e2bbb5dac45f1cdf106f52708dee9d5
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-15T03:46:01.863Z",
               "EditorCaption": ""
@@ -155,8 +159,7 @@
               "RelativeToolTip": "API_ENDING\\Controllers\\AdjudicadoController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-13T01:25:23.247Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-13T01:25:23.247Z"
             },
             {
               "$type": "Document",
