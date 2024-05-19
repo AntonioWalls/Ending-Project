@@ -1,146 +1,117 @@
-import { useState, useEffect }from "react";
-import {
-  Grid,
-  GridColumn as Column,
-  getSelectedState,
-  getSelectedStateFromKeyDown,
-} from "@progress/kendo-react-grid";
-import { getter } from "@progress/kendo-react-common";
-import { Button, Col, Row } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteUser, getUsers } from '../../../redux/actions/actionUsers';
-import Swal from "sweetalert2";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { useEffect, useState, useRef, useCallback } from 'react';
+import * as React from "react";
+import { useDispatch, useSelector, useStore } from 'react-redux';
+import { Button, Col, Row, FormLabel } from "react-bootstrap";
+import { AgGridReact } from 'ag-grid-react'; // AG Grid Component
+import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the grid
+import "ag-grid-community/styles/ag-theme-quartz.css"; // Optional Theme applied to the grid
+import { getRealState } from '../../../redux/actions/ActionReal_State';
 
-const DATA_ITEM_KEY = "idUsuario";
-const SELECTED_FIELD = "selected";
-const idGetter = getter(DATA_ITEM_KEY);
 
-function TableReal_Estate({ showForm, idUserEdit }) {
-    const dispatch = useDispatch();
-    const [selectedState, setSelectedState] = useState({});
-    const { users } = useSelector((state) => state.getUsers);
-    const [userSelected, setUserSelected] = useState(false);
+export default function TableReal_Estate({ showForm, idUserEdit }) {
 
-    const onSelectionChange = (event) => {
-        const newSelectedState = getSelectedState({
-        event,
-        selectedState: selectedState,
-        dataItemKey: DATA_ITEM_KEY,
-        });
-        setSelectedState(newSelectedState);
-        setUserSelected(true);
-        idUserEdit(Object.keys(newSelectedState)[0]);
-    };
+  const [userSelected, setUserSelected] = React.useState(false);
+  const [selectedState, setSelectedState] = React.useState({});
 
-    const onKeyDown = (event) => {
-        const newSelectedState = getSelectedStateFromKeyDown({
-        event,
-        selectedState: selectedState,
-        dataItemKey: DATA_ITEM_KEY,
-        });
-        setSelectedState(newSelectedState);
-    };
+  // Rellenar grid con datos
+  const dispatch = useDispatch();
+  const { realstates } = useSelector((state) => state.getRealState);
 
-    useEffect(() => {
-        dispatch(getUsers());
-        if(users){
-            users.map((dataItem) =>
-                Object.assign(
-                {
-                    selected: false,
-                },
-                dataItem
-                )
-            );
-        }
-    }, [dispatch]);
 
-    const handleNew = () => {
-        showForm();
-        idUserEdit(0);
-    };
+  // Obtener la id del usuario. 
+  const [id, setId] = useState(0);
+  const gridRef = useRef();
+  const onSelectionChanged = useCallback(() => {
+    const selectedRows = gridRef.current.api.getSelectedRows();
+    document.querySelector("#selectedRows").innerHTML =
+      selectedRows.length === 1 ? selectedRows[0].nombre : "";
+    console.log(selectedRows[0].idUsuario);
+    setId(selectedRows[0].idUsuario);
+    console.log(id)
 
-    const handleEdit = () => {
-        if(userSelected){
-            showForm();
-        }else{
-            Swal.fire({
-                icon: "error",
-                title: "Error",
-                text: "Seleccione un usuario para modificar",
-              });
-        }
-    };
+  }, []);
 
-    const handleDelete = () => {
-        if (userSelected) {
-          // Eliminar usuario seleccionado
-          const idUserDelete = Object.keys(selectedState)[0];
-          dispatch(deleteUser(idUserDelete)).then(() => {
-            Swal.fire({
-              icon: "success",
-              title: "Usuario eliminado",
-              showConfirmButton: false,
-              timer: 1500,
-            }).then(() => {
-              dispatch(getUsers());
-            });
-          });
-        } else {
-          Swal.fire({
-            icon: "error",
-            title: "Error",
-            text: "Seleccione un usuario para eliminar",
-          });
-          }
-    };
 
-    return (
-        <>
-            <Row className='m-1'>
-                <h1>Esta en Inmobiliarias</h1>
-                <Col>
-                    <Button variant='primary' onClick={handleNew}>Nuevo Usuario</Button>
-                </Col>
-                <Col>
-                    <Button variant='warning' onClick={handleEdit}>Modificar Usuario</Button>
-                </Col>
-                <Col>
-                    <Button variant='danger' onClick={handleDelete}>Eliminar Usuario</Button>
-                </Col>
-            </Row>
-            <Row className='m-1'>
-                <Col className="d-flex justify-content-center">
-                    <Grid
-                        data={users ? (users.map((item) => ({
-                        ...item,
-                        [SELECTED_FIELD]: selectedState[idGetter(item)],
-                        }))) : null }
-                        dataItemKey={DATA_ITEM_KEY}
-                        selectedField={SELECTED_FIELD}
-                        selectable={{
-                        enabled: true,
-                        drag: true,
-                        mode: "single",
-                        }}
-                        navigatable={true}
-                        onSelectionChange={onSelectionChange}
-                        onKeyDown={onKeyDown}
-                    >
-                            <Column field={SELECTED_FIELD} width="50px" filterable={false} />
-                            <Column field="nombre" title="Nombre" width="120px" />
-                            <Column field="primerApellido" title="Primer Apellido" width="170px" />
-                            <Column field="segundoApellido" title="Segundo Apellido" width="170px" />
-                            <Column field="nombreUsuario" title="Nombre de Usuario" width="160px" />
-                            <Column field="telefono" title="Telefono" width="160px" />
-                            <Column field="correo" title="Correo" width="160px" />
-                            <Column field="habilitado" title="habilitado" width="100px" />
-                    </Grid>
-                </Col>
-                
-            </Row>
-        </>
-    );
+
+  useEffect(() => {
+    dispatch(getRealState());
+    console.log(realstates);
+  }, [dispatch]);
+
+  // Column Definitions: Defines the columns to be displayed.
+  const [colDefs, setColDefs] = useState([
+    { field: 'idInmobiliaria', headerName: 'ID' },
+    { field: 'razonSocial', headerName: 'Nombre' },
+    { field: 'rfc', headerName: 'Primer Apellido' },
+    { field: 'telefono', headerName: 'Segundo Apellido' }
+  ]);
+
+
+  const handleNew = () => {
+    showForm();
+    idUserEdit(0);
+  };
+
+  const handleEdit = () => {
+    console.log(realstates)
+    // if (id) {
+    //   idUserEdit(id);
+    //   showForm();
+    // } else {
+    //   alert('Seleccione un usuario para modificar');
+    // }
+  };
+
+  // const handleEdit = () => {
+  //     console.log(id);
+  //     if(id){
+  //         showForm();
+  //     }else{
+  //         alert('Seleccione un usuario para modificar');
+  //     }
+  // };
+
+  const handleDelete = () => {
+    // console.log(id);
+    // if (id) {
+    //   // Eliminar usuario seleccionado
+    //   dispatch(deleteUser(id))
+    //     .then(() => {
+    //       window.location.href = window.location.href;
+    //     })
+    // } else {
+    //   alert("Seleccione un usuario para eliminar");
+    // }
+  };
+
+
+  // ...
+
+  return (
+
+    // wrapping container with theme & size
+    <div
+      className="ag-theme-quartz" // applying the grid theme
+      style={{ height: 500 }} // the grid will fill the size of the parent container
+    >
+      <Row >
+        <Col>
+          <Button variant='primary' onClick={handleNew}>Nuevo Usuario</Button>
+        </Col>
+        <Col>
+          <Button variant='warning' onClick={handleEdit}>Modificar Usuario</Button>
+        </Col>
+        <Col>
+          <Button variant='danger' onClick={handleDelete}>Eliminar Usuario</Button>
+        </Col>
+      </Row>
+      <div>
+        <FormLabel>Usuario seleccionado: </FormLabel>
+        <span id="selectedRows"></span>
+      </div>
+      {realstates ? console.log(realstates) : null}
+    </div>
+  )
+
 }
-
-export default TableReal_Estate;

@@ -8,43 +8,28 @@ const initialState = {
   error: null,
 };
 
-const UsersSlice = createSlice({
+const RealStateSlice = createSlice({
   name: "getRealState",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getRealState.pending, (state) => {
-        state.users = [];
+        state.realstates = [];
         state.loading = true;
         state.error = null;
       })
-      .addCase(getUsers.fulfilled, (state, action) => {
-        state.users = action.payload;
+      .addCase(getRealState.fulfilled, (state, action) => {
+        state.realstates = action.payload;
         state.loading = false;
         state.error = null;
       })
-      .addCase(getUsers.rejected, (state, action) => {
-        state.users = [];
+      .addCase(getRealState.rejected, (state, action) => {
+        state.realstates = [];
         state.loading = false;
         state.error = action.error.message;
       })
-      .addCase(getUserUnique.pending, (state) => {
-        state.user = {};
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(getUserUnique.fulfilled, (state, action) => {
-        state.user = action.payload;
-        state.loading = false;
-        state.error = null;
-      })
-      .addCase(getUserUnique.rejected, (state, action) => {
-        state.user = {};
-        state.loading = false;
-        state.error = action.error.message;
-      });
   },
 });
 
-export const getUserReducer = UsersSlice.reducer;
+export const getRealStateReducer = RealStateSlice.reducer;
