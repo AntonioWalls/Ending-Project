@@ -88,8 +88,7 @@ namespace API_ENDING.Controllers
             }
         }
 
-<<<<<<< HEAD
-=======
+
         //Elimina datos de un adjudicado por medio de un ID
         [HttpDelete]
         [Route("Eliminar/{idAdjudicado:int}")]
@@ -138,7 +137,7 @@ namespace API_ENDING.Controllers
 
 
         }
->>>>>>> main
+
 
     }
 }
