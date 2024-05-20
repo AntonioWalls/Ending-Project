@@ -25,9 +25,9 @@ export default function TableReal_Estate({ showForm, idUserEdit }) {
   const onSelectionChanged = useCallback(() => {
     const selectedRows = gridRef.current.api.getSelectedRows();
     document.querySelector("#selectedRows").innerHTML =
-      selectedRows.length === 1 ? selectedRows[0].nombre : "";
-    console.log(selectedRows[0].idUsuario);
-    setId(selectedRows[0].idUsuario);
+      selectedRows.length === 1 ? selectedRows[0].razonSocial : "";
+    console.log(selectedRows[0].idInmobiliaria);
+    setId(selectedRows[0].idInmobiliaria);
     console.log(id)
 
   }, []);
@@ -41,10 +41,11 @@ export default function TableReal_Estate({ showForm, idUserEdit }) {
 
   // Column Definitions: Defines the columns to be displayed.
   const [colDefs, setColDefs] = useState([
-    { field: 'idInmobiliaria', headerName: 'ID' },
-    { field: 'razonSocial', headerName: 'Nombre' },
-    { field: 'rfc', headerName: 'Primer Apellido' },
-    { field: 'telefono', headerName: 'Segundo Apellido' }
+    { field: 'idInmobiliaria', headerName: 'ID de Inmobiliaria' },
+    { field: 'razonSocial', headerName: 'Razon Social' },
+    { field: 'rfc', headerName: 'RFC' },
+    { field: 'telefono', headerName: 'Telefono' },
+    { field: 'remates', headerName: 'Remates' }
   ]);
 
 
@@ -110,8 +111,13 @@ export default function TableReal_Estate({ showForm, idUserEdit }) {
         <FormLabel>Usuario seleccionado: </FormLabel>
         <span id="selectedRows"></span>
       </div>
-      {realstates ? console.log(realstates) : null}
+      <AgGridReact
+        ref={gridRef}
+        rowData={realstates.response}
+        columnDefs={colDefs}
+        rowSelection={"single"}
+        onSelectionChanged={onSelectionChanged}
+      />
     </div>
   )
-
 }

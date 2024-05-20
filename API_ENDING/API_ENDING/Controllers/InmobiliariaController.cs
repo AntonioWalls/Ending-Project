@@ -31,7 +31,7 @@ namespace API_ENDING.Controllers
             try
             {
                 inmobiliarias = webcontext.Inmobiliaria.ToList();
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = inmobiliarias });
+                //return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = inmobiliarias });
             }
             catch (Exception ex)
             {
