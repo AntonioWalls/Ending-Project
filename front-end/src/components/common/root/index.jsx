@@ -18,6 +18,7 @@ const Root = () => {
           <Route element={ <App path="Role"/> } path="Role" exact />
           <Route element={ <App path="Inmobiliarias"/> } path="Inmobiliarias" exact />
           <Route element={ <App path="Remates" /> } path="Remates" exact />
+          <Route element={ <App path="Adjudicados" /> } path="Adjudicados" exact />
         </Routes>
       </BrowserRouter>
     </React.StrictMode>      
