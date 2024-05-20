@@ -46,3 +46,32 @@ export const addRealState = createAsyncThunk("realstates/addRealState",
     }
 );
 
+export const deleteRealState = createAsyncThunk("realstates/deleteRealState",
+    async (id, {rejectWithValue}) => {
+        try
+        {      
+            const resp = await axios.delete('http://187.189.158.186:7777/Usuario/'+id);
+
+            return resp.data;
+        } 
+        catch (error) 
+        {
+            return rejectWithValue(`Error: ${error.message}`);
+        }
+    }
+);
+
+export const editRealState = createAsyncThunk("realstates/editRealState",
+    async (data, {rejectWithValue}) => {
+        try
+        {      
+            const resp = await axios.put('http://187.189.158.186:7777/Usuario/'+data.id, data);
+
+            return resp.data;
+        } 
+        catch (error) 
+        {
+            return rejectWithValue(`Error: ${error.message}`);
+        }
+    }
+);
