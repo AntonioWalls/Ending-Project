@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getRealState } from '../actions/ActionReal_State';
+import { getRealState, getRealStateUnique } from '../actions/ActionReal_State';
 
 const initialState = {
   realstates: [],
@@ -29,6 +29,21 @@ const RealStateSlice = createSlice({
         state.loading = false;
         state.error = action.error.message;
       })
+      .addCase(getRealStateUnique.pending, (state) => {
+        state.realstate = {};
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getRealStateUnique.fulfilled, (state, action) => {
+        state.realstate = action.payload;
+        state.loading = false;
+        state.error = null;
+      })
+      .addCase(getRealStateUnique.rejected, (state, action) => {
+        state.realstate = {};
+        state.loading = false;
+        state.error = action.error.message;
+      });
   },
 });
 
