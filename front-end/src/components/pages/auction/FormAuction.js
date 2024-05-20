@@ -5,7 +5,7 @@ import { addUser, getUserUnique } from '../../../redux/actions/actionUsers';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-function FormUser({ showForm, id }) {
+function FormAuction({ showForm, id }) {
     const initialUserState = {
         IDUsuario: 0,
         Nombre: '',
@@ -231,4 +231,4 @@ function FormUser({ showForm, id }) {
     );
 }
 
-export default FormUser;
+export default FormAuction;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import FormUser from './FormUser';
-import TableUser from './TableUser';
+import FormAuction from './FormAuction';
+import TableAuction from './TableAuction';
 import { useDispatch } from 'react-redux';
 
 function Usuarios() {
@@ -21,9 +21,9 @@ function Usuarios() {
 
     return (
         showForm ? (
-            <FormUser showForm={showTable} id={idUserEdit}/>
+            <FormAuction showForm={showTable} id={idUserEdit}/>
         ) : (
-            <TableUser showForm={showTable} idUserEdit={id => setUserEdit(id)}/>
+            <TableAuction showForm={showTable} idUserEdit={id => setUserEdit(id)}/>
         )
     );
 }
