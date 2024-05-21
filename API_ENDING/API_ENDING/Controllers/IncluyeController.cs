@@ -42,6 +42,42 @@ namespace API_ENDING.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("Guardar")]
+        public IActionResult AgregarIncluye([FromBody] Incluye objeto)
+        {
+            try
+            {
+                // Verificar si la relación ya existe
+                var existeIncluye = webcontext.Incluyes
+                    .Any(i => i.IdPropiedad == objeto.IdPropiedad && i.IdLitigioso == objeto.IdLitigioso && i.IdLitigio == objeto.IdLitigio && i.IdAdjudicado == objeto.IdAdjudicado);
+
+                if (existeIncluye)
+                {
+                    return BadRequest("La relación ya existe");
+                }
+
+                // Crear una nueva relación
+                var nuevoIncluye = new Incluye
+                {
+                    IdPropiedad = objeto.IdPropiedad,
+                    IdLitigioso = objeto.IdLitigioso,
+                    IdLitigio = objeto.IdLitigio,
+                    IdAdjudicado = objeto.IdAdjudicado
+                };
+
+                webcontext.Incluyes.Add(nuevoIncluye);
+                webcontext.SaveChanges();
+
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "Relación agregada exitosamente" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message });
+            }
+        }
+
+
 
         //EDITA DATOS DE UNA RELACION
         [HttpPut]

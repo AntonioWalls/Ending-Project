@@ -81,7 +81,7 @@ namespace API_ENDING.Controllers
         }
 
         //EDITA DATOS DE UN ADJUDICADO
-        [HttpPost]
+        [HttpPut]
         [Route("Editar")]
         public IActionResult Editar([FromBody] Litigio objeto)
         {
