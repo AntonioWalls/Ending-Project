@@ -86,7 +86,7 @@ namespace API_ENDING.Controllers
         }
 
         //EDITA DATOS DE LA INMOBILIARIA
-        [HttpPost]
+        [HttpPut]
         [Route("Editar")]
         public IActionResult Editar([FromBody] Inmobiliaria objeto)
         {
