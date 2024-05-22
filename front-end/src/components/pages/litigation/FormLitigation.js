@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Button, Form, Col, Row, Card } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { addUser, getUserUnique } from '../../../redux/actions/actionUsers';
-import { getRealState } from '../../../redux/actions/ActionReal_State';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-function FormAuction({ showForm, id }) {
+function FormLitigation({ showForm, id }) {
     const initialUserState = {
         IDUsuario: 0,
         Nombre: '',
@@ -23,15 +22,9 @@ function FormAuction({ showForm, id }) {
         Habilitado: true
     };
 
-    const [Inmobiliarias, setInmobiliarias] = useState(state => state.getRealState);
-
-    
     const dispatch = useDispatch();
     const [user, setUser] = useState({initialUserState});
-    
-    useEffect(() => {
-        dispatch(setInmobiliarias(getRealState));
-    }, [dispatch]);
+
     useEffect(() => {
         if (id > 0) {
             dispatch(getUserUnique(id))
@@ -177,13 +170,8 @@ function FormAuction({ showForm, id }) {
                                 value={user.IDRol} 
                                 onChange={(e) => setUser({ ...user, IDRol: parseInt(e.target.value) })}>
                                 <option value={"0"} disabled>Seleccione un Rol</option>
-{/* Mostrar lista de inmobiliarias */}
-                                {Inmobiliarias ? (Inmobiliarias.map((item) => () => {
-                                    return(
-                                        <option value={item.idInmobiliaria} >{item.razonSocial}</option>
-                                    );
-                                })) : null }
-
+                                <option value={"1"}>Administrador</option>
+                                <option value={"2"}>Usuario</option>
                             </Form.Select>
                         </Col>
                     </Row>
@@ -243,4 +231,4 @@ function FormAuction({ showForm, id }) {
     );
 }
 
-export default FormAuction;
+export default FormLitigation;
