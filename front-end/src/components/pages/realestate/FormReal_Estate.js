@@ -18,7 +18,7 @@ function FormReal_Estate({ showForm, idInmobiliaria }) {
 
     useEffect(() => {
         if (idInmobiliaria > 0) {
-            dispatch(getRealStateUnique(idInmobiliaria))
+            dispatch(getRealStateUnique.response(idInmobiliaria))
                 .then((response) => {
                     setRealState(response.payload);
                 });
@@ -33,6 +33,7 @@ function FormReal_Estate({ showForm, idInmobiliaria }) {
     const handleGuardar = () => {
 
         dispatch(addRealState(realstate)).then(() => {
+            console.log(addRealState)
             console.log('Usuario guardado');
         });
 

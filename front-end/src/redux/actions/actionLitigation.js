@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const getRealState = createAsyncThunk("realstates/getRealState",
+export const getLitigation = createAsyncThunk("litigation/getLitigation",
     async () => {
         try
         {      
@@ -16,11 +16,11 @@ export const getRealState = createAsyncThunk("realstates/getRealState",
     }
 );
 
-export const getRealStateUnique = createAsyncThunk("realstates/getRealStateUnique",
-    async (idInmobiliaria, {rejectWithValue}) => {
+export const getLitigationUnique = createAsyncThunk("litigation/getLitigationUnique",
+    async (id, {rejectWithValue}) => {
         try
         {      
-            const resp = await axios.get('http://endingapi.somee.com/api/Inmobiliaria/Obtener/'+idInmobiliaria);
+            const resp = await axios.get('http://endingapi.somee.com/api/Inmobiliaria/Obtener/'+id);
 
             return resp.data;
         } 
@@ -31,7 +31,7 @@ export const getRealStateUnique = createAsyncThunk("realstates/getRealStateUniqu
     }
 );
 
-export const addRealState = createAsyncThunk("realstates/addRealState",
+export const addLitigationState = createAsyncThunk("litigation/addLitigation",
     async (data, {rejectWithValue}) => {
         try
         {      
@@ -46,7 +46,7 @@ export const addRealState = createAsyncThunk("realstates/addRealState",
     }
 );
 
-export const deleteRealState = createAsyncThunk("realstates/deleteRealState",
+export const deleteLitigation = createAsyncThunk("litigation/deleteLitigation",
     async (id, {rejectWithValue}) => {
         try
         {      
@@ -61,7 +61,7 @@ export const deleteRealState = createAsyncThunk("realstates/deleteRealState",
     }
 );
 
-export const editRealState = createAsyncThunk("realstates/editRealState",
+export const editLitigation = createAsyncThunk("litigation/editLitigation",
     async (data, {rejectWithValue}) => {
         try
         {      

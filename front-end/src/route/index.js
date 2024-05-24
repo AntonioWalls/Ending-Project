@@ -6,6 +6,7 @@ import Remates from "../components/pages/auction";
 import Adjudicados from "../components/pages/awarded";
 import Litigiosos from "../components/pages/litigious";
 import Litigios from "../components/pages/litigation";
+import Propiedades from "../components/pages/property";
 
 const Routes = [
     {
@@ -39,6 +40,10 @@ const Routes = [
     {
         path: 'Litigios',
         component: Litigios
+    },
+    {
+        path: 'Propiedades',
+        component: Propiedades
     }
 ];
 export default Routes;

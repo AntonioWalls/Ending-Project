@@ -6,7 +6,7 @@ import { Button, Col, Row, FormLabel } from "react-bootstrap";
 import { AgGridReact } from 'ag-grid-react'; // AG Grid Component
 import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the grid
 import "ag-grid-community/styles/ag-theme-quartz.css"; // Optional Theme applied to the grid
-import { getRealState } from '../../../redux/actions/ActionReal_State';
+import { getRealState, deleteRealState } from '../../../redux/actions/ActionReal_State';
 
 
 export default function TableReal_Estate({ showForm, idUserEdit }) {
@@ -44,8 +44,7 @@ export default function TableReal_Estate({ showForm, idUserEdit }) {
     { field: 'idInmobiliaria', headerName: 'ID de Inmobiliaria' },
     { field: 'razonSocial', headerName: 'Razon Social' },
     { field: 'rfc', headerName: 'RFC' },
-    { field: 'telefono', headerName: 'Telefono' },
-    { field: 'remates', headerName: 'Remates' }
+    { field: 'telefono', headerName: 'Telefono' }
   ]);
 
 
@@ -54,36 +53,35 @@ export default function TableReal_Estate({ showForm, idUserEdit }) {
     idUserEdit(0);
   };
 
-  const handleEdit = () => {
-    console.log(realstates)
-    // if (id) {
-    //   idUserEdit(id);
-    //   showForm();
-    // } else {
-    //   alert('Seleccione un usuario para modificar');
-    // }
-  };
-
   // const handleEdit = () => {
-  //     console.log(id);
-  //     if(id){
-  //         showForm();
-  //     }else{
-  //         alert('Seleccione un usuario para modificar');
-  //     }
+  //   if (id) {
+  //     idUserEdit(id);
+  //     showForm();
+  //   } else {
+  //     alert('Seleccione un usuario para modificar');
+  //   }
   // };
 
+  const handleEdit = () => {
+      console.log(id);
+      if(id){
+          showForm();
+      }else{
+          alert('Seleccione un usuario para modificar');
+      }
+  };
+
   const handleDelete = () => {
-    // console.log(id);
-    // if (id) {
-    //   // Eliminar usuario seleccionado
-    //   dispatch(deleteUser(id))
-    //     .then(() => {
-    //       window.location.href = window.location.href;
-    //     })
-    // } else {
-    //   alert("Seleccione un usuario para eliminar");
-    // }
+    console.log(id);
+    if (id) {
+      // Eliminar usuario seleccionado
+      dispatch(deleteRealState(id))
+        .then(() => {
+          window.location.href = window.location.href;
+        })
+    } else {
+      alert("Seleccione un usuario para eliminar");
+    }
   };
 
 
@@ -108,7 +106,7 @@ export default function TableReal_Estate({ showForm, idUserEdit }) {
         </Col>
       </Row>
       <div>
-        <FormLabel>Usuario seleccionado: </FormLabel>
+        <FormLabel>Inmobiliaria seleccionada: </FormLabel>
         <span id="selectedRows"></span>
       </div>
       <AgGridReact
