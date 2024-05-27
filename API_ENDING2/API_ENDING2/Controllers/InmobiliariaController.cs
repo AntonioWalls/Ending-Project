@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using API_ENDING2.Models;
 
 using Microsoft.AspNetCore.Cors;
+using API_ENDING2.DTO;
 
 namespace API_ENDING.Controllers
 {
@@ -69,10 +70,16 @@ namespace API_ENDING.Controllers
         //GUARDA UNA NUEVA INMOBILIARIA
         [HttpPost]
         [Route("Guardar")]
-        public IActionResult Guardar([FromBody] Inmobiliaria objeto)
+        public IActionResult Guardar([FromBody] InmobiliariaDTO newInmobiliaria)
         {
             try
             {
+                var objeto = new Inmobiliaria()
+                {
+                    RazonSocial = newInmobiliaria.RazonSocial,
+                    Rfc = newInmobiliaria.Rfc,
+                    Telefono = newInmobiliaria.Telefono,
+                };
                 webcontext.Inmobiliaria.Add(objeto);
                 webcontext.SaveChanges();
 
