@@ -14,11 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("API_ENDING")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< HEAD
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9faab585265bb4be13ad408dbf9ac95d777f07a9")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+27f37de41cc80f3593679629fd352160c12573a1")]
->>>>>>> origin/dev_walls
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+64de1f66ec2bba587d28dee10a0c84bc0909c75e")]
 [assembly: System.Reflection.AssemblyProductAttribute("API_ENDING")]
 [assembly: System.Reflection.AssemblyTitleAttribute("API_ENDING")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
