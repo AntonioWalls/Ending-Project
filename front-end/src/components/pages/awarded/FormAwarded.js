@@ -1,59 +1,94 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Form, Col, Row, Card } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { addUser, getUserUnique } from '../../../redux/actions/actionUsers';
+import { addAwardedState, getAwardedUnique } from '../../../redux/actions/actionAwarded';
+import { getAuction } from '../../../redux/actions/actionAuction';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import Swal from "sweetalert2";
 
 function FormAwarded({ showForm, id }) {
     const initialUserState = {
-        IDUsuario: 0,
-        Nombre: '',
-        PrimerApellido: '',
-        SegundoApellido: '',
-        Genero: null,
-        Correo: '',
-        FechaNacimiento: '', 
-        Telefono: '',
-        IDRol: 0,
-        NombreUsuario: '',
-        Contraseña: '',
-        ConfirmarContraseña: '',
-        Habilitado: true
+        idAdjudicado: 0,
+        idRemate: 0,
+        nombres: '',
+        apellidos: '',
+        rfc: '',
+        curp: '',
+        telefono: '',
+        calle: '',
+        num: 0,
+        colonia: '',
+        municipio: '',
+        estado: '',
+        cp: 0,
+        semafonoEscrituracion: '',
+        consideraciones: '',
+        estadoAdjudicacion: true,
     };
 
     const dispatch = useDispatch();
-    const [user, setUser] = useState({initialUserState});
+    const [awarded, setAwarded] = useState({ initialUserState });
 
     useEffect(() => {
         if (id > 0) {
-            dispatch(getUserUnique(id))
+            dispatch(getAwardedUnique(id))
                 .then((response) => {
-                    setUser(response.payload);
+                    setAwarded(response.payload);
                 });
         }
     }, [dispatch, id]);
 
     const handleCancel = () => {
-        setUser(initialUserState);
+        setAwarded(initialUserState);
         showForm();
     };
 
     const handleGuardar = () => {
-        if(user.Contraseña === user.ConfirmarContraseña){
-            dispatch(addUser(user)).then(() => {
-                console.log('Usuario guardado');
-            });
-        }
+
+        dispatch(addAwardedState(awarded)).then(() => {
+            console.log(addAwardedState)
+            console.log('Usuario guardado');
+            Swal.fire({
+                icon: "success",
+                title: "Guardado con exito",
+                text: "Se ha guardado el registro con total exito",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+        });
+
     };
 
     return (
         <Col lg={6} xs={12} sm={8}>
             <Card>
                 <Card.Header>
-                    <h1>Registro de Usuario</h1>
+                    <h1>Registro de Adjudicado</h1>
                 </Card.Header>
                 <Card.Body>
+                <Row>
+                        <Col lg={5} sm={12} xl={6}>
+                            <Form.Label>Rol: </Form.Label>
+                        </Col>
+                        <Col lg={7} sm={12} xl={6}>
+                            <Form.Select 
+                                name="idRemate" 
+                                value={awarded.idRemate} 
+                                onChange={(e) => setAwarded({ ...awarded, IDRemate: parseInt(e.target.value) })}>
+                                <option value={"0"} disabled>Seleccione un Remate</option>
+                                {/* Mostrar lista de remates */}
+                                {getAuction.response ? (getAuction.response.map((item) => () => {
+                                    return(
+                                        <option value={item.idRemate} >{item.razonSocial}</option>
+                                    );
+                                })) : null }
+
+                            </Form.Select>
+                        </Col>
+                    </Row>
+                    <br />
+
                     <Row>
                         <Col lg={5} sm={12} xl={6}>
                             <Form.Label>Nombre : </Form.Label>
@@ -62,8 +97,8 @@ function FormAwarded({ showForm, id }) {
                             <Form.Control
                                 type="text"
                                 name="nombre"
-                                value={user.Nombre}
-                                onChange={(e) => setUser({ ...user, Nombre: e.target.value })}
+                                value={awarded.nombres}
+                                onChange={(e) => setAwarded({ ...awarded, nombres: e.target.value })}
                             />
                         </Col>
                     </Row>
@@ -71,14 +106,14 @@ function FormAwarded({ showForm, id }) {
 
                     <Row>
                         <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Primer Apellido : </Form.Label>
+                            <Form.Label>Apellidos : </Form.Label>
                         </Col>
                         <Col lg={7} sm={12} xl={6}>
                             <Form.Control
                                 type="text"
-                                name="primerApellido"
-                                value={user.PrimerApellido}
-                                onChange={(e) => setUser({ ...user, PrimerApellido: e.target.value })}
+                                name="apellidos"
+                                value={awarded.apellidos}
+                                onChange={(e) => setAwarded({ ...awarded, apellidos: e.target.value })}
                             />
                         </Col>
                     </Row>
@@ -86,14 +121,14 @@ function FormAwarded({ showForm, id }) {
 
                     <Row>
                         <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Segundo Apellido : </Form.Label>
+                            <Form.Label>RFC : </Form.Label>
                         </Col>
                         <Col lg={7} sm={12} xl={6}>
                             <Form.Control
                                 type="text"
-                                name="segundoApellido"
-                                value={user.SegundoApellido}
-                                onChange={(e) => setUser({ ...user, SegundoApellido: e.target.value })}
+                                name="rfc"
+                                value={awarded.rfc}
+                                onChange={(e) => setAwarded({ ...awarded, rfc: e.target.value })}
                             />
                         </Col>
                     </Row>
@@ -101,45 +136,14 @@ function FormAwarded({ showForm, id }) {
 
                     <Row>
                         <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Genero: </Form.Label>
-                        </Col>
-                        <Col lg={7} sm={12} xl={6}>
-                            <Form.Select 
-                                    name="genero" 
-                                    value={user.Genero} 
-                                    onChange={(e) => setUser({...user, Genero: e.target.value == 1 ? true : false })}>
-                                    <option value={""} disabled>Seleccione un Genero</option>
-                                    <option value={1}>Masculino</option>
-                                    <option value={2}>Femenino</option>
-                            </Form.Select>
-                        </Col>
-                    </Row>
-                    <br />
-
-                    <Row>
-                        <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Fecha de Nacimiento: </Form.Label>
-                        </Col>
-                        <Col lg={7} sm={12} xl={6}>
-                            <DatePicker
-                                className='form-control'
-                                selected={user.FechaNacimiento}
-                                onChange={(date) => setUser({ ...user, FechaNacimiento: date })}
-                            />
-                        </Col>
-                    </Row>
-                    <br />
-
-                    <Row>
-                        <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Correo: </Form.Label>
+                            <Form.Label>CURP : </Form.Label>
                         </Col>
                         <Col lg={7} sm={12} xl={6}>
                             <Form.Control
-                                type='text'
-                                name="correo"
-                                value={user.Correo}
-                                onChange={(e) => setUser({ ...user, Correo: e.target.value })}
+                                type="text"
+                                name="curp"
+                                value={awarded.curp}
+                                onChange={(e) => setAwarded({ ...awarded, curp: e.target.value })}
                             />
                         </Col>
                     </Row>
@@ -147,14 +151,14 @@ function FormAwarded({ showForm, id }) {
 
                     <Row>
                         <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Telefono: </Form.Label>
+                            <Form.Label>Telefono : </Form.Label>
                         </Col>
                         <Col lg={7} sm={12} xl={6}>
                             <Form.Control
-                                type='text'
+                                type="text"
                                 name="telefono"
-                                value={user.Telefono}
-                                onChange={(e) => setUser({ ...user, Telefono: e.target.value })}
+                                value={awarded.telefono}
+                                onChange={(e) => setAwarded({ ...awarded, telefono: e.target.value })}
                             />
                         </Col>
                     </Row>
@@ -162,31 +166,14 @@ function FormAwarded({ showForm, id }) {
 
                     <Row>
                         <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Rol: </Form.Label>
-                        </Col>
-                        <Col lg={7} sm={12} xl={6}>
-                            <Form.Select 
-                                name="idRol" 
-                                value={user.IDRol} 
-                                onChange={(e) => setUser({ ...user, IDRol: parseInt(e.target.value) })}>
-                                <option value={"0"} disabled>Seleccione un Rol</option>
-                                <option value={"1"}>Administrador</option>
-                                <option value={"2"}>Usuario</option>
-                            </Form.Select>
-                        </Col>
-                    </Row>
-                    <br />
-
-                    <Row>
-                        <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Nombre de Usuario : </Form.Label>
+                            <Form.Label>Calle: </Form.Label>
                         </Col>
                         <Col lg={7} sm={12} xl={6}>
                             <Form.Control
-                                type="text"
-                                name="nombreUsuario"
-                                value={user.NombreUsuario}
-                                onChange={(e) => setUser({ ...user, NombreUsuario: e.target.value })}
+                                type='text'
+                                name="calle"
+                                value={awarded.calle}
+                                onChange={(e) => setAwarded({ ...awarded, calle: e.target.value })}
                             />
                         </Col>
                     </Row>
@@ -194,14 +181,14 @@ function FormAwarded({ showForm, id }) {
 
                     <Row>
                         <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Contraseña : </Form.Label>
+                            <Form.Label>Numero: </Form.Label>
                         </Col>
                         <Col lg={7} sm={12} xl={6}>
                             <Form.Control
-                                type="password"
-                                name="contrasena"
-                                value={user.Contraseña}
-                                onChange={(e) => setUser({ ...user, Contraseña: e.target.value })}
+                                type='text'
+                                name="num"
+                                value={awarded.num}
+                                onChange={(e) => setAwarded({ ...awarded, num: e.target.value })}
                             />
                         </Col>
                     </Row>
@@ -209,18 +196,94 @@ function FormAwarded({ showForm, id }) {
 
                     <Row>
                         <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Confirmar Contraseña : </Form.Label>
+                            <Form.Label>Colonia: </Form.Label>
                         </Col>
                         <Col lg={7} sm={12} xl={6}>
                             <Form.Control
-                                type="password"
-                                name="confirmarContrasena"
-                                value={user.ConfirmarContraseña}
-                                onChange={(e) => setUser({ ...user, ConfirmarContraseña: e.target.value })}
+                                type='text'
+                                name="colonia"
+                                value={awarded.colonia}
+                                onChange={(e) => setAwarded({ ...awarded, colonia: e.target.value })}
                             />
                         </Col>
                     </Row>
                     <br />
+
+                    <Row>
+                        <Col lg={5} sm={12} xl={6}>
+                            <Form.Label>Municipio: </Form.Label>
+                        </Col>
+                        <Col lg={7} sm={12} xl={6}>
+                            <Form.Control
+                                type='text'
+                                name="municipio"
+                                value={awarded.municipio}
+                                onChange={(e) => setAwarded({ ...awarded, municipio: e.target.value })}
+                            />
+                        </Col>
+                    </Row>
+                    <br />
+
+                    <Row>
+                        <Col lg={5} sm={12} xl={6}>
+                            <Form.Label>Estado: </Form.Label>
+                        </Col>
+                        <Col lg={7} sm={12} xl={6}>
+                            <Form.Control
+                                type='text'
+                                name="estado"
+                                value={awarded.estado}
+                                onChange={(e) => setAwarded({ ...awarded, estado: e.target.value })}
+                            />
+                        </Col>
+                    </Row>
+                    <br />
+
+                    <Row>
+                        <Col lg={5} sm={12} xl={6}>
+                            <Form.Label>Codigo Postal: </Form.Label>
+                        </Col>
+                        <Col lg={7} sm={12} xl={6}>
+                            <Form.Control
+                                type='text'
+                                name="cp"
+                                value={awarded.cp}
+                                onChange={(e) => setAwarded({ ...awarded, cp: e.target.value })}
+                            />
+                        </Col>
+                    </Row>
+                    <br />
+
+                    <Row>
+                        <Col lg={5} sm={12} xl={6}>
+                            <Form.Label>Semafono de Escrituracion: </Form.Label>
+                        </Col>
+                        <Col lg={7} sm={12} xl={6}>
+                            <Form.Control
+                                type='text'
+                                name="semafonoEscrituracion"
+                                value={awarded.semafonoEscrituracion}
+                                onChange={(e) => setAwarded({ ...awarded, semafonoEscrituracion: e.target.value })}
+                            />
+                        </Col>
+                    </Row>
+                    <br />
+
+                    <Row>
+                        <Col lg={5} sm={12} xl={6}>
+                            <Form.Label>Consideraciones: </Form.Label>
+                        </Col>
+                        <Col lg={7} sm={12} xl={6}>
+                            <Form.Control
+                                type='text'
+                                name="consideraciones"
+                                value={awarded.consideraciones}
+                                onChange={(e) => setAwarded({ ...awarded, consideraciones: e.target.value })}
+                            />
+                        </Col>
+                    </Row>
+                    <br />
+
                 </Card.Body>
                 <Card.Footer>
                     <Button variant='danger' onClick={handleCancel} className='m-1'>Cancelar</Button>
