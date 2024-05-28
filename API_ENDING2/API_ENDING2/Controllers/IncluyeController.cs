@@ -1,3 +1,4 @@
+using API_ENDING2.DTO;
 using API_ENDING2.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
@@ -28,12 +29,7 @@ namespace API_ENDING.Controllers
 
             try
             {
-                incluyes = webcontext.Incluyes
-                    .Include(i => i.oPropiedad)
-                    .Include(i => i.oLitigioso)
-                    .Include(i => i.oLitigio)
-                    .Include(i => i.oAdjudicado)
-                    .ToList();
+                incluyes = webcontext.Incluyes.ToList();
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = incluyes });
             }
             catch (Exception ex)
@@ -44,10 +40,18 @@ namespace API_ENDING.Controllers
 
         [HttpPost]
         [Route("Guardar")]
-        public IActionResult AgregarIncluye([FromBody] Incluye objeto)
+        public IActionResult AgregarIncluye([FromBody] IncluyeDTO newIncluye)
         {
             try
             {
+                var objeto = new Incluye() 
+                {
+                    IdAdjudicado = newIncluye.IdAdjudicado,
+                    IdLitigio = newIncluye.IdLitigio,
+                    IdLitigioso = newIncluye.IdLitigioso,
+                    IdPropiedad = newIncluye.IdPropiedad,
+                };
+
                 // Verificar si la relación ya existe
                 var existeIncluye = webcontext.Incluyes
                     .Any(i => i.IdPropiedad == objeto.IdPropiedad && i.IdLitigioso == objeto.IdLitigioso && i.IdLitigio == objeto.IdLitigio && i.IdAdjudicado == objeto.IdAdjudicado);
@@ -82,11 +86,11 @@ namespace API_ENDING.Controllers
         //EDITA DATOS DE UNA RELACION
         [HttpPut]
         [Route("Editar")]
-        public IActionResult EditarIncluye([FromBody] Incluye objeto)
+        public IActionResult EditarIncluye([FromBody] IncluyeDTO newIncluye)
         {
             // Buscar el registro en la tabla Incluye
             var incluye = webcontext.Incluyes
-                .FirstOrDefault(i => i.IdPropiedad == objeto.IdPropiedad);
+                .FirstOrDefault(i => i.IdPropiedad == newIncluye.IdPropiedad);
 
             if (incluye == null)
             {
@@ -107,10 +111,10 @@ namespace API_ENDING.Controllers
                 // Crear un nuevo registro con los nuevos valores
                 var nuevoIncluye = new Incluye
                 {
-                    IdPropiedad = objeto.IdPropiedad,
-                    IdLitigioso = objeto.IdLitigioso == 0 ? idLitigiosoActual : objeto.IdLitigioso,
-                    IdLitigio = objeto.IdLitigio == 0 ? idLitigioActual : objeto.IdLitigio,
-                    IdAdjudicado = objeto.IdAdjudicado == 0 ? idAdjudicadoActual : objeto.IdAdjudicado
+                    IdPropiedad = newIncluye.IdPropiedad,
+                    IdLitigioso = newIncluye.IdLitigioso == 0 ? idLitigiosoActual : newIncluye.IdLitigioso,
+                    IdLitigio = newIncluye.IdLitigio == 0 ? idLitigioActual : newIncluye.IdLitigio,
+                    IdAdjudicado = newIncluye.IdAdjudicado == 0 ? idAdjudicadoActual : newIncluye.IdAdjudicado
                 };
 
                 webcontext.Incluyes.Add(nuevoIncluye);
@@ -134,7 +138,7 @@ namespace API_ENDING.Controllers
 
             if (adjudicados == null)
             {
-                return BadRequest("Adjudicado no encontrada");
+                return BadRequest("Registro no encontrado");
             }
 
             try

@@ -23,6 +23,7 @@ C:\Users\AntonioWalls\Documents\proyecto final web\Ending-Project\API_ENDING2\AP
 C:\Users\AntonioWalls\Documents\proyecto final web\Ending-Project\API_ENDING2\API_ENDING2\obj\Release\net8.0\PubTmp\Out\Microsoft.OpenApi.dll
 C:\Users\AntonioWalls\Documents\proyecto final web\Ending-Project\API_ENDING2\API_ENDING2\obj\Release\net8.0\PubTmp\Out\Microsoft.SqlServer.Server.dll
 C:\Users\AntonioWalls\Documents\proyecto final web\Ending-Project\API_ENDING2\API_ENDING2\obj\Release\net8.0\PubTmp\Out\Microsoft.Win32.SystemEvents.dll
+C:\Users\AntonioWalls\Documents\proyecto final web\Ending-Project\API_ENDING2\API_ENDING2\obj\Release\net8.0\PubTmp\Out\Newtonsoft.Json.dll
 C:\Users\AntonioWalls\Documents\proyecto final web\Ending-Project\API_ENDING2\API_ENDING2\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\AntonioWalls\Documents\proyecto final web\Ending-Project\API_ENDING2\API_ENDING2\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Users\AntonioWalls\Documents\proyecto final web\Ending-Project\API_ENDING2\API_ENDING2\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll

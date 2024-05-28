@@ -1,4 +1,5 @@
-﻿using API_ENDING2.Models;
+﻿using API_ENDING2.DTO;
+using API_ENDING2.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -45,7 +46,7 @@ namespace API_ENDING.Controllers
 
             if (litigios == null)
             {
-                return BadRequest("Inmobiliaria no encontrada");
+                return BadRequest("Litigio no encontrado");
             }
 
             try
@@ -64,10 +65,19 @@ namespace API_ENDING.Controllers
         //GUARDA UN NUEVO LITIGIO
         [HttpPost]
         [Route("Guardar")]
-        public IActionResult Guardar([FromBody] Litigio objeto)
+        public IActionResult Guardar([FromBody] LitigioDTO newLitigio)
         {
             try
             {
+                var objeto = new Litigio() 
+                {
+                    Procedimiento = newLitigio.Procedimiento,
+                    Juzgado = newLitigio.Juzgado,
+                    Expediente = newLitigio.Expediente,
+                    EdoJuzgado = newLitigio.EdoJuzgado,
+                    AdeudoTotal = newLitigio.AdeudoTotal,
+                };
+
                 webcontext.Litigios.Add(objeto);
                 webcontext.SaveChanges();
 
@@ -83,9 +93,9 @@ namespace API_ENDING.Controllers
         //EDITA DATOS DE UN ADJUDICADO
         [HttpPut]
         [Route("Editar")]
-        public IActionResult Editar([FromBody] Litigio objeto)
+        public IActionResult Editar([FromBody] LitigioDTO newLitigio)
         {
-            Litigio litigios = webcontext.Litigios.Find(objeto.IdLitigio);
+            Litigio litigios = webcontext.Litigios.Find(newLitigio.IdLitigio);
 
             if (litigios == null)
             {
@@ -97,11 +107,11 @@ namespace API_ENDING.Controllers
                 //valida si el campo que va cambiar el usuario, queda vacio, lo rellena con el dato
                 //que ya existia en la base de datos
                 //quiero editar solo el telefono, ps telefono cambia y los demás datos quedan igual
-                litigios.Procedimiento = objeto.Procedimiento is null ? litigios.Procedimiento : objeto.Procedimiento;
-                litigios.Juzgado = objeto.Juzgado is null ? litigios.Juzgado : objeto.Juzgado;
-                litigios.Expediente = objeto.Expediente is null ? litigios.Expediente : objeto.Expediente;
-                litigios.EdoJuzgado = objeto.EdoJuzgado is null ? litigios.EdoJuzgado : objeto.EdoJuzgado;
-                litigios.AdeudoTotal = objeto.AdeudoTotal is null ? litigios.AdeudoTotal : objeto.AdeudoTotal;
+                litigios.Procedimiento = newLitigio.Procedimiento is null ? litigios.Procedimiento : newLitigio.Procedimiento;
+                litigios.Juzgado = newLitigio.Juzgado is null ? litigios.Juzgado : newLitigio.Juzgado;
+                litigios.Expediente = newLitigio.Expediente is null ? litigios.Expediente : newLitigio.Expediente;
+                litigios.EdoJuzgado = newLitigio.EdoJuzgado is null ? litigios.EdoJuzgado : newLitigio.EdoJuzgado;
+                litigios.AdeudoTotal = newLitigio.AdeudoTotal is null ? litigios.AdeudoTotal : newLitigio.AdeudoTotal;
 
                 webcontext.Litigios.Update(litigios);
                 webcontext.SaveChanges();
@@ -123,7 +133,7 @@ namespace API_ENDING.Controllers
 
             if (litigios == null)
             {
-                return BadRequest("Adjudicado no encontrada");
+                return BadRequest("Litigio no encontrado");
             }
 
             try

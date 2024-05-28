@@ -1,8 +1,8 @@
-﻿using API_ENDING2.Models;
+﻿using API_ENDING2.DTO;
+using API_ENDING2.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
 namespace API_ENDING.Controllers
 {
     [EnableCors("ReglasCors")]
@@ -64,10 +64,26 @@ namespace API_ENDING.Controllers
         //Crea una nueva propiedad
         [HttpPost]
         [Route("Guardar")]
-        public IActionResult Guardar([FromBody] Propiedad objeto)
+        public IActionResult Guardar([FromBody] PropiedadDTO newPropiedad)
         {
             try
             {
+                var objeto = new Propiedad()
+                {
+                    //RazonSocial = newInmobiliaria.RazonSocial,
+                    Calle = newPropiedad.Calle,
+                    Num = newPropiedad.Num,
+                    Colonia = newPropiedad.Colonia,
+                    Municipio = newPropiedad.Municipio,
+                    Estado = newPropiedad.Estado,
+                    Cp = newPropiedad.Cp,
+                    Subtipo = newPropiedad.Subtipo,
+                    Latitud = newPropiedad.Latitud,
+                    Altitud = newPropiedad.Altitud,
+                    SuperficieTerreno = newPropiedad.SuperficieTerreno,
+                    SuperficieCons = newPropiedad.SuperficieCons,
+
+                };
                 webcontext.Propiedads.Add(objeto);
                 webcontext.SaveChanges();
 
@@ -83,9 +99,9 @@ namespace API_ENDING.Controllers
         //EDITA DATOS DEl LITIGIOSO
         [HttpPut]
         [Route("Editar")]
-        public IActionResult Editar([FromBody] Propiedad objeto)
+        public IActionResult Editar([FromBody] PropiedadDTO newPropiedad)
         {
-            Propiedad propiedades = webcontext.Propiedads.Find(objeto.IdPropiedad);
+            Propiedad propiedades = webcontext.Propiedads.Find(newPropiedad.IdPropiedad);
 
             if (propiedades == null)
             {
@@ -97,17 +113,17 @@ namespace API_ENDING.Controllers
                 //valida si el campo que va cambiar el usuario, queda vacio, lo rellena con el dato
                 //que ya existia en la base de datos
                 //quiero editar solo el telefono, ps telefono cambia y los demás datos quedan igual
-                propiedades.Calle = objeto.Calle is null ? propiedades.Calle : objeto.Calle;
-                propiedades.Num = objeto.Num is null ? propiedades.Num : objeto.Num;
-                propiedades.Colonia = objeto.Colonia is null ? propiedades.Colonia : objeto.Colonia;
-                propiedades.Municipio = objeto.Municipio is null ? propiedades.Municipio : objeto.Municipio;
-                propiedades.Estado = objeto.Estado is null ? propiedades.Estado : objeto.Estado;
-                propiedades.Cp = objeto.Cp is null ? propiedades.Cp : objeto.Cp;
-                propiedades.Subtipo = objeto.Subtipo is null ? propiedades.Subtipo : objeto.Subtipo;
-                propiedades.Latitud = objeto.Latitud is null ? propiedades.Latitud : objeto.Latitud;
-                propiedades.Altitud = objeto.Altitud is null ? propiedades.Altitud : objeto.Altitud;
-                propiedades.SuperficieTerreno = objeto.SuperficieTerreno is null ? propiedades.SuperficieTerreno : objeto.SuperficieTerreno;
-                propiedades.SuperficieCons = objeto.SuperficieCons is null ? propiedades.SuperficieCons : objeto.SuperficieCons;
+                propiedades.Calle = newPropiedad.Calle is null ? propiedades.Calle : newPropiedad.Calle;
+                propiedades.Num = newPropiedad.Num is null ? propiedades.Num : newPropiedad.Num;
+                propiedades.Colonia = newPropiedad.Colonia is null ? propiedades.Colonia : newPropiedad.Colonia;
+                propiedades.Municipio = newPropiedad.Municipio is null ? propiedades.Municipio : newPropiedad.Municipio;
+                propiedades.Estado = newPropiedad.Estado is null ? propiedades.Estado : newPropiedad.Estado;
+                propiedades.Cp = newPropiedad.Cp is null ? propiedades.Cp : newPropiedad.Cp;
+                propiedades.Subtipo = newPropiedad.Subtipo is null ? propiedades.Subtipo : newPropiedad.Subtipo;
+                propiedades.Latitud = newPropiedad.Latitud is null ? propiedades.Latitud : newPropiedad.Latitud;
+                propiedades.Altitud = newPropiedad.Altitud is null ? propiedades.Altitud : newPropiedad.Altitud;
+                propiedades.SuperficieTerreno = newPropiedad.SuperficieTerreno is null ? propiedades.SuperficieTerreno : newPropiedad.SuperficieTerreno;
+                propiedades.SuperficieCons = newPropiedad.SuperficieCons is null ? propiedades.SuperficieCons : newPropiedad.SuperficieCons;
 
                 webcontext.Propiedads.Update(propiedades);
                 webcontext.SaveChanges();
@@ -130,7 +146,7 @@ namespace API_ENDING.Controllers
 
             if (propiedades == null)
             {
-                return BadRequest("Litigioso no encontrada");
+                return BadRequest("Propiedad no encontrada");
             }
 
             try

@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using API_ENDING2.Models;
-
 using Microsoft.AspNetCore.Cors;
 using API_ENDING2.DTO;
 
@@ -58,7 +57,7 @@ namespace API_ENDING.Controllers
             {
                 //llama al objeto inmobiliarias y usando al webcontext incluye los remates de la inmobiliaria que se buscó por medio del id de la inmobiliaria
                 //y en caso de que encuntre datos, manda el primero, en caso contrario, va a mandar un nulo
-                inmobiliarias = webcontext.Inmobiliaria.Include(r => r.Remates).Where(i => i.IdInmobiliaria == idInmobiliaria).FirstOrDefault();
+                inmobiliarias = webcontext.Inmobiliaria.FirstOrDefault();
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", Response = inmobiliarias });
             }
             catch (Exception ex)
@@ -95,9 +94,9 @@ namespace API_ENDING.Controllers
         //EDITA DATOS DE LA INMOBILIARIA
         [HttpPut]
         [Route("Editar")]
-        public IActionResult Editar([FromBody] Inmobiliaria objeto)
+        public IActionResult Editar([FromBody] InmobiliariaDTO newInmobiliaria)
         {
-            Inmobiliaria inmobiliarias = webcontext.Inmobiliaria.Find(objeto.IdInmobiliaria);
+            Inmobiliaria inmobiliarias = webcontext.Inmobiliaria.Find(newInmobiliaria.IdInmobiliaria);
             
             if (inmobiliarias == null)
             {
@@ -109,9 +108,9 @@ namespace API_ENDING.Controllers
                 //valida si el campo que va cambiar el usuario, queda vacio, lo rellena con el dato
                 //que ya existia en la base de datos
                 //quiero editar solo el telefono, ps telefono cambia y los demás datos quedan igual
-                inmobiliarias.RazonSocial = objeto.RazonSocial is null? inmobiliarias.RazonSocial : objeto.RazonSocial;
-                inmobiliarias.Rfc = objeto.Rfc is null? inmobiliarias.Rfc : objeto.Rfc;
-                inmobiliarias.Telefono = objeto.Telefono is null? inmobiliarias.Telefono : objeto.Telefono;
+                inmobiliarias.RazonSocial = newInmobiliaria.RazonSocial is null? inmobiliarias.RazonSocial : newInmobiliaria.RazonSocial;
+                inmobiliarias.Rfc = newInmobiliaria.Rfc is null? inmobiliarias.Rfc : newInmobiliaria.Rfc;
+                inmobiliarias.Telefono = newInmobiliaria.Telefono is null? inmobiliarias.Telefono : newInmobiliaria.Telefono;
             
                 webcontext.Inmobiliaria.Update(inmobiliarias);
                 webcontext.SaveChanges();

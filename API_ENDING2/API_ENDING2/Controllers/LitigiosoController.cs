@@ -1,4 +1,5 @@
-﻿using API_ENDING2.Models;
+﻿using API_ENDING2.DTO;
+using API_ENDING2.Models;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -46,7 +47,7 @@ namespace API_ENDING.Controllers
 
             if (litigiosos == null)
             {
-                return BadRequest("Litigioso no encontrada");
+                return BadRequest("Litigioso no encontrado");
             }
 
             try
@@ -65,10 +66,23 @@ namespace API_ENDING.Controllers
         //Crea un nuevo litigioso
         [HttpPost]
         [Route("Guardar")]
-        public IActionResult Guardar([FromBody] Litigioso objeto)
+        public IActionResult Guardar([FromBody] LitigiosoDTO newLitigioso)
         {
             try
             {
+                var objeto = new Litigioso(){
+                    Nombres = newLitigioso.Nombres,
+                    Apellidos = newLitigioso.Apellidos,
+                    Rfc = newLitigioso.Rfc,
+                    Curp = newLitigioso.Curp,
+                    Telefono = newLitigioso.Telefono,
+                    Calle = newLitigioso.Calle,
+                    Num = newLitigioso.Num,
+                    Colonia = newLitigioso.Colonia,
+                    Municipio = newLitigioso.Municipio,
+                    Estado = newLitigioso.Estado,
+                    Cp = newLitigioso.Cp,
+                };
                 webcontext.Litigiosos.Add(objeto);
                 webcontext.SaveChanges();
 
@@ -84,13 +98,13 @@ namespace API_ENDING.Controllers
         //EDITA DATOS DEl LITIGIOSO
         [HttpPut]
         [Route("Editar")]
-        public IActionResult Editar([FromBody] Litigioso objeto)
+        public IActionResult Editar([FromBody] LitigiosoDTO newLitigioso)
         {
-            Litigioso litigiosos = webcontext.Litigiosos.Find(objeto.IdLitigioso);
+            Litigioso litigiosos = webcontext.Litigiosos.Find(newLitigioso.IdLitigioso);
 
             if (litigiosos == null)
             {
-                return BadRequest("Litigioso no encontrada");
+                return BadRequest("Litigioso no encontrado");
             }
 
             try
@@ -98,16 +112,16 @@ namespace API_ENDING.Controllers
                 //valida si el campo que va cambiar el usuario, queda vacio, lo rellena con el dato
                 //que ya existia en la base de datos
                 //quiero editar solo el telefono, ps telefono cambia y los demás datos quedan igual
-                litigiosos.Nombres = objeto.Nombres is null ? litigiosos.Nombres : objeto.Nombres;
-                litigiosos.Apellidos = objeto.Apellidos is null ? litigiosos.Apellidos : objeto.Apellidos;
-                litigiosos.Curp = objeto.Curp is null ? litigiosos.Curp : objeto.Curp;
-                litigiosos.Telefono = objeto.Telefono is null ? litigiosos.Telefono : objeto.Telefono;
-                litigiosos.Calle = objeto.Calle is null ? litigiosos.Calle : objeto.Calle;
-                litigiosos.Num = objeto.Num is null ? litigiosos.Num : objeto.Num;
-                litigiosos.Colonia = objeto.Colonia is null ? litigiosos.Colonia : objeto.Colonia;
-                litigiosos.Municipio = objeto.Municipio is null ? litigiosos.Municipio : objeto.Municipio;
-                litigiosos.Estado = objeto.Estado is null ? litigiosos.Estado : objeto.Estado;
-                litigiosos.Cp = objeto.Cp is null ? litigiosos.Cp : objeto.Cp;
+                litigiosos.Nombres = newLitigioso.Nombres is null ? litigiosos.Nombres : newLitigioso.Nombres;
+                litigiosos.Apellidos = newLitigioso.Apellidos is null ? litigiosos.Apellidos : newLitigioso.Apellidos;
+                litigiosos.Curp = newLitigioso.Curp is null ? litigiosos.Curp : newLitigioso.Curp;
+                litigiosos.Telefono = newLitigioso.Telefono is null ? litigiosos.Telefono : newLitigioso.Telefono;
+                litigiosos.Calle = newLitigioso.Calle is null ? litigiosos.Calle : newLitigioso.Calle;
+                litigiosos.Num = newLitigioso.Num is null ? litigiosos.Num : newLitigioso.Num;
+                litigiosos.Colonia = newLitigioso.Colonia is null ? litigiosos.Colonia : newLitigioso.Colonia;
+                litigiosos.Municipio = newLitigioso.Municipio is null ? litigiosos.Municipio : newLitigioso.Municipio;
+                litigiosos.Estado = newLitigioso.Estado is null ? litigiosos.Estado : newLitigioso.Estado;
+                litigiosos.Cp = newLitigioso.Cp is null ? litigiosos.Cp : newLitigioso.Cp;
 
                 webcontext.Litigiosos.Update(litigiosos);
                 webcontext.SaveChanges();
@@ -130,7 +144,7 @@ namespace API_ENDING.Controllers
 
             if (litigiosos == null)
             {
-                return BadRequest("Litigioso no encontrada");
+                return BadRequest("Litigioso no encontrado");
             }
 
             try

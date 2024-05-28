@@ -13,7 +13,7 @@ public partial class Remate
 
     public bool Estado { get; set; }
 
-    public DateOnly? Fecha { get; set; }
+    public DateTime? Fecha { get; set; }
 
     public string? Descripcion { get; set; }
 
