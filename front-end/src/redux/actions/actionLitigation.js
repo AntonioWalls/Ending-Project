@@ -5,7 +5,7 @@ export const getLitigation = createAsyncThunk("litigation/getLitigation",
     async () => {
         try
         {      
-            const resp = await axios.get('http://endingapi.somee.com/api/Inmobiliaria/lista');
+            const resp = await axios.get('http://endingapi2.somee.com/api/Litigio/lista');
 
             return resp.data;
         } 
@@ -20,7 +20,7 @@ export const getLitigationUnique = createAsyncThunk("litigation/getLitigationUni
     async (id, {rejectWithValue}) => {
         try
         {      
-            const resp = await axios.get('http://endingapi.somee.com/api/Inmobiliaria/Obtener/'+id);
+            const resp = await axios.get('http://endingapi2.somee.com/api/Litigio/Obtener/'+id);
 
             return resp.data;
         } 
@@ -35,7 +35,7 @@ export const addLitigationState = createAsyncThunk("litigation/addLitigation",
     async (data, {rejectWithValue}) => {
         try
         {      
-            const resp = await axios.post('http://endingapi.somee.com/api/Inmobiliaria/Guardar', data);
+            const resp = await axios.post('http://endingapi2.somee.com/api/Litigio/Guardar', data);
 
             return resp.data;
         } 
@@ -50,7 +50,7 @@ export const deleteLitigation = createAsyncThunk("litigation/deleteLitigation",
     async (id, {rejectWithValue}) => {
         try
         {      
-            const resp = await axios.delete('http://endingapi.somee.com/api/Inmobiliaria/Eliminar/'+id);
+            const resp = await axios.delete('http://endingapi2.somee.com/api/Litigio/Eliminar/'+id);
 
             return resp.data;
         } 
@@ -65,7 +65,7 @@ export const editLitigation = createAsyncThunk("litigation/editLitigation",
     async (data, {rejectWithValue}) => {
         try
         {      
-            const resp = await axios.put('http://187.189.158.186:7777/Usuario/'+data.id, data);
+            const resp = await axios.put('http://endingapi2.somee.com/api/Litigio/Editar'+data.id, data);
 
             return resp.data;
         } 
