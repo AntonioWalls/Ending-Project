@@ -5,7 +5,7 @@ export const getAwarded = createAsyncThunk("awarded/getAwarded",
     async () => {
         try
         {      
-            const resp = await axios.get('http://endingapi.somee.com/api/Inmobiliaria/lista');
+            const resp = await axios.get('http://endingapi2.somee.com/api/Adjudicado/lista');
 
             return resp.data;
         } 
@@ -20,7 +20,7 @@ export const getAwardedUnique = createAsyncThunk("awarded/getAwardedUnique",
     async (id, {rejectWithValue}) => {
         try
         {      
-            const resp = await axios.get('http://endingapi.somee.com/api/Inmobiliaria/Obtener/'+id);
+            const resp = await axios.get('http://endingapi2.somee.com/api/Adjudicado/Obtener/'+id);
 
             return resp.data;
         } 
@@ -35,7 +35,7 @@ export const addAwardedState = createAsyncThunk("awarded/addAwarded",
     async (data, {rejectWithValue}) => {
         try
         {      
-            const resp = await axios.post('http://endingapi.somee.com/api/Inmobiliaria/Guardar', data);
+            const resp = await axios.post('http://endingapi2.somee.com/api/Adjudicado/Guardar', data);
 
             return resp.data;
         } 
@@ -50,7 +50,7 @@ export const deleteAwarded = createAsyncThunk("awarded/deleteAwarded",
     async (id, {rejectWithValue}) => {
         try
         {      
-            const resp = await axios.delete('http://endingapi.somee.com/api/Inmobiliaria/Eliminar/'+id);
+            const resp = await axios.delete('http://endingapi2.somee.com/api/Adjudicado/Eliminar/'+id);
 
             return resp.data;
         } 
@@ -65,7 +65,7 @@ export const editAwarded = createAsyncThunk("awarded/editAwarded",
     async (data, {rejectWithValue}) => {
         try
         {      
-            const resp = await axios.put('http://187.189.158.186:7777/Usuario/'+data.id, data);
+            const resp = await axios.put('http://endingapi2.somee.com/api/Adjudicado/Editar/'+data.id, data);
 
             return resp.data;
         } 

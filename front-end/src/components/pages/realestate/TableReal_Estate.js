@@ -7,7 +7,7 @@ import { AgGridReact } from 'ag-grid-react'; // AG Grid Component
 import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the grid
 import "ag-grid-community/styles/ag-theme-quartz.css"; // Optional Theme applied to the grid
 import { getRealState, deleteRealState } from '../../../redux/actions/ActionReal_State';
-
+import Swal from "sweetalert2";
 
 export default function TableReal_Estate({ showForm, idUserEdit }) {
 
@@ -72,16 +72,36 @@ export default function TableReal_Estate({ showForm, idUserEdit }) {
   };
 
   const handleDelete = () => {
-    console.log(id);
+
     if (id) {
       // Eliminar usuario seleccionado
-      dispatch(deleteRealState(id))
-        .then(() => {
-          window.location.href = window.location.href;
-        })
+      dispatch(deleteRealState(id)).then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Usuario eliminado",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          dispatch(getRealState());
+        });
+      });
     } else {
-      alert("Seleccione un usuario para eliminar");
-    }
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Seleccione un usuario para eliminar",
+      });
+      }
+    // console.log(id);
+    // if (id) {
+    //   // Eliminar usuario seleccionado
+    //   dispatch(deleteRealState(id))
+    //     .then(() => {
+    //       window.location.href = window.location.href;
+    //     })
+    // } else {
+    //   alert("Seleccione un usuario para eliminar");
+    // }
   };
 
 
@@ -92,17 +112,17 @@ export default function TableReal_Estate({ showForm, idUserEdit }) {
     // wrapping container with theme & size
     <div
       className="ag-theme-quartz" // applying the grid theme
-      style={{ height: 500 }} // the grid will fill the size of the parent container
+      style={{ height: 500, width: 802 }} // the grid will fill the size of the parent container
     >
       <Row >
         <Col>
-          <Button variant='primary' onClick={handleNew}>Nuevo Usuario</Button>
+          <Button variant='primary' onClick={handleNew}>Nueva Inmobiliaria</Button>
         </Col>
         <Col>
-          <Button variant='warning' onClick={handleEdit}>Modificar Usuario</Button>
+          <Button variant='warning' onClick={handleEdit}>Modificar Inmobiliaria</Button>
         </Col>
         <Col>
-          <Button variant='danger' onClick={handleDelete}>Eliminar Usuario</Button>
+          <Button variant='danger' onClick={handleDelete}>Eliminar Inmobiliaria</Button>
         </Col>
       </Row>
       <div>

@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { addRealState, getRealStateUnique } from '../../../redux/actions/ActionReal_State';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import Swal from "sweetalert2";
 
 function FormReal_Estate({ showForm, idInmobiliaria }) {
     const initialRealStateState = {
@@ -35,6 +36,13 @@ function FormReal_Estate({ showForm, idInmobiliaria }) {
         dispatch(addRealState(realstate)).then(() => {
             console.log(addRealState)
             console.log('Usuario guardado');
+            Swal.fire({
+                icon: "success",
+                title: "Guardado con exito",
+                text: "Se ha guardado el registro con total exito",
+                showConfirmButton: false,
+                timer: 1500,
+              });
         });
 
     };
