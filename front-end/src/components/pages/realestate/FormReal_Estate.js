@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Form, Col, Row, Card } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { addRealState, getRealStateUnique } from '../../../redux/actions/ActionReal_State';
+import { addRealState, editRealState, getRealStateUnique } from '../../../redux/actions/ActionReal_State';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Swal from "sweetalert2";
@@ -19,9 +19,9 @@ function FormReal_Estate({ showForm, idInmobiliaria }) {
 
     useEffect(() => {
         if (idInmobiliaria > 0) {
-            dispatch(getRealStateUnique.response(idInmobiliaria))
+            dispatch(getRealStateUnique(idInmobiliaria))
                 .then((response) => {
-                    setRealState(response.payload);
+                    setRealState(response.payload.response);
                 });
         }
     }, [dispatch, idInmobiliaria]);
@@ -33,17 +33,25 @@ function FormReal_Estate({ showForm, idInmobiliaria }) {
 
     const handleGuardar = () => {
 
-        dispatch(addRealState(realstate)).then(() => {
-            console.log(addRealState)
-            console.log('Usuario guardado');
-            Swal.fire({
-                icon: "success",
-                title: "Guardado con exito",
-                text: "Se ha guardado el registro con total exito",
-                showConfirmButton: false,
-                timer: 1500,
-              });
-        });
+        if(idInmobiliaria > 0){
+            dispatch(addRealState(realstate)).then(() => {
+                console.log(addRealState)
+                console.log(idInmobiliaria)
+                console.log('Usuario guardado');
+                Swal.fire({
+                    icon: "success",
+                    title: "Guardado con exito",
+                    text: "Se ha guardado el registro con total exito",
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
+            });
+        }else{
+            dispatch(editRealState(realstate)).then(() => {
+                console.log('si')
+            })
+        }
+        
 
     };
 

@@ -65,6 +65,7 @@ export default function TableReal_Estate({ showForm, idUserEdit }) {
   const handleEdit = () => {
       console.log(id);
       if(id){
+          idUserEdit(id);
           showForm();
       }else{
           alert('Seleccione un usuario para modificar');

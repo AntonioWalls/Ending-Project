@@ -21,7 +21,7 @@ function Inmobiliarias() {
 
     return (
         showForm ? (
-            <FormReal_Estate showForm={showTable} id={idUserEdit}/>
+            <FormReal_Estate showForm={showTable} idInmobiliaria={idUserEdit}/>
         ) : (
             <TableReal_Estate showForm={showTable} idUserEdit={id => setUserEdit(id)}/>
         )
