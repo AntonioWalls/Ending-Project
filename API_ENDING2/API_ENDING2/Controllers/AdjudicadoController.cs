@@ -73,6 +73,7 @@ namespace API_ENDING2.Controllers
             {
                 var objeto = new Adjudicado() 
                 {
+                    IdRemate = newAdjudicado.IdRemate,
                     Nombres = newAdjudicado.Nombres,
                     Apellidos = newAdjudicado.Apellidos,
                     Rfc = newAdjudicado.Rfc,
@@ -119,6 +120,7 @@ namespace API_ENDING2.Controllers
                 //valida si el campo que va cambiar el usuario, queda vacio, lo rellena con el dato
                 //que ya existia en la base de datos
                 //quiero editar solo el telefono, ps telefono cambia y los demás datos quedan igual
+                adjudicados.IdRemate = newAdjudicado.IdRemate == 0 ? adjudicados.IdRemate : newAdjudicado.IdRemate;
                 adjudicados.Nombres = newAdjudicado.Nombres is null ? adjudicados.Nombres : newAdjudicado.Nombres;
                 adjudicados.Apellidos = newAdjudicado.Apellidos is null ? adjudicados.Apellidos : newAdjudicado.Apellidos;
                 adjudicados.Rfc = newAdjudicado.Rfc is null ? adjudicados.Rfc : newAdjudicado.Rfc;

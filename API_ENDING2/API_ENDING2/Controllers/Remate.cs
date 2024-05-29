@@ -72,6 +72,7 @@ namespace API_ENDING2.Controllers
             {
                 var objeto = new Remate()
                 {
+                    IdInmobiliaria = newRemate.IdInmobiliaria,
                     Fiscalia = newRemate.Fiscalia,
                     Estado = newRemate.Estado,
                     Fecha = newRemate.Fecha,
@@ -84,8 +85,9 @@ namespace API_ENDING2.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = ex.Message });
-
+                // Captura la inner exception para obtener más detalles del error
+                var innerExceptionMessage = ex.InnerException?.Message;
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message, detalle = innerExceptionMessage });
             }
         }
 
@@ -107,6 +109,7 @@ namespace API_ENDING2.Controllers
                 //que ya existia en la base de datos
                 //quiero editar solo el telefono, ps telefono cambia y los demás datos quedan igual
                 remates.Fiscalia = newRemate.Fiscalia is null ? remates.Fiscalia : newRemate.Fiscalia;
+                remates.IdInmobiliaria = newRemate.IdInmobiliaria == 0 ? remates.IdInmobiliaria : newRemate.IdInmobiliaria;
                 remates.Estado = newRemate.Estado;
                 remates.Fecha = newRemate.Fecha is null ? remates.Fecha : newRemate.Fecha;
                 remates.Descripcion = newRemate.Descripcion is null ? remates.Descripcion : newRemate.Descripcion;

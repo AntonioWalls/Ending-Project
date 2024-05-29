@@ -71,6 +71,8 @@ namespace API_ENDING.Controllers
             {
                 var objeto = new Litigio() 
                 {
+                    IdLitigioso = newLitigio.IdLitigioso,
+                    IdRemate = newLitigio.IdRemate,
                     Procedimiento = newLitigio.Procedimiento,
                     Juzgado = newLitigio.Juzgado,
                     Expediente = newLitigio.Expediente,
@@ -107,6 +109,8 @@ namespace API_ENDING.Controllers
                 //valida si el campo que va cambiar el usuario, queda vacio, lo rellena con el dato
                 //que ya existia en la base de datos
                 //quiero editar solo el telefono, ps telefono cambia y los demás datos quedan igual
+                litigios.IdLitigioso = newLitigio.IdLitigioso == 0 ? litigios.IdLitigioso : newLitigio.IdLitigioso;
+                litigios.IdRemate = newLitigio.IdRemate == 0 ? litigios.IdRemate : newLitigio.IdRemate;
                 litigios.Procedimiento = newLitigio.Procedimiento is null ? litigios.Procedimiento : newLitigio.Procedimiento;
                 litigios.Juzgado = newLitigio.Juzgado is null ? litigios.Juzgado : newLitigio.Juzgado;
                 litigios.Expediente = newLitigio.Expediente is null ? litigios.Expediente : newLitigio.Expediente;
