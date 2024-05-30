@@ -26,7 +26,7 @@ export default function TableReal_Estate({ showForm, idUserEdit }) {
     const selectedRows = gridRef.current.api.getSelectedRows();
     document.querySelector("#selectedRows").innerHTML =
       selectedRows.length === 1 ? selectedRows[0].razonSocial : "";
-    console.log(selectedRows[0].idInmobiliaria);
+
     setId(selectedRows[0].idInmobiliaria);
     console.log(id)
 

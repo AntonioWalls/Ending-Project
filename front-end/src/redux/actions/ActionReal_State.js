@@ -65,7 +65,7 @@ export const editRealState = createAsyncThunk("realstates/editRealState",
     async (data, {rejectWithValue}) => {
         try
         {      
-            const resp = await axios.put('http://endingapi2.somee.com/api/Inmobiliaria/Editar'+data.id, data);
+            const resp = await axios.put(`http://endingapi2.somee.com/api/Inmobiliaria/Editar`, data);
 
             return resp.data;
         } 

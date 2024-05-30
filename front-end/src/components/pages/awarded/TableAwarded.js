@@ -26,7 +26,6 @@ export default function TableAwarded({ showForm, idUserEdit }) {
     const selectedRows = gridRef.current.api.getSelectedRows();
     document.querySelector("#selectedRows").innerHTML =
       selectedRows.length === 1 ? selectedRows[0].nombres : "";
-    console.log(selectedRows[0].idAdjudicado);
     setId(selectedRows[0].idAdjudicado);
     console.log(id)
 

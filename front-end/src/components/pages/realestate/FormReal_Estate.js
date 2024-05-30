@@ -33,7 +33,11 @@ function FormReal_Estate({ showForm, idInmobiliaria }) {
 
     const handleGuardar = () => {
 
-        if(idInmobiliaria > 0){
+        if (idInmobiliaria > 0) {
+            dispatch(editRealState(realstate)).then(() => {
+                console.log('si')
+            });
+        } else {
             dispatch(addRealState(realstate)).then(() => {
                 console.log(addRealState)
                 console.log(idInmobiliaria)
@@ -44,14 +48,10 @@ function FormReal_Estate({ showForm, idInmobiliaria }) {
                     text: "Se ha guardado el registro con total exito",
                     showConfirmButton: false,
                     timer: 1500,
-                  });
-            });
-        }else{
-            dispatch(editRealState(realstate)).then(() => {
-                console.log('si')
+                });
             })
         }
-        
+
 
     };
 
