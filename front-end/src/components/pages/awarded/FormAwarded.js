@@ -51,7 +51,6 @@ function FormAwarded({ showForm, id }) {
     };
 
     const handleGuardar = () => {
-
         if (id > 0) {
             dispatch(editAwarded(awarded)).then(() => {
                 Swal.fire({

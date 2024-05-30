@@ -32,7 +32,7 @@ function FormReal_Estate({ showForm, idInmobiliaria }) {
     };
 
     const handleGuardar = () => {
-
+            console.log(idInmobiliaria)
         if (idInmobiliaria > 0) {
             dispatch(editRealState(realstate)).then(() => {
                 Swal.fire({

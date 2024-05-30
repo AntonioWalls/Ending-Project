@@ -28,6 +28,7 @@ export default function TableReal_Estate({ showForm, idUserEdit }) {
       selectedRows.length === 1 ? selectedRows[0].razonSocial : "";
 
     setId(selectedRows[0].idInmobiliaria);
+    console.log(selectedRows[0].idInmobiliaria)
     console.log(id)
 
   }, []);
