@@ -5,7 +5,7 @@ export const getAuction = createAsyncThunk("auctions/getAuction",
     async () => {
         try
         {      
-            const resp = await axios.get('http://localhost:46785/api/Inmobiliaria/lista');
+            const resp = await axios.get('http://endingapi2.somee.com/api/Remate/lista');
 
             return resp.data;
         } 
@@ -20,7 +20,7 @@ export const getAuctionUnique = createAsyncThunk("auctions/getAuctionUnique",
     async (idRemate, {rejectWithValue}) => {
         try
         {      
-            const resp = await axios.get('http://187.189.158.186:7777/Usuario/'+idRemate);
+            const resp = await axios.get('http://endingapi2.somee.com/api/Remate/Obtener/'+idRemate);
 
             return resp.data;
         } 
@@ -35,7 +35,7 @@ export const addAuction = createAsyncThunk("Auctions/addAuction",
     async (data, {rejectWithValue}) => {
         try
         {      
-            const resp = await axios.post('', data);
+            const resp = await axios.post('http://endingapi2.somee.com/api/Remate/Guardar', data);
 
             return resp.data;
         } 
@@ -50,7 +50,7 @@ export const deleteAuctions = createAsyncThunk("auctions/deleteAuctions",
     async (id, {rejectWithValue}) => {
         try
         {      
-            const resp = await axios.delete('http://187.189.158.186:7777/Usuario/'+id);
+            const resp = await axios.delete('http://endingapi2.somee.com/api/Remate/Eliminar/'+id);
 
             return resp.data;
         } 
@@ -61,11 +61,11 @@ export const deleteAuctions = createAsyncThunk("auctions/deleteAuctions",
     }
 );
 
-export const editAuction = createAsyncThunk("auctions/editAuction",
+export const editAuction = createAsyncThunk("auctions/editAuctions",
     async (data, {rejectWithValue}) => {
         try
         {      
-            const resp = await axios.put('http://187.189.158.186:7777/Usuario/'+data.id, data);
+            const resp = await axios.put(`http://endingapi2.somee.com/api/Remate/Editar`, data);
 
             return resp.data;
         } 

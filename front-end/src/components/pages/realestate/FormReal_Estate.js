@@ -51,8 +51,6 @@ function FormReal_Estate({ showForm, idInmobiliaria }) {
                 });
             })
         }
-
-
     };
 
     return (
