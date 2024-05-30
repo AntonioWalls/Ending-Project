@@ -36,7 +36,6 @@ export default function TableReal_Estate({ showForm, idUserEdit }) {
 
   useEffect(() => {
     dispatch(getRealState());
-    console.log(realstates);
   }, [dispatch]);
 
   // Column Definitions: Defines the columns to be displayed.

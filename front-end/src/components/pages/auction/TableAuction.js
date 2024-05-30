@@ -19,18 +19,20 @@ export default function TableAuction({ showForm, idUserEdit }) {
   const { auctions } = useSelector((state) => state.getAuction);
 
 
-  // Obtener la id del usuario. 
-  const [id, setId] = useState(0);
-  const gridRef = useRef();
-  const onSelectionChanged = useCallback(() => {
-    const selectedRows = gridRef.current.api.getSelectedRows();
-    document.querySelector("#selectedRows").innerHTML =
-      selectedRows.length === 1 ? selectedRows[0].fiscalia : "";
-
-    setId(selectedRows[0].idRemate);
-    console.log(id)
-
-  }, []);
+ // Obtener la id del usuario. 
+ const [id, setId] = useState(0);
+ const gridRef = useRef();
+ const onSelectionChanged = useCallback(() => {
+   const selectedRows = gridRef.current.api.getSelectedRows();
+   if (selectedRows.length === 1) {
+     document.querySelector("#selectedRows").innerHTML = selectedRows[0].fiscalia;
+     setId(selectedRows[0].idRemate);
+   } else {
+     document.querySelector("#selectedRows").innerHTML = "";
+     setId(0);  // Reset id if no row or multiple rows are selected
+   }
+   console.log(id);
+ }, [id]);
 
 
 

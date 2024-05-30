@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector, useStore } from 'react-redux';
 import { Button, Form, Col, Row, Card } from 'react-bootstrap';
 import { addAuction, editAuction, getAuctionUnique } from '../../../redux/actions/actionAuction';
@@ -17,16 +17,15 @@ function FormAuction({ showForm, id }) {
         descripcion: ''
     };
 
-    const [realstates, setRealStates] = useState(state => state.getRealState);
-
-    useEffect(() => {
-        dispatch(setRealStates(getRealState));
-    }, [dispatch]);
-    
     const dispatch = useDispatch();
 
+    const { realstates } = useSelector(state => state.getRealState);
     const [auction, setAuction] = useState({ initialUserState });
 
+    useEffect(() => {
+        dispatch(getRealState());
+    }, [dispatch]);
+    
 
     useEffect(() => {
         if (id > 0) {
@@ -78,14 +77,11 @@ function FormAuction({ showForm, id }) {
                                 name="idInmobiliaria"
                                 value={auction.idInmobiliaria}
                                 onChange={(e) => setAuction({ ...auction, idInmobiliaria: parseInt(e.target.value) })}>
-                                <option value={"0"} disabled>Seleccione una Inmobiliaria</option>
+                                <option value="0" disabled>Seleccione una Inmobiliaria</option>
                                 {/* Mostrar lista de inmobiliarias */}
-                                {realstates ? (realstates.map((item) => () => {
-                                    return (
-                                        <option value={item.idInmobiliaria} >{item.razonSocial}</option>
-                                    );
-                                })) : null}
-
+                                {realstates.response && realstates.response.map((item) => (
+                                    <option key={item.idInmobiliaria} value={item.idInmobiliaria}>{item.razonSocial}</option>
+                                ))}
                             </Form.Select>
                         </Col>
                     </Row>
