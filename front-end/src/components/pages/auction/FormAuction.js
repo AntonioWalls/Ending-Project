@@ -45,7 +45,13 @@ function FormAuction({ showForm, id }) {
 
         if (id > 0) {
             dispatch(editAuction(auction)).then(() => {
-                console.log('si')
+                Swal.fire({
+                    icon: "success",
+                    title: "Editado con exito",
+                    text: "Se ha guardado el registro con total exito",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
             });
         } else {
             dispatch(addAuction(auction)).then(() => {

@@ -35,7 +35,13 @@ function FormReal_Estate({ showForm, idInmobiliaria }) {
 
         if (idInmobiliaria > 0) {
             dispatch(editRealState(realstate)).then(() => {
-                console.log('si')
+                Swal.fire({
+                    icon: "success",
+                    title: "Editado con exito",
+                    text: "Se ha guardado el registro con total exito",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
             });
         } else {
             dispatch(addRealState(realstate)).then(() => {

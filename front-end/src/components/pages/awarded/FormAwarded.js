@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector, useStore } from 'react-redux';
 import { Button, Form, Col, Row, Card } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
-import { addAwardedState, getAwardedUnique } from '../../../redux/actions/actionAwarded';
+import { addAwarded, getAwardedUnique, editAwarded } from '../../../redux/actions/actionAwarded';
 import { getAuction } from '../../../redux/actions/actionAuction';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import Swal from "sweetalert2";
 
@@ -28,13 +27,20 @@ function FormAwarded({ showForm, id }) {
     };
 
     const dispatch = useDispatch();
+
+    const { auctions } = useSelector(state => state.getAuction);
     const [awarded, setAwarded] = useState({ initialUserState });
+
+    useEffect(() => {
+        dispatch(getAuction());
+    }, [dispatch]);
+    
 
     useEffect(() => {
         if (id > 0) {
             dispatch(getAwardedUnique(id))
                 .then((response) => {
-                    setAwarded(response.payload);
+                    setAwarded(response.payload.response);
                 });
         }
     }, [dispatch, id]);
@@ -46,18 +52,28 @@ function FormAwarded({ showForm, id }) {
 
     const handleGuardar = () => {
 
-        dispatch(addAwardedState(awarded)).then(() => {
-            console.log(addAwardedState)
-            console.log('Usuario guardado');
-            Swal.fire({
-                icon: "success",
-                title: "Guardado con exito",
-                text: "Se ha guardado el registro con total exito",
-                showConfirmButton: false,
-                timer: 1500,
-              });
-        });
-
+        if (id > 0) {
+            dispatch(editAwarded(awarded)).then(() => {
+                Swal.fire({
+                    icon: "success",
+                    title: "Editado con exito",
+                    text: "Se ha guardado el registro con total exito",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+            });
+        } else {
+            dispatch(addAwarded(awarded)).then(() => {
+                console.log('Usuario guardado');
+                Swal.fire({
+                    icon: "success",
+                    title: "Guardado con exito",
+                    text: "Se ha guardado el registro con total exito",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+            })
+        }
     };
 
     return (
@@ -69,21 +85,18 @@ function FormAwarded({ showForm, id }) {
                 <Card.Body>
                 <Row>
                         <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Rol: </Form.Label>
+                            <Form.Label>Remate: </Form.Label>
                         </Col>
                         <Col lg={7} sm={12} xl={6}>
-                            <Form.Select 
-                                name="idRemate" 
-                                value={awarded.idRemate} 
-                                onChange={(e) => setAwarded({ ...awarded, IDRemate: parseInt(e.target.value) })}>
-                                <option value={"0"} disabled>Seleccione un Remate</option>
-                                {/* Mostrar lista de remates */}
-                                {getAuction.response ? (getAuction.response.map((item) => () => {
-                                    return(
-                                        <option value={item.idRemate} >{item.razonSocial}</option>
-                                    );
-                                })) : null }
-
+                            <Form.Select
+                                name="idRemate"
+                                value={awarded.idRemate}
+                                onChange={(e) => setAwarded({ ...awarded, idRemate: parseInt(e.target.value) })}>
+                                <option value="0" disabled>Seleccione un Remate</option>
+                                {/* Mostrar lista de inmobiliarias */}
+                                {auctions.response && auctions.response.map((item) => (
+                                    <option key={item.idRemate} value={item.idRemate}>{item.descripcion}</option>
+                                ))}
                             </Form.Select>
                         </Col>
                     </Row>
@@ -295,3 +308,4 @@ function FormAwarded({ showForm, id }) {
 }
 
 export default FormAwarded;
+

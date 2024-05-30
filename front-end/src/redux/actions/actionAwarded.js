@@ -31,7 +31,7 @@ export const getAwardedUnique = createAsyncThunk("awarded/getAwardedUnique",
     }
 );
 
-export const addAwardedState = createAsyncThunk("awarded/addAwarded",
+export const addAwarded = createAsyncThunk("awarded/addAwarded",
     async (data, {rejectWithValue}) => {
         try
         {      
@@ -65,7 +65,7 @@ export const editAwarded = createAsyncThunk("awarded/editAwarded",
     async (data, {rejectWithValue}) => {
         try
         {      
-            const resp = await axios.put('http://endingapi2.somee.com/api/Adjudicado/Editar/'+data.id, data);
+            const resp = await axios.put(`http://endingapi2.somee.com/api/Adjudicado/Editar`, data);
 
             return resp.data;
         } 
