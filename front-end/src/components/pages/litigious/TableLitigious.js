@@ -26,7 +26,7 @@ export default function TableLitigious({ showForm, idUserEdit }) {
     const selectedRows = gridRef.current.api.getSelectedRows();
     document.querySelector("#selectedRows").innerHTML =
       selectedRows.length === 1 ? selectedRows[0].nombres : "";
-    console.log(selectedRows[0].idLitigioso);
+
     setId(selectedRows[0].idLitigioso);
     console.log(id)
 
@@ -36,7 +36,6 @@ export default function TableLitigious({ showForm, idUserEdit }) {
 
   useEffect(() => {
     dispatch(getLitigious());
-    console.log(litigious);
   }, [dispatch]);
 
   // Column Definitions: Defines the columns to be displayed.
@@ -56,6 +55,7 @@ export default function TableLitigious({ showForm, idUserEdit }) {
   ]);
 
 
+
   const handleNew = () => {
     showForm();
     idUserEdit(0);
@@ -73,6 +73,7 @@ export default function TableLitigious({ showForm, idUserEdit }) {
   const handleEdit = () => {
       console.log(id);
       if(id){
+          idUserEdit(id);
           showForm();
       }else{
           alert('Seleccione un usuario para modificar');
@@ -86,7 +87,7 @@ export default function TableLitigious({ showForm, idUserEdit }) {
       dispatch(deleteLitigious(id)).then(() => {
         Swal.fire({
           icon: "success",
-          title: "Usuario eliminado",
+          title: "Litigioso eliminado",
           showConfirmButton: false,
           timer: 1500,
         }).then(() => {
@@ -97,10 +98,19 @@ export default function TableLitigious({ showForm, idUserEdit }) {
       Swal.fire({
         icon: "error",
         title: "Error",
-        text: "Seleccione un usuario para eliminar",
+        text: "Seleccione un litigioso para eliminar",
       });
       }
-
+    // console.log(id);
+    // if (id) {
+    //   // Eliminar usuario seleccionado
+    //   dispatch(deleteRealState(id))
+    //     .then(() => {
+    //       window.location.href = window.location.href;
+    //     })
+    // } else {
+    //   alert("Seleccione un usuario para eliminar");
+    // }
   };
 
 
