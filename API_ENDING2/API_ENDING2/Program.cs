@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using API_ENDING2.Models;
 using System.Text.Json.Serialization;
+using API_ENDING2.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,9 @@ builder.Services.AddDbContext<ProyectoWebContext>(opt => opt.UseSqlServer(builde
 builder.Services.AddControllers().AddJsonOptions(opt => {
     opt.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
 });
+
+builder.Services.AddScoped<IReportService, ReportService>();
+
 
 builder.Services.AddControllers(
 options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true);
