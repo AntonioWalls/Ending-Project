@@ -7,6 +7,7 @@ import { getAwardedReducer } from "../slice/awardedSlice";
 import { getLitigationReducer } from "../slice/litigationSlice";
 import { getLitigiousReducer } from "../slice/litigiousSlice";
 import { getPropertyReducer } from "../slice/propertySlice";
+import { getReportReducer } from "../slice/reportSlice"
 
 export default configureStore({
     reducer:{
@@ -17,7 +18,8 @@ export default configureStore({
         getAwarded: getAwardedReducer,
         getLitigation: getLitigationReducer,
         getLitigious: getLitigiousReducer,
-        getProperty: getPropertyReducer
+        getProperty: getPropertyReducer,
+        getReport: getReportReducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false })
 });
