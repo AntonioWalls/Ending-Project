@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API_ENDING2.Controllers
 {
-    [EnableCors("MisReglasCors")]
+    [EnableCors("ReglasCors")]
     [Route("api/[controller]")]
     [ApiController]
     public class ReportController : ControllerBase
