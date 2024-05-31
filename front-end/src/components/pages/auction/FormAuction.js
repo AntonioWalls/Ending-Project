@@ -25,7 +25,7 @@ function FormAuction({ showForm, id }) {
     useEffect(() => {
         dispatch(getRealState());
     }, [dispatch]);
-    
+
 
     useEffect(() => {
         if (id > 0) {
@@ -74,7 +74,7 @@ function FormAuction({ showForm, id }) {
                     <h1>Registro de Remates</h1>
                 </Card.Header>
                 <Card.Body>
-                <Row>
+                    <Row>
                         <Col lg={5} sm={12} xl={6}>
                             <Form.Label>Inmobiliaria: </Form.Label>
                         </Col>
