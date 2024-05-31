@@ -149,6 +149,21 @@ function FormLitigious({ showForm, id }) {
 
                     <Row>
                         <Col lg={5} sm={12} xl={6}>
+                            <Form.Label>Calle: </Form.Label>
+                        </Col>
+                        <Col lg={7} sm={12} xl={6}>
+                            <Form.Control
+                                type='text'
+                                name="calle"
+                                value={litigiousUnique.calle}
+                                onChange={(e) => setLitigiousUnique({ ...litigiousUnique, calle: e.target.value })}
+                            />
+                        </Col>
+                    </Row>
+                    <br />
+
+                    <Row>
+                        <Col lg={5} sm={12} xl={6}>
                             <Form.Label>Numero: </Form.Label>
                         </Col>
                         <Col lg={7} sm={12} xl={6}>
