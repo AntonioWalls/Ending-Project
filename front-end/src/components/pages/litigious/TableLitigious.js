@@ -16,17 +16,21 @@ export default function TableLitigious({ showForm, idUserEdit }) {
   const dispatch = useDispatch();
   const { litigious } = useSelector((state) => state.getLitigious);
 
-  // Obtener la id del usuario.
-  const [id, setId] = useState(0);
-  const gridRef = useRef();
-  const onSelectionChanged = useCallback(() => {
-    const selectedRows = gridRef.current.api.getSelectedRows();
-    document.querySelector("#selectedRows").innerHTML =
-      selectedRows.length === 1 ? selectedRows[0].nombres : "";
 
-    setId(selectedRows[0]?.idLitigioso || 0);
-    console.log(selectedRows[0]?.idLitigioso);
-  }, []);
+    /// Obtener la id del usuario. 
+ const [id, setId] = useState(0);
+ const gridRef = useRef();
+ const onSelectionChanged = useCallback(() => {
+   const selectedRows = gridRef.current.api.getSelectedRows();
+   if (selectedRows.length === 1) {
+     document.querySelector("#selectedRows").innerHTML = selectedRows[0].nombres;
+     setId(selectedRows[0].idLitigioso);
+   } else {
+     document.querySelector("#selectedRows").innerHTML = "";
+     setId(0);  // Reset id if no row or multiple rows are selected
+   }
+   console.log(id);
+ }, [id]);
 
   useEffect(() => {
     dispatch(getLitigious());
