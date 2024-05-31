@@ -2,6 +2,8 @@ import React from 'react';
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import { loadMessages } from '@progress/kendo-react-intl';
 import mensajesKendo from '../kendo/es.json';
+import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the grid
+import "ag-grid-community/styles/ag-theme-quartz.css"; // Optional Theme applied to the grid
 
 //Componentes
 import App from '../../layout/app/App';
@@ -22,6 +24,7 @@ const Root = () => {
           <Route element={ <App path="Litigiosos" />} path="Litigiosos" exact />
           <Route element={ <App path="Litigios" />} path="Litigios" exact />
           <Route element={ <App path="Propiedades" />} path="Propiedades" exact />
+          <Route element={ <App path="Reportes" />} path="Reportes" exact />
         </Routes>
       </BrowserRouter>
     </React.StrictMode>      

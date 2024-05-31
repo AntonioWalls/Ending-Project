@@ -4,8 +4,6 @@ import * as React from "react";
 import { useDispatch, useSelector, useStore } from 'react-redux';
 import { Button, Col, Row, FormLabel } from "react-bootstrap";
 import { AgGridReact } from 'ag-grid-react'; // AG Grid Component
-import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the grid
-import "ag-grid-community/styles/ag-theme-quartz.css"; // Optional Theme applied to the grid
 import { getLitigious, deleteLitigious } from '../../../redux/actions/actionLitigious';
 import Swal from "sweetalert2";
 
@@ -19,24 +17,23 @@ export default function TableLitigious({ showForm, idUserEdit }) {
   const { litigious } = useSelector((state) => state.getLitigious);
 
 
-  // Obtener la id del usuario. 
-  const [id, setId] = useState(0);
-  const gridRef = useRef();
-  const onSelectionChanged = useCallback(() => {
-    const selectedRows = gridRef.current.api.getSelectedRows();
-    document.querySelector("#selectedRows").innerHTML =
-      selectedRows.length === 1 ? selectedRows[0].nombres : "";
-    console.log(selectedRows[0].idLitigioso);
-    setId(selectedRows[0].idLitigioso);
-    console.log(id)
-
-  }, []);
-
-
+    /// Obtener la id del usuario. 
+ const [id, setId] = useState(0);
+ const gridRef = useRef();
+ const onSelectionChanged = useCallback(() => {
+   const selectedRows = gridRef.current.api.getSelectedRows();
+   if (selectedRows.length === 1) {
+     document.querySelector("#selectedRows").innerHTML = selectedRows[0].nombres;
+     setId(selectedRows[0].idLitigioso);
+   } else {
+     document.querySelector("#selectedRows").innerHTML = "";
+     setId(0);  // Reset id if no row or multiple rows are selected
+   }
+   console.log(id);
+ }, [id]);
 
   useEffect(() => {
     dispatch(getLitigious());
-    console.log(litigious);
   }, [dispatch]);
 
   // Column Definitions: Defines the columns to be displayed.
@@ -55,38 +52,28 @@ export default function TableLitigious({ showForm, idUserEdit }) {
     { field: 'cp', headerName: 'Codigo Postal' }
   ]);
 
-
   const handleNew = () => {
     showForm();
     idUserEdit(0);
   };
 
-  // const handleEdit = () => {
-  //   if (id) {
-  //     idUserEdit(id);
-  //     showForm();
-  //   } else {
-  //     alert('Seleccione un usuario para modificar');
-  //   }
-  // };
-
   const handleEdit = () => {
-      console.log(id);
-      if(id){
-          showForm();
-      }else{
-          alert('Seleccione un usuario para modificar');
-      }
+    console.log(id);
+    if (id) {
+      idUserEdit(id);
+      showForm();
+    } else {
+      alert('Seleccione un usuario para modificar');
+    }
   };
 
   const handleDelete = () => {
-
     if (id) {
       // Eliminar usuario seleccionado
       dispatch(deleteLitigious(id)).then(() => {
         Swal.fire({
           icon: "success",
-          title: "Usuario eliminado",
+          title: "Litigioso eliminado",
           showConfirmButton: false,
           timer: 1500,
         }).then(() => {
@@ -97,18 +84,12 @@ export default function TableLitigious({ showForm, idUserEdit }) {
       Swal.fire({
         icon: "error",
         title: "Error",
-        text: "Seleccione un usuario para eliminar",
+        text: "Seleccione un litigioso para eliminar",
       });
-      }
-
+    }
   };
 
-
-  // ...
-
   return (
-
-    // wrapping container with theme & size
     <div
       className="ag-theme-quartz" // applying the grid theme
       style={{ height: 500, width: 802 }} // the grid will fill the size of the parent container

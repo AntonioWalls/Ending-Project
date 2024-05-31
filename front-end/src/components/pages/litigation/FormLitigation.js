@@ -1,49 +1,77 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector, useStore } from 'react-redux';
 import { Button, Form, Col, Row, Card } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
-import { addUser, getUserUnique } from '../../../redux/actions/actionUsers';
+import { getLitigationUnique, addLitigationState, editLitigation } from '../../../redux/actions/actionLitigation';
+import { getLitigious } from '../../../redux/actions/actionLitigious';
+import { getAuction } from '../../../redux/actions/actionAuction'
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import Swal from "sweetalert2";
+
 
 function FormLitigation({ showForm, id }) {
     const initialUserState = {
-        IDUsuario: 0,
-        Nombre: '',
-        PrimerApellido: '',
-        SegundoApellido: '',
-        Genero: null,
-        Correo: '',
-        FechaNacimiento: '', 
-        Telefono: '',
-        IDRol: 0,
-        NombreUsuario: '',
-        Contraseña: '',
-        ConfirmarContraseña: '',
-        Habilitado: true
+        idLitigio: 0,
+        idLitigioso: 0,
+        idRemate: 0,
+        procedimiento: '',
+        juzgado: '',
+        expediente: '',
+        edoJuzgado: '',
+        adeudoTotal: 0
     };
 
     const dispatch = useDispatch();
-    const [user, setUser] = useState({initialUserState});
+
+    const { litigious } = useSelector(state => state.getLitigious);
+    const { auctions } = useSelector(state => state.getAuction);
+    const [litigation, setLitigation] = useState({ initialUserState });
 
     useEffect(() => {
+        dispatch(getLitigious());
+    }, [dispatch]);
+
+    useEffect(() => {
+        dispatch(getAuction());
+    }, [dispatch]);
+    
+    useEffect(() => {
         if (id > 0) {
-            dispatch(getUserUnique(id))
+            dispatch(getLitigationUnique(id))
                 .then((response) => {
-                    setUser(response.payload);
+                    setLitigation(response.payload.response);
                 });
         }
     }, [dispatch, id]);
 
     const handleCancel = () => {
-        setUser(initialUserState);
+        setLitigation(initialUserState);
         showForm();
     };
 
     const handleGuardar = () => {
-        if(user.Contraseña === user.ConfirmarContraseña){
-            dispatch(addUser(user)).then(() => {
-                console.log('Usuario guardado');
+
+        if (id > 0) {
+            dispatch(editLitigation(litigation)).then(() => {
+                Swal.fire({
+                    icon: "success",
+                    title: "Editado con exito",
+                    text: "Se ha guardado el registro con total exito",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
             });
+        } else {
+            dispatch(addLitigationState(litigation)).then(() => {
+                console.log('Litigio guardado');
+                Swal.fire({
+                    icon: "success",
+                    title: "Guardado con exito",
+                    text: "Se ha guardado el registro con total exito",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+            })
         }
     };
 
@@ -51,66 +79,23 @@ function FormLitigation({ showForm, id }) {
         <Col lg={6} xs={12} sm={8}>
             <Card>
                 <Card.Header>
-                    <h1>Registro de Usuario</h1>
+                    <h1>Registro de Litigio</h1>
                 </Card.Header>
                 <Card.Body>
-                    <Row>
+                <Row>
                         <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Nombre : </Form.Label>
+                            <Form.Label>Litigioso: </Form.Label>
                         </Col>
                         <Col lg={7} sm={12} xl={6}>
-                            <Form.Control
-                                type="text"
-                                name="nombre"
-                                value={user.Nombre}
-                                onChange={(e) => setUser({ ...user, Nombre: e.target.value })}
-                            />
-                        </Col>
-                    </Row>
-                    <br />
-
-                    <Row>
-                        <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Primer Apellido : </Form.Label>
-                        </Col>
-                        <Col lg={7} sm={12} xl={6}>
-                            <Form.Control
-                                type="text"
-                                name="primerApellido"
-                                value={user.PrimerApellido}
-                                onChange={(e) => setUser({ ...user, PrimerApellido: e.target.value })}
-                            />
-                        </Col>
-                    </Row>
-                    <br />
-
-                    <Row>
-                        <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Segundo Apellido : </Form.Label>
-                        </Col>
-                        <Col lg={7} sm={12} xl={6}>
-                            <Form.Control
-                                type="text"
-                                name="segundoApellido"
-                                value={user.SegundoApellido}
-                                onChange={(e) => setUser({ ...user, SegundoApellido: e.target.value })}
-                            />
-                        </Col>
-                    </Row>
-                    <br />
-
-                    <Row>
-                        <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Genero: </Form.Label>
-                        </Col>
-                        <Col lg={7} sm={12} xl={6}>
-                            <Form.Select 
-                                    name="genero" 
-                                    value={user.Genero} 
-                                    onChange={(e) => setUser({...user, Genero: e.target.value == 1 ? true : false })}>
-                                    <option value={""} disabled>Seleccione un Genero</option>
-                                    <option value={1}>Masculino</option>
-                                    <option value={2}>Femenino</option>
+                            <Form.Select
+                                name="idLitigioso"
+                                value={litigation.idLitigioso}
+                                onChange={(e) => setLitigation({ ...litigation, idLitigioso: parseInt(e.target.value) })}>
+                                <option value="0" disabled>Seleccione un Litigioso</option>
+                                {/* Mostrar lista de inmobiliarias */}
+                                {litigious.response && litigious.response.map((item) => (
+                                    <option key={item.idLitigioso} value={item.idLitigioso}>{item.nombres}</option>
+                                ))}
                             </Form.Select>
                         </Col>
                     </Row>
@@ -118,60 +103,18 @@ function FormLitigation({ showForm, id }) {
 
                     <Row>
                         <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Fecha de Nacimiento: </Form.Label>
+                            <Form.Label>Remate: </Form.Label>
                         </Col>
                         <Col lg={7} sm={12} xl={6}>
-                            <DatePicker
-                                className='form-control'
-                                selected={user.FechaNacimiento}
-                                onChange={(date) => setUser({ ...user, FechaNacimiento: date })}
-                            />
-                        </Col>
-                    </Row>
-                    <br />
-
-                    <Row>
-                        <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Correo: </Form.Label>
-                        </Col>
-                        <Col lg={7} sm={12} xl={6}>
-                            <Form.Control
-                                type='text'
-                                name="correo"
-                                value={user.Correo}
-                                onChange={(e) => setUser({ ...user, Correo: e.target.value })}
-                            />
-                        </Col>
-                    </Row>
-                    <br />
-
-                    <Row>
-                        <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Telefono: </Form.Label>
-                        </Col>
-                        <Col lg={7} sm={12} xl={6}>
-                            <Form.Control
-                                type='text'
-                                name="telefono"
-                                value={user.Telefono}
-                                onChange={(e) => setUser({ ...user, Telefono: e.target.value })}
-                            />
-                        </Col>
-                    </Row>
-                    <br />
-
-                    <Row>
-                        <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Rol: </Form.Label>
-                        </Col>
-                        <Col lg={7} sm={12} xl={6}>
-                            <Form.Select 
-                                name="idRol" 
-                                value={user.IDRol} 
-                                onChange={(e) => setUser({ ...user, IDRol: parseInt(e.target.value) })}>
-                                <option value={"0"} disabled>Seleccione un Rol</option>
-                                <option value={"1"}>Administrador</option>
-                                <option value={"2"}>Usuario</option>
+                            <Form.Select
+                                name="idRemate"
+                                value={litigation.idRemate}
+                                onChange={(e) => setLitigation({ ...litigation, idRemate: parseInt(e.target.value) })}>
+                                <option value="0" disabled>Seleccione un Remate</option>
+                                {/* Mostrar lista de inmobiliarias */}
+                                {auctions.response && auctions.response.map((item) => (
+                                    <option key={item.idRemate} value={item.idRemate}>{item.descripcion}</option>
+                                ))}
                             </Form.Select>
                         </Col>
                     </Row>
@@ -179,14 +122,14 @@ function FormLitigation({ showForm, id }) {
 
                     <Row>
                         <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Nombre de Usuario : </Form.Label>
+                            <Form.Label>Procedimiento : </Form.Label>
                         </Col>
                         <Col lg={7} sm={12} xl={6}>
                             <Form.Control
                                 type="text"
-                                name="nombreUsuario"
-                                value={user.NombreUsuario}
-                                onChange={(e) => setUser({ ...user, NombreUsuario: e.target.value })}
+                                name="procedimiento"
+                                value={litigation.procedimiento}
+                                onChange={(e) => setLitigation({ ...litigation, procedimiento: e.target.value })}
                             />
                         </Col>
                     </Row>
@@ -194,14 +137,14 @@ function FormLitigation({ showForm, id }) {
 
                     <Row>
                         <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Contraseña : </Form.Label>
+                            <Form.Label>Juzgado : </Form.Label>
                         </Col>
                         <Col lg={7} sm={12} xl={6}>
                             <Form.Control
-                                type="password"
-                                name="contrasena"
-                                value={user.Contraseña}
-                                onChange={(e) => setUser({ ...user, Contraseña: e.target.value })}
+                                type="text"
+                                name="juzgado"
+                                value={litigation.juzgado}
+                                onChange={(e) => setLitigation({ ...litigation, juzgado: e.target.value })}
                             />
                         </Col>
                     </Row>
@@ -209,18 +152,50 @@ function FormLitigation({ showForm, id }) {
 
                     <Row>
                         <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Confirmar Contraseña : </Form.Label>
+                            <Form.Label>Expediente : </Form.Label>
                         </Col>
                         <Col lg={7} sm={12} xl={6}>
                             <Form.Control
-                                type="password"
-                                name="confirmarContrasena"
-                                value={user.ConfirmarContraseña}
-                                onChange={(e) => setUser({ ...user, ConfirmarContraseña: e.target.value })}
+                                type="text"
+                                name="expediente"
+                                value={litigation.expediente}
+                                onChange={(e) => setLitigation({ ...litigation, expediente: e.target.value })}
                             />
                         </Col>
                     </Row>
                     <br />
+
+                    <Row>
+                        <Col lg={5} sm={12} xl={6}>
+                            <Form.Label>Estado Juzgado : </Form.Label>
+                        </Col>
+                        <Col lg={7} sm={12} xl={6}>
+                            <Form.Control
+                                type="text"
+                                name="edoJuzgado"
+                                value={litigation.edoJuzgado}
+                                onChange={(e) => setLitigation({ ...litigation, juzgado: e.target.value })}
+                            />
+                        </Col>
+                    </Row>
+                    <br />
+
+                    <Row>
+                        <Col lg={5} sm={12} xl={6}>
+                            <Form.Label>Adeudo Total : </Form.Label>
+                        </Col>
+                        <Col lg={7} sm={12} xl={6}>
+                            <Form.Control
+                                type="text"
+                                name="adeudoTotal"
+                                value={litigation.adeudoTotal}
+                                onChange={(e) => setLitigation({ ...litigation, adeudoTotal: e.target.value })}
+                            />
+                        </Col>
+                    </Row>
+                    <br />
+
+                   
                 </Card.Body>
                 <Card.Footer>
                     <Button variant='danger' onClick={handleCancel} className='m-1'>Cancelar</Button>

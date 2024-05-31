@@ -1,49 +1,66 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Form, Col, Row, Card } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { addUser, getUserUnique } from '../../../redux/actions/actionUsers';
-import DatePicker from 'react-datepicker';
+import { addLitigious, editLitigious, getLitigiousUnique } from '../../../redux/actions/actionLitigious';
 import 'react-datepicker/dist/react-datepicker.css';
+import Swal from "sweetalert2";
 
-function FormAwarded({ showForm, id }) {
+function FormLitigious({ showForm, id }) {
     const initialUserState = {
-        IDUsuario: 0,
-        Nombre: '',
-        PrimerApellido: '',
-        SegundoApellido: '',
-        Genero: null,
-        Correo: '',
-        FechaNacimiento: '', 
-        Telefono: '',
-        IDRol: 0,
-        NombreUsuario: '',
-        Contraseña: '',
-        ConfirmarContraseña: '',
-        Habilitado: true
+        idLitigioso: 0,
+        nombres: '',
+        apellidos: '',
+        rfc: '',
+        curp: '',
+        telefono: '',
+        calle: '',
+        num: 0,
+        colonia: '',
+        municipio: '',
+        estado: '',
+        cp: 0
     };
 
     const dispatch = useDispatch();
-    const [user, setUser] = useState({initialUserState});
+    const [litigiousUnique, setLitigiousUnique] = useState({ initialUserState });
 
     useEffect(() => {
         if (id > 0) {
-            dispatch(getUserUnique(id))
+            dispatch(getLitigiousUnique(id))
                 .then((response) => {
-                    setUser(response.payload);
+                    setLitigiousUnique(response.payload.response);
                 });
         }
     }, [dispatch, id]);
 
     const handleCancel = () => {
-        setUser(initialUserState);
+        setLitigiousUnique(initialUserState);
         showForm();
     };
 
     const handleGuardar = () => {
-        if(user.Contraseña === user.ConfirmarContraseña){
-            dispatch(addUser(user)).then(() => {
-                console.log('Usuario guardado');
+        console.log(id)
+        if (id > 0) {
+            dispatch(editLitigious(litigiousUnique)).then(() => {
+                Swal.fire({
+                    icon: "success",
+                    title: "Editado con exito",
+                    text: "Se ha guardado el registro con total exito",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
             });
+        } else {
+            dispatch(addLitigious(litigiousUnique)).then(() => {
+                console.log('Usuario guardado');
+                Swal.fire({
+                    icon: "success",
+                    title: "Guardado con exito",
+                    text: "Se ha guardado el registro con total exito",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+            })
         }
     };
 
@@ -51,7 +68,7 @@ function FormAwarded({ showForm, id }) {
         <Col lg={6} xs={12} sm={8}>
             <Card>
                 <Card.Header>
-                    <h1>Registro de Usuario</h1>
+                    <h1>Registro de Litigioso</h1>
                 </Card.Header>
                 <Card.Body>
                     <Row>
@@ -62,8 +79,8 @@ function FormAwarded({ showForm, id }) {
                             <Form.Control
                                 type="text"
                                 name="nombre"
-                                value={user.Nombre}
-                                onChange={(e) => setUser({ ...user, Nombre: e.target.value })}
+                                value={litigiousUnique.nombres}
+                                onChange={(e) => setLitigiousUnique({ ...litigiousUnique, nombres: e.target.value })}
                             />
                         </Col>
                     </Row>
@@ -71,14 +88,14 @@ function FormAwarded({ showForm, id }) {
 
                     <Row>
                         <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Primer Apellido : </Form.Label>
+                            <Form.Label>Apellidos : </Form.Label>
                         </Col>
                         <Col lg={7} sm={12} xl={6}>
                             <Form.Control
                                 type="text"
-                                name="primerApellido"
-                                value={user.PrimerApellido}
-                                onChange={(e) => setUser({ ...user, PrimerApellido: e.target.value })}
+                                name="apellidos"
+                                value={litigiousUnique.apellidos}
+                                onChange={(e) => setLitigiousUnique({ ...litigiousUnique, apellidos: e.target.value })}
                             />
                         </Col>
                     </Row>
@@ -86,14 +103,14 @@ function FormAwarded({ showForm, id }) {
 
                     <Row>
                         <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Segundo Apellido : </Form.Label>
+                            <Form.Label>RFC : </Form.Label>
                         </Col>
                         <Col lg={7} sm={12} xl={6}>
                             <Form.Control
                                 type="text"
-                                name="segundoApellido"
-                                value={user.SegundoApellido}
-                                onChange={(e) => setUser({ ...user, SegundoApellido: e.target.value })}
+                                name="rfc"
+                                value={litigiousUnique.rfc}
+                                onChange={(e) => setLitigiousUnique({ ...litigiousUnique, rfc: e.target.value })}
                             />
                         </Col>
                     </Row>
@@ -101,60 +118,30 @@ function FormAwarded({ showForm, id }) {
 
                     <Row>
                         <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Genero: </Form.Label>
-                        </Col>
-                        <Col lg={7} sm={12} xl={6}>
-                            <Form.Select 
-                                    name="genero" 
-                                    value={user.Genero} 
-                                    onChange={(e) => setUser({...user, Genero: e.target.value == 1 ? true : false })}>
-                                    <option value={""} disabled>Seleccione un Genero</option>
-                                    <option value={1}>Masculino</option>
-                                    <option value={2}>Femenino</option>
-                            </Form.Select>
-                        </Col>
-                    </Row>
-                    <br />
-
-                    <Row>
-                        <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Fecha de Nacimiento: </Form.Label>
-                        </Col>
-                        <Col lg={7} sm={12} xl={6}>
-                            <DatePicker
-                                className='form-control'
-                                selected={user.FechaNacimiento}
-                                onChange={(date) => setUser({ ...user, FechaNacimiento: date })}
-                            />
-                        </Col>
-                    </Row>
-                    <br />
-
-                    <Row>
-                        <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Correo: </Form.Label>
+                            <Form.Label>CURP : </Form.Label>
                         </Col>
                         <Col lg={7} sm={12} xl={6}>
                             <Form.Control
-                                type='text'
-                                name="correo"
-                                value={user.Correo}
-                                onChange={(e) => setUser({ ...user, Correo: e.target.value })}
+                                type="text"
+                                name="curp"
+                                value={litigiousUnique.curp}
+                                onChange={(e) => setLitigiousUnique({ ...litigiousUnique, curp: e.target.value })}
                             />
                         </Col>
                     </Row>
                     <br />
 
+
                     <Row>
                         <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Telefono: </Form.Label>
+                            <Form.Label>Telefono : </Form.Label>
                         </Col>
                         <Col lg={7} sm={12} xl={6}>
                             <Form.Control
-                                type='text'
+                                type="text"
                                 name="telefono"
-                                value={user.Telefono}
-                                onChange={(e) => setUser({ ...user, Telefono: e.target.value })}
+                                value={litigiousUnique.telefono}
+                                onChange={(e) => setLitigiousUnique({ ...litigiousUnique, telefono: e.target.value })}
                             />
                         </Col>
                     </Row>
@@ -162,31 +149,14 @@ function FormAwarded({ showForm, id }) {
 
                     <Row>
                         <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Rol: </Form.Label>
-                        </Col>
-                        <Col lg={7} sm={12} xl={6}>
-                            <Form.Select 
-                                name="idRol" 
-                                value={user.IDRol} 
-                                onChange={(e) => setUser({ ...user, IDRol: parseInt(e.target.value) })}>
-                                <option value={"0"} disabled>Seleccione un Rol</option>
-                                <option value={"1"}>Administrador</option>
-                                <option value={"2"}>Usuario</option>
-                            </Form.Select>
-                        </Col>
-                    </Row>
-                    <br />
-
-                    <Row>
-                        <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Nombre de Usuario : </Form.Label>
+                            <Form.Label>Calle: </Form.Label>
                         </Col>
                         <Col lg={7} sm={12} xl={6}>
                             <Form.Control
-                                type="text"
-                                name="nombreUsuario"
-                                value={user.NombreUsuario}
-                                onChange={(e) => setUser({ ...user, NombreUsuario: e.target.value })}
+                                type='text'
+                                name="calle"
+                                value={litigiousUnique.calle}
+                                onChange={(e) => setLitigiousUnique({ ...litigiousUnique, calle: e.target.value })}
                             />
                         </Col>
                     </Row>
@@ -194,14 +164,14 @@ function FormAwarded({ showForm, id }) {
 
                     <Row>
                         <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Contraseña : </Form.Label>
+                            <Form.Label>Numero: </Form.Label>
                         </Col>
                         <Col lg={7} sm={12} xl={6}>
                             <Form.Control
-                                type="password"
-                                name="contrasena"
-                                value={user.Contraseña}
-                                onChange={(e) => setUser({ ...user, Contraseña: e.target.value })}
+                                type='text'
+                                name="num"
+                                value={litigiousUnique.num}
+                                onChange={(e) => setLitigiousUnique({ ...litigiousUnique, num: e.target.value })}
                             />
                         </Col>
                     </Row>
@@ -209,18 +179,64 @@ function FormAwarded({ showForm, id }) {
 
                     <Row>
                         <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Confirmar Contraseña : </Form.Label>
+                            <Form.Label>Colonia: </Form.Label>
                         </Col>
                         <Col lg={7} sm={12} xl={6}>
                             <Form.Control
-                                type="password"
-                                name="confirmarContrasena"
-                                value={user.ConfirmarContraseña}
-                                onChange={(e) => setUser({ ...user, ConfirmarContraseña: e.target.value })}
+                                type='text'
+                                name="colonia"
+                                value={litigiousUnique.colonia}
+                                onChange={(e) => setLitigiousUnique({ ...litigiousUnique, colonia: e.target.value })}
                             />
                         </Col>
                     </Row>
                     <br />
+
+                    <Row>
+                        <Col lg={5} sm={12} xl={6}>
+                            <Form.Label>Municipio: </Form.Label>
+                        </Col>
+                        <Col lg={7} sm={12} xl={6}>
+                            <Form.Control
+                                type='text'
+                                name="municipio"
+                                value={litigiousUnique.municipio}
+                                onChange={(e) => setLitigiousUnique({ ...litigiousUnique, municipio: e.target.value })}
+                            />
+                        </Col>
+                    </Row>
+                    <br />
+
+                    <Row>
+                        <Col lg={5} sm={12} xl={6}>
+                            <Form.Label>Estado: </Form.Label>
+                        </Col>
+                        <Col lg={7} sm={12} xl={6}>
+                            <Form.Control
+                                type='text'
+                                name="estado"
+                                value={litigiousUnique.estado}
+                                onChange={(e) => setLitigiousUnique({ ...litigiousUnique, estado: e.target.value })}
+                            />
+                        </Col>
+                    </Row>
+                    <br />
+
+                    <Row>
+                        <Col lg={5} sm={12} xl={6}>
+                            <Form.Label>Codigo Postal: </Form.Label>
+                        </Col>
+                        <Col lg={7} sm={12} xl={6}>
+                            <Form.Control
+                                type='text'
+                                name="cp"
+                                value={litigiousUnique.cp}
+                                onChange={(e) => setLitigiousUnique({ ...litigiousUnique, cp: e.target.value })}
+                            />
+                        </Col>
+                    </Row>
+                    <br />
+
                 </Card.Body>
                 <Card.Footer>
                     <Button variant='danger' onClick={handleCancel} className='m-1'>Cancelar</Button>
@@ -231,4 +247,4 @@ function FormAwarded({ showForm, id }) {
     );
 }
 
-export default FormAwarded;
+export default FormLitigious;

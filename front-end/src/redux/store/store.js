@@ -5,8 +5,9 @@ import { getRealStateReducer } from "../slice/Real_StateSlice";
 import { getAuctionReducer } from "../slice/auctionSlice";
 import { getAwardedReducer } from "../slice/awardedSlice";
 import { getLitigationReducer } from "../slice/litigationSlice";
-import { getLitigousReducer } from "../slice/litigiousSlice";
+import { getLitigiousReducer } from "../slice/litigiousSlice";
 import { getPropertyReducer } from "../slice/propertySlice";
+import { getReportReducer } from "../slice/reportSlice"
 
 export default configureStore({
     reducer:{
@@ -16,8 +17,9 @@ export default configureStore({
         getAuction: getAuctionReducer,
         getAwarded: getAwardedReducer,
         getLitigation: getLitigationReducer,
-        getLitigous: getLitigousReducer,
-        getProperty: getPropertyReducer
+        getLitigious: getLitigiousReducer,
+        getProperty: getPropertyReducer,
+        getReport: getReportReducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false })
 });

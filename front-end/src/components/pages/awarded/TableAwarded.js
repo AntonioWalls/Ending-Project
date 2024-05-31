@@ -19,18 +19,21 @@ export default function TableAwarded({ showForm, idUserEdit }) {
   const { awardeds } = useSelector((state) => state.getAwarded);
 
 
-  // Obtener la id del usuario. 
-  const [id, setId] = useState(0);
-  const gridRef = useRef();
-  const onSelectionChanged = useCallback(() => {
-    const selectedRows = gridRef.current.api.getSelectedRows();
-    document.querySelector("#selectedRows").innerHTML =
-      selectedRows.length === 1 ? selectedRows[0].nombres : "";
-    console.log(selectedRows[0].idAdjudicado);
-    setId(selectedRows[0].idAdjudicado);
-    console.log(id)
+  /// Obtener la id del usuario. 
+ const [id, setId] = useState(0);
+ const gridRef = useRef();
+ const onSelectionChanged = useCallback(() => {
+   const selectedRows = gridRef.current.api.getSelectedRows();
+   if (selectedRows.length === 1) {
+     document.querySelector("#selectedRows").innerHTML = selectedRows[0].nombres;
+     setId(selectedRows[0].idAdjudicado);
+   } else {
+     document.querySelector("#selectedRows").innerHTML = "";
+     setId(0);  // Reset id if no row or multiple rows are selected
+   }
+   console.log(id);
+ }, [id]);
 
-  }, []);
 
 
 
@@ -76,6 +79,7 @@ export default function TableAwarded({ showForm, idUserEdit }) {
   const handleEdit = () => {
       console.log(id);
       if(id){
+          idUserEdit(id);
           showForm();
       }else{
           alert('Seleccione un usuario para modificar');

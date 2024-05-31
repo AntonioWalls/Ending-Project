@@ -3,13 +3,13 @@ import { getLitigious, getLitigiousUnique } from '../actions/actionLitigious';
 
 const initialState = {
     litigious: [],
-    litigiou: {},
+    litigiousUnique: {},
     loading: false,
     error: null,
 };
 
-const litigiousSlice = createSlice({
-    name: "getLitigious",
+const LitigiousSlice = createSlice({
+    name: "litigious",
     initialState,
     reducers: {},
     extraReducers: (builder) => {
@@ -30,21 +30,21 @@ const litigiousSlice = createSlice({
                 state.error = action.error.message;
             })
             .addCase(getLitigiousUnique.pending, (state) => {
-                state.litigiou = {};
+                state.litigiousUnique = {};
                 state.loading = true;
                 state.error = null;
             })
             .addCase(getLitigiousUnique.fulfilled, (state, action) => {
-                state.litigiou = action.payload;
+                state.litigiousUnique = action.payload;
                 state.loading = false;
                 state.error = null;
             })
             .addCase(getLitigiousUnique.rejected, (state, action) => {
-                state.litigiou = {};
+                state.litigiousUnique = {};
                 state.loading = false;
                 state.error = action.error.message;
             });
     },
 });
 
-export const getLitigousReducer = litigiousSlice.reducer;
+export const getLitigiousReducer = LitigiousSlice.reducer;

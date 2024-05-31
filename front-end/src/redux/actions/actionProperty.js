@@ -5,7 +5,7 @@ export const getProperty = createAsyncThunk("property/getProperty",
     async () => {
         try
         {      
-            const resp = await axios.get('http://endingapi.somee.com/api/Inmobiliaria/lista');
+            const resp = await axios.get('http://endingapi2.somee.com/api/Propiedad/lista');
 
             return resp.data;
         } 
@@ -20,7 +20,7 @@ export const getPropertyUnique = createAsyncThunk("property/getPropertyUnique",
     async (id, {rejectWithValue}) => {
         try
         {      
-            const resp = await axios.get('http://endingapi.somee.com/api/Inmobiliaria/Obtener/'+id);
+            const resp = await axios.get('http://endingapi2.somee.com/api/Propiedad/Obtener/'+id);
 
             return resp.data;
         } 
@@ -35,7 +35,7 @@ export const addProperty = createAsyncThunk("property/addProperty",
     async (data, {rejectWithValue}) => {
         try
         {      
-            const resp = await axios.post('http://endingapi.somee.com/api/Inmobiliaria/Guardar', data);
+            const resp = await axios.post('http://endingapi2.somee.com/api/Propiedad/Guardar', data);
 
             return resp.data;
         } 
@@ -50,7 +50,7 @@ export const deleteProperty = createAsyncThunk("property/deleteProperty",
     async (id, {rejectWithValue}) => {
         try
         {      
-            const resp = await axios.delete('http://endingapi.somee.com/api/Inmobiliaria/Eliminar/'+id);
+            const resp = await axios.delete('http://endingapi2.somee.com/api/Propiedad/Eliminar/'+id);
 
             return resp.data;
         } 
@@ -65,7 +65,7 @@ export const editProperty = createAsyncThunk("property/editProperty",
     async (data, {rejectWithValue}) => {
         try
         {      
-            const resp = await axios.put('http://187.189.158.186:7777/Usuario/'+data.id, data);
+            const resp = await axios.put('http://endingapi2.somee.com/api/Propiedad/Editar', data);
 
             return resp.data;
         } 

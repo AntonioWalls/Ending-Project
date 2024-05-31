@@ -19,24 +19,24 @@ export default function TableReal_Estate({ showForm, idUserEdit }) {
   const { realstates } = useSelector((state) => state.getRealState);
 
 
-  // Obtener la id del usuario. 
-  const [id, setId] = useState(0);
-  const gridRef = useRef();
-  const onSelectionChanged = useCallback(() => {
-    const selectedRows = gridRef.current.api.getSelectedRows();
-    document.querySelector("#selectedRows").innerHTML =
-      selectedRows.length === 1 ? selectedRows[0].razonSocial : "";
-    console.log(selectedRows[0].idInmobiliaria);
-    setId(selectedRows[0].idInmobiliaria);
-    console.log(id)
-
-  }, []);
-
+    /// Obtener la id del usuario. 
+ const [id, setId] = useState(0);
+ const gridRef = useRef();
+ const onSelectionChanged = useCallback(() => {
+   const selectedRows = gridRef.current.api.getSelectedRows();
+   if (selectedRows.length === 1) {
+     document.querySelector("#selectedRows").innerHTML = selectedRows[0].razonSocial;
+     setId(selectedRows[0].idInmobiliaria);
+   } else {
+     document.querySelector("#selectedRows").innerHTML = "";
+     setId(0);  // Reset id if no row or multiple rows are selected
+   }
+   console.log(id);
+ }, [id]);
 
 
   useEffect(() => {
     dispatch(getRealState());
-    console.log(realstates);
   }, [dispatch]);
 
   // Column Definitions: Defines the columns to be displayed.
@@ -65,6 +65,7 @@ export default function TableReal_Estate({ showForm, idUserEdit }) {
   const handleEdit = () => {
       console.log(id);
       if(id){
+          idUserEdit(id);
           showForm();
       }else{
           alert('Seleccione un usuario para modificar');

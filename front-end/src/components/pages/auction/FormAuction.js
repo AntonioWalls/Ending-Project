@@ -1,56 +1,69 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector, useStore } from 'react-redux';
 import { Button, Form, Col, Row, Card } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
-import { addUser, getUserUnique } from '../../../redux/actions/actionUsers';
+import { addAuction, editAuction, getAuctionUnique } from '../../../redux/actions/actionAuction';
 import { getRealState } from '../../../redux/actions/ActionReal_State';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import Swal from "sweetalert2";
 
 function FormAuction({ showForm, id }) {
     const initialUserState = {
-        IDUsuario: 0,
-        Nombre: '',
-        PrimerApellido: '',
-        SegundoApellido: '',
-        Genero: null,
-        Correo: '',
-        FechaNacimiento: '', 
-        Telefono: '',
-        IDRol: 0,
-        NombreUsuario: '',
-        Contraseña: '',
-        ConfirmarContraseña: '',
-        Habilitado: true
+        idRemate: 0,
+        idInmobiliaria: 0,
+        fiscalia: '',
+        estado: true,
+        fecha: '',
+        descripcion: ''
     };
 
-    const [Inmobiliarias, setInmobiliarias] = useState(state => state.getRealState);
-
-    
     const dispatch = useDispatch();
-    const [user, setUser] = useState({initialUserState});
-    
+
+    const { realstates } = useSelector(state => state.getRealState);
+    const [auction, setAuction] = useState({ initialUserState });
+
     useEffect(() => {
-        dispatch(setInmobiliarias(getRealState));
+        dispatch(getRealState());
     }, [dispatch]);
+    
+
     useEffect(() => {
         if (id > 0) {
-            dispatch(getUserUnique(id))
+            dispatch(getAuctionUnique(id))
                 .then((response) => {
-                    setUser(response.payload);
+                    setAuction(response.payload.response);
                 });
         }
     }, [dispatch, id]);
 
     const handleCancel = () => {
-        setUser(initialUserState);
+        setAuction(initialUserState);
         showForm();
     };
 
     const handleGuardar = () => {
-        if(user.Contraseña === user.ConfirmarContraseña){
-            dispatch(addUser(user)).then(() => {
-                console.log('Usuario guardado');
+
+        if (id > 0) {
+            dispatch(editAuction(auction)).then(() => {
+                Swal.fire({
+                    icon: "success",
+                    title: "Editado con exito",
+                    text: "Se ha guardado el registro con total exito",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
             });
+        } else {
+            dispatch(addAuction(auction)).then(() => {
+                console.log('Usuario guardado');
+                Swal.fire({
+                    icon: "success",
+                    title: "Guardado con exito",
+                    text: "Se ha guardado el registro con total exito",
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+            })
         }
     };
 
@@ -58,66 +71,23 @@ function FormAuction({ showForm, id }) {
         <Col lg={6} xs={12} sm={8}>
             <Card>
                 <Card.Header>
-                    <h1>Registro de Usuario</h1>
+                    <h1>Registro de Remates</h1>
                 </Card.Header>
                 <Card.Body>
-                    <Row>
+                <Row>
                         <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Nombre : </Form.Label>
+                            <Form.Label>Inmobiliaria: </Form.Label>
                         </Col>
                         <Col lg={7} sm={12} xl={6}>
-                            <Form.Control
-                                type="text"
-                                name="nombre"
-                                value={user.Nombre}
-                                onChange={(e) => setUser({ ...user, Nombre: e.target.value })}
-                            />
-                        </Col>
-                    </Row>
-                    <br />
-
-                    <Row>
-                        <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Primer Apellido : </Form.Label>
-                        </Col>
-                        <Col lg={7} sm={12} xl={6}>
-                            <Form.Control
-                                type="text"
-                                name="primerApellido"
-                                value={user.PrimerApellido}
-                                onChange={(e) => setUser({ ...user, PrimerApellido: e.target.value })}
-                            />
-                        </Col>
-                    </Row>
-                    <br />
-
-                    <Row>
-                        <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Segundo Apellido : </Form.Label>
-                        </Col>
-                        <Col lg={7} sm={12} xl={6}>
-                            <Form.Control
-                                type="text"
-                                name="segundoApellido"
-                                value={user.SegundoApellido}
-                                onChange={(e) => setUser({ ...user, SegundoApellido: e.target.value })}
-                            />
-                        </Col>
-                    </Row>
-                    <br />
-
-                    <Row>
-                        <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Genero: </Form.Label>
-                        </Col>
-                        <Col lg={7} sm={12} xl={6}>
-                            <Form.Select 
-                                    name="genero" 
-                                    value={user.Genero} 
-                                    onChange={(e) => setUser({...user, Genero: e.target.value == 1 ? true : false })}>
-                                    <option value={""} disabled>Seleccione un Genero</option>
-                                    <option value={1}>Masculino</option>
-                                    <option value={2}>Femenino</option>
+                            <Form.Select
+                                name="idInmobiliaria"
+                                value={auction.idInmobiliaria}
+                                onChange={(e) => setAuction({ ...auction, idInmobiliaria: parseInt(e.target.value) })}>
+                                <option value="0" disabled>Seleccione una Inmobiliaria</option>
+                                {/* Mostrar lista de inmobiliarias */}
+                                {realstates.response && realstates.response.map((item) => (
+                                    <option key={item.idInmobiliaria} value={item.idInmobiliaria}>{item.razonSocial}</option>
+                                ))}
                             </Form.Select>
                         </Col>
                     </Row>
@@ -125,13 +95,28 @@ function FormAuction({ showForm, id }) {
 
                     <Row>
                         <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Fecha de Nacimiento: </Form.Label>
+                            <Form.Label>Fiscalia : </Form.Label>
+                        </Col>
+                        <Col lg={7} sm={12} xl={6}>
+                            <Form.Control
+                                type="text"
+                                name="fiscalia"
+                                value={auction.fiscalia}
+                                onChange={(e) => setAuction({ ...auction, fiscalia: e.target.value })}
+                            />
+                        </Col>
+                    </Row>
+                    <br />
+
+                    <Row>
+                        <Col lg={5} sm={12} xl={6}>
+                            <Form.Label>Fecha: </Form.Label>
                         </Col>
                         <Col lg={7} sm={12} xl={6}>
                             <DatePicker
                                 className='form-control'
-                                selected={user.FechaNacimiento}
-                                onChange={(date) => setUser({ ...user, FechaNacimiento: date })}
+                                selected={auction.fecha}
+                                onChange={(date) => setAuction({ ...auction, fecha: date })}
                             />
                         </Col>
                     </Row>
@@ -139,96 +124,14 @@ function FormAuction({ showForm, id }) {
 
                     <Row>
                         <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Correo: </Form.Label>
-                        </Col>
-                        <Col lg={7} sm={12} xl={6}>
-                            <Form.Control
-                                type='text'
-                                name="correo"
-                                value={user.Correo}
-                                onChange={(e) => setUser({ ...user, Correo: e.target.value })}
-                            />
-                        </Col>
-                    </Row>
-                    <br />
-
-                    <Row>
-                        <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Telefono: </Form.Label>
-                        </Col>
-                        <Col lg={7} sm={12} xl={6}>
-                            <Form.Control
-                                type='text'
-                                name="telefono"
-                                value={user.Telefono}
-                                onChange={(e) => setUser({ ...user, Telefono: e.target.value })}
-                            />
-                        </Col>
-                    </Row>
-                    <br />
-
-                    <Row>
-                        <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Rol: </Form.Label>
-                        </Col>
-                        <Col lg={7} sm={12} xl={6}>
-                            <Form.Select 
-                                name="idRol" 
-                                value={user.IDRol} 
-                                onChange={(e) => setUser({ ...user, IDRol: parseInt(e.target.value) })}>
-                                <option value={"0"} disabled>Seleccione un Rol</option>
-{/* Mostrar lista de inmobiliarias */}
-                                {Inmobiliarias ? (Inmobiliarias.map((item) => () => {
-                                    return(
-                                        <option value={item.idInmobiliaria} >{item.razonSocial}</option>
-                                    );
-                                })) : null }
-
-                            </Form.Select>
-                        </Col>
-                    </Row>
-                    <br />
-
-                    <Row>
-                        <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Nombre de Usuario : </Form.Label>
+                            <Form.Label>Descripcion : </Form.Label>
                         </Col>
                         <Col lg={7} sm={12} xl={6}>
                             <Form.Control
                                 type="text"
-                                name="nombreUsuario"
-                                value={user.NombreUsuario}
-                                onChange={(e) => setUser({ ...user, NombreUsuario: e.target.value })}
-                            />
-                        </Col>
-                    </Row>
-                    <br />
-
-                    <Row>
-                        <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Contraseña : </Form.Label>
-                        </Col>
-                        <Col lg={7} sm={12} xl={6}>
-                            <Form.Control
-                                type="password"
-                                name="contrasena"
-                                value={user.Contraseña}
-                                onChange={(e) => setUser({ ...user, Contraseña: e.target.value })}
-                            />
-                        </Col>
-                    </Row>
-                    <br />
-
-                    <Row>
-                        <Col lg={5} sm={12} xl={6}>
-                            <Form.Label>Confirmar Contraseña : </Form.Label>
-                        </Col>
-                        <Col lg={7} sm={12} xl={6}>
-                            <Form.Control
-                                type="password"
-                                name="confirmarContrasena"
-                                value={user.ConfirmarContraseña}
-                                onChange={(e) => setUser({ ...user, ConfirmarContraseña: e.target.value })}
+                                name="descripcion"
+                                value={auction.descripcion}
+                                onChange={(e) => setAuction({ ...auction, descripcion: e.target.value })}
                             />
                         </Col>
                     </Row>

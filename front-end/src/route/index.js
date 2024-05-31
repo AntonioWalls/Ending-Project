@@ -7,6 +7,7 @@ import Adjudicados from "../components/pages/awarded";
 import Litigiosos from "../components/pages/litigious";
 import Litigios from "../components/pages/litigation";
 import Propiedades from "../components/pages/property";
+import Reportes from "../components/pages/report";
 
 const Routes = [
     {
@@ -44,6 +45,10 @@ const Routes = [
     {
         path: 'Propiedades',
         component: Propiedades
+    },
+    {
+        path: 'Reportes',
+        component: Reportes
     }
 ];
 export default Routes;

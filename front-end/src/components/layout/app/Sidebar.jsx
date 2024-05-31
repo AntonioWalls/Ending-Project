@@ -27,12 +27,6 @@ const Sidebar = () => {
             <NavLink exact to="/" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="home">Inicio</CDBSidebarMenuItem>
             </NavLink>
-            <NavLink exact to="/Role" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="users">Roles</CDBSidebarMenuItem>
-            </NavLink>
-            <NavLink exact to="/Usuarios" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="user">Usuarios</CDBSidebarMenuItem>
-            </NavLink>
             <NavLink exact to="/Inmobiliarias" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="home">Inmobiliarias</CDBSidebarMenuItem>
             </NavLink>
@@ -43,13 +37,16 @@ const Sidebar = () => {
               <CDBSidebarMenuItem icon="home">Adjudicados</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/Litigiosos" activeClassName="activeClicked">
-              <CDBSidebarMenuItem icon="home">Litigiosos</CDBSidebarMenuItem>
+              <CDBSidebarMenuItem icon="users">Litigiosos</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/Litigios" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="home">Litigios</CDBSidebarMenuItem>
             </NavLink>
             <NavLink exact to="/Propiedades" activeClassName="activeClicked">
               <CDBSidebarMenuItem icon="home">Propiedades</CDBSidebarMenuItem>
+            </NavLink>
+            <NavLink exact to="/Reportes" activeClassName="activeClicked">
+              <CDBSidebarMenuItem icon="home">Reportes</CDBSidebarMenuItem>
             </NavLink>
           </CDBSidebarMenu>
         </CDBSidebarContent>

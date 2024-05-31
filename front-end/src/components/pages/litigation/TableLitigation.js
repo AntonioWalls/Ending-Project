@@ -4,8 +4,6 @@ import * as React from "react";
 import { useDispatch, useSelector, useStore } from 'react-redux';
 import { Button, Col, Row, FormLabel } from "react-bootstrap";
 import { AgGridReact } from 'ag-grid-react'; // AG Grid Component
-import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the grid
-import "ag-grid-community/styles/ag-theme-quartz.css"; // Optional Theme applied to the grid
 import { getLitigation, deleteLitigation } from '../../../redux/actions/actionLitigation';
 import Swal from "sweetalert2";
 
@@ -19,29 +17,32 @@ export default function TableLitigation({ showForm, idUserEdit }) {
   const { litigations } = useSelector((state) => state.getLitigation);
 
 
-  // Obtener la id del usuario. 
-  const [id, setId] = useState(0);
-  const gridRef = useRef();
-  const onSelectionChanged = useCallback(() => {
-    const selectedRows = gridRef.current.api.getSelectedRows();
-    document.querySelector("#selectedRows").innerHTML =
-      selectedRows.length === 1 ? selectedRows[0].procedimiento : "";
-    console.log(selectedRows[0].idLitigio);
-    setId(selectedRows[0].idLitigio);
-    console.log(id)
-
-  }, []);
+ // Obtener la id del usuario. 
+ const [id, setId] = useState(0);
+ const gridRef = useRef();
+ const onSelectionChanged = useCallback(() => {
+   const selectedRows = gridRef.current.api.getSelectedRows();
+   if (selectedRows.length === 1) {
+     document.querySelector("#selectedRows").innerHTML = selectedRows[0].procedimiento;
+     setId(selectedRows[0].idLitigio);
+   } else {
+     document.querySelector("#selectedRows").innerHTML = "";
+     setId(0);  // Reset id if no row or multiple rows are selected
+   }
+   console.log(id);
+ }, [id]);
 
 
 
   useEffect(() => {
     dispatch(getLitigation());
-    console.log(litigations);
   }, [dispatch]);
 
   // Column Definitions: Defines the columns to be displayed.
   const [colDefs, setColDefs] = useState([
     { field: 'idLitigio', headerName: 'ID de Litigio' },
+    { field: 'idLitigioso', headerName: 'ID de Litigioso' },
+    { field: 'idRemate', headerName: 'ID de Remate' },
     { field: 'procedimiento', headerName: 'Procedimiento' },
     { field: 'juzgado', headerName: 'Juzgado' },
     { field: 'expediente', headerName: 'Expediente' },
@@ -67,9 +68,10 @@ export default function TableLitigation({ showForm, idUserEdit }) {
   const handleEdit = () => {
       console.log(id);
       if(id){
+          idUserEdit(id);
           showForm();
       }else{
-          alert('Seleccione un Litigo para modificar');
+          alert('Seleccione un litigio para modificar');
       }
   };
 
@@ -80,7 +82,7 @@ export default function TableLitigation({ showForm, idUserEdit }) {
       dispatch(deleteLitigation(id)).then(() => {
         Swal.fire({
           icon: "success",
-          title: "Litigo eliminado",
+          title: "Litigio eliminado",
           showConfirmButton: false,
           timer: 1500,
         }).then(() => {
@@ -91,7 +93,7 @@ export default function TableLitigation({ showForm, idUserEdit }) {
       Swal.fire({
         icon: "error",
         title: "Error",
-        text: "Seleccione un Litigop para eliminar",
+        text: "Seleccione un litigio para eliminar",
       });
       }
     // console.log(id);
@@ -114,11 +116,11 @@ export default function TableLitigation({ showForm, idUserEdit }) {
     // wrapping container with theme & size
     <div
       className="ag-theme-quartz" // applying the grid theme
-      style={{ height: 500, width: 802 }} // the grid will fill the size of the parent container
+      style={{ height: 500, width: 1202 }} // the grid will fill the size of the parent container
     >
       <Row >
         <Col>
-          <Button variant='primary' onClick={handleNew}>Nueva Litigio</Button>
+          <Button variant='primary' onClick={handleNew}>Nuevo Litigio</Button>
         </Col>
         <Col>
           <Button variant='warning' onClick={handleEdit}>Modificar Litigio</Button>
