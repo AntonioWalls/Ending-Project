@@ -4,8 +4,6 @@ import * as React from "react";
 import { useDispatch, useSelector, useStore } from 'react-redux';
 import { Button, Col, Row, FormLabel } from "react-bootstrap";
 import { AgGridReact } from 'ag-grid-react'; // AG Grid Component
-import "ag-grid-community/styles/ag-grid.css"; // Mandatory CSS required by the grid
-import "ag-grid-community/styles/ag-theme-quartz.css"; // Optional Theme applied to the grid
 import { getLitigious, deleteLitigious } from '../../../redux/actions/actionLitigious';
 import Swal from "sweetalert2";
 
@@ -18,8 +16,7 @@ export default function TableLitigious({ showForm, idUserEdit }) {
   const dispatch = useDispatch();
   const { litigious } = useSelector((state) => state.getLitigious);
 
-
-  // Obtener la id del usuario. 
+  // Obtener la id del usuario.
   const [id, setId] = useState(0);
   const gridRef = useRef();
   const onSelectionChanged = useCallback(() => {
@@ -27,12 +24,9 @@ export default function TableLitigious({ showForm, idUserEdit }) {
     document.querySelector("#selectedRows").innerHTML =
       selectedRows.length === 1 ? selectedRows[0].nombres : "";
 
-    setId(selectedRows[0].idLitigioso);
-    console.log(id)
-
+    setId(selectedRows[0]?.idLitigioso || 0);
+    console.log(selectedRows[0]?.idLitigioso);
   }, []);
-
-
 
   useEffect(() => {
     dispatch(getLitigious());
@@ -54,34 +48,22 @@ export default function TableLitigious({ showForm, idUserEdit }) {
     { field: 'cp', headerName: 'Codigo Postal' }
   ]);
 
-
-
   const handleNew = () => {
     showForm();
     idUserEdit(0);
   };
 
-  // const handleEdit = () => {
-  //   if (id) {
-  //     idUserEdit(id);
-  //     showForm();
-  //   } else {
-  //     alert('Seleccione un usuario para modificar');
-  //   }
-  // };
-
   const handleEdit = () => {
-      console.log(id);
-      if(id){
-          idUserEdit(id);
-          showForm();
-      }else{
-          alert('Seleccione un usuario para modificar');
-      }
+    console.log(id);
+    if (id) {
+      idUserEdit(id);
+      showForm();
+    } else {
+      alert('Seleccione un usuario para modificar');
+    }
   };
 
   const handleDelete = () => {
-
     if (id) {
       // Eliminar usuario seleccionado
       dispatch(deleteLitigious(id)).then(() => {
@@ -100,25 +82,10 @@ export default function TableLitigious({ showForm, idUserEdit }) {
         title: "Error",
         text: "Seleccione un litigioso para eliminar",
       });
-      }
-    // console.log(id);
-    // if (id) {
-    //   // Eliminar usuario seleccionado
-    //   dispatch(deleteRealState(id))
-    //     .then(() => {
-    //       window.location.href = window.location.href;
-    //     })
-    // } else {
-    //   alert("Seleccione un usuario para eliminar");
-    // }
+    }
   };
 
-
-  // ...
-
   return (
-
-    // wrapping container with theme & size
     <div
       className="ag-theme-quartz" // applying the grid theme
       style={{ height: 500, width: 802 }} // the grid will fill the size of the parent container

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import FormLitigious from './FormLitigious';
+import FormAwarded from './FormLitigious';
 import TableLitigious from './TableLitigious';
 import { useDispatch } from 'react-redux';
 
@@ -21,7 +21,7 @@ function Usuarios() {
 
     return (
         showForm ? (
-            <FormLitigious showForm={showTable} id={idUserEdit}/>
+            <FormAwarded showForm={showTable} id={idUserEdit}/>
         ) : (
             <TableLitigious showForm={showTable} idUserEdit={id => setUserEdit(id)}/>
         )

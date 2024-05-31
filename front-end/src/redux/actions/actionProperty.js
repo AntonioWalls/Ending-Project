@@ -5,7 +5,7 @@ export const getProperty = createAsyncThunk("property/getProperty",
     async () => {
         try
         {      
-            const resp = await axios.get('http://endingapi.somee.com/api/Inmobiliaria/lista');
+            const resp = await axios.get('http://endingapi2.somee.com/api/Propiedad/lista');
 
             return resp.data;
         } 

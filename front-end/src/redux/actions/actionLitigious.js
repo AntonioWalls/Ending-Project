@@ -2,16 +2,13 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const getLitigious = createAsyncThunk("litigious/getLitigious",
-    async () => {
-        try
-        {      
+    async (_, { rejectWithValue }) => {
+        try {      
             const resp = await axios.get('http://endingapi2.somee.com/api/Litigioso/lista');
-
+            console.log(resp.data);
             return resp.data;
-        } 
-        catch (error) 
-        {
-            return null;
+        } catch (error) {
+            return rejectWithValue(`Error: ${error.message}`);
         }
     }
 );
