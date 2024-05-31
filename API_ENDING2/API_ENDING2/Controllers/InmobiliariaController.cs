@@ -46,7 +46,7 @@ namespace API_ENDING.Controllers
         public IActionResult Obtener(int idInmobiliaria)
         {
             //busca dentro de la tabla inmobiliaria por medio del web context usando el idInmobiliaria
-            Inmobiliaria inmobiliarias = webcontext.Inmobiliaria.Find(idInmobiliaria);
+            Inmobiliaria inmobiliarias = webcontext.Inmobiliaria.Where(i => i.IdInmobiliaria == idInmobiliaria).FirstOrDefault();
 
             if (inmobiliarias == null)
             {
@@ -57,7 +57,7 @@ namespace API_ENDING.Controllers
             {
                 //llama al objeto inmobiliarias y usando al webcontext incluye los remates de la inmobiliaria que se buscó por medio del id de la inmobiliaria
                 //y en caso de que encuntre datos, manda el primero, en caso contrario, va a mandar un nulo
-                inmobiliarias = webcontext.Inmobiliaria.FirstOrDefault();
+                inmobiliarias = webcontext.Inmobiliaria.Where(i => i.IdInmobiliaria == idInmobiliaria).FirstOrDefault();
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", Response = inmobiliarias });
             }
             catch (Exception ex)

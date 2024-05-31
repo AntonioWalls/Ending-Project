@@ -53,7 +53,7 @@ namespace API_ENDING2.Controllers
             {
                 //llama al objeto inmobiliarias y usando al webcontext incluye los remates de la inmobiliaria que se buscó por medio del id de la inmobiliaria
                 //y en caso de que encuntre datos, manda el primero, en caso contrario, va a mandar un nulo
-                remates = webcontext.Remates.FirstOrDefault();
+                remates = webcontext.Remates.Where(i => i.IdRemate == idRemate).FirstOrDefault();
                 return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", Response = remates });
             }
             catch (Exception ex)

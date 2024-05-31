@@ -41,7 +41,7 @@ namespace API_ENDING.Controllers
         public IActionResult Obtener(int idPropiedad)
         {
             //busca dentro de la tabla inmobiliaria por medio del web context usando el idInmobiliaria
-            Propiedad propiedades = webcontext.Propiedads.Find(idPropiedad);
+            Propiedad propiedades = webcontext.Propiedads.Where(i => i.IdPropiedad == idPropiedad).FirstOrDefault();
 
             if (propiedades == null)
             {

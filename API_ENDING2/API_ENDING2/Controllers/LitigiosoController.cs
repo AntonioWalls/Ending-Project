@@ -43,7 +43,7 @@ namespace API_ENDING.Controllers
         public IActionResult Obtener(int idLitigioso)
         {
             //busca dentro de la tabla inmobiliaria por medio del web context usando el idInmobiliaria
-            Litigioso litigiosos = webcontext.Litigiosos.Find(idLitigioso);
+            Litigioso litigiosos = webcontext.Litigiosos.Where(i => i.IdLitigioso == idLitigioso).FirstOrDefault();
 
             if (litigiosos == null)
             {
