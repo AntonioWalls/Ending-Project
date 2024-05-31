@@ -65,7 +65,7 @@ export const editLitigation = createAsyncThunk("litigation/editLitigation",
     async (data, {rejectWithValue}) => {
         try
         {      
-            const resp = await axios.put('http://endingapi2.somee.com/api/Litigio/Editar'+data.id, data);
+            const resp = await axios.put(`http://endingapi2.somee.com/api/Litigio/Editar`+ data.id, data);
 
             return resp.data;
         } 
