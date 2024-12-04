@@ -14,15 +14,9 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("API_ENDING2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< HEAD:API_ENDING/API_ENDING/obj/Debug/net8.0/API_ENDING.AssemblyInfo.cs
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+64de1f66ec2bba587d28dee10a0c84bc0909c75e")]
-[assembly: System.Reflection.AssemblyProductAttribute("API_ENDING")]
-[assembly: System.Reflection.AssemblyTitleAttribute("API_ENDING")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8fbc1853945ec2034d1ce5d7fc11ec8dc35a49e3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+105125dd604355c27aa721fec327c888c93555b2")]
 [assembly: System.Reflection.AssemblyProductAttribute("API_ENDING2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("API_ENDING2")]
->>>>>>> dev_walls:API_ENDING2/API_ENDING2/obj/Debug/net8.0/API_ENDING2.AssemblyInfo.cs
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Generado por la clase WriteCodeFragment de MSBuild.

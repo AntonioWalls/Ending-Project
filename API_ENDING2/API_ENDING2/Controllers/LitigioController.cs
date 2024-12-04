@@ -1,5 +1,6 @@
 ﻿using API_ENDING2.DTO;
 using API_ENDING2.Models;
+using API_ENDING2.Services;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,16 +24,27 @@ namespace API_ENDING.Controllers
         [Route("lista")]
         public IActionResult Lista()
         {
-            List<Litigio> litigios = new List<Litigio>();
-
             try
             {
-                litigios = webcontext.Litigios.ToList();
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = litigios });
+                // Proyección a DTO
+                var litigioDto = webcontext.Litigios
+                    .Select(i => new LitigioDTO
+                    {
+                       IdLitigio = i.IdLitigio,
+                       IdLitigioso = i.IdLitigioso,
+                       IdRemate = i.IdRemate,
+                       Procedimiento = i.Procedimiento,
+                       Juzgado = i.Juzgado,
+                       Expediente = i.Expediente,
+                       EdoJuzgado = i.EdoJuzgado,
+                       AdeudoTotal = i.AdeudoTotal
+                    })
+                    .ToList();
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = litigioDto });
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = ex.Message, response = litigios });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message });
             }
         }
 
@@ -41,26 +53,37 @@ namespace API_ENDING.Controllers
         [Route("Obtener/{idLitigio:int}")]
         public IActionResult Obtener(int idLitigio)
         {
-            //busca dentro de la tabla inmobiliaria por medio del web context usando el idInmobiliaria
-            Litigio litigios = webcontext.Litigios.Where(i => i.IdLitigio == idLitigio).FirstOrDefault();
-
-            if (litigios == null)
-            {
-                return BadRequest("Litigio no encontrado");
-            }
-
             try
             {
-                //llama al objeto inmobiliarias y usando al webcontext incluye los remates de la inmobiliaria que se buscó por medio del id de la inmobiliaria
-                //y en caso de que encuntre datos, manda el primero, en caso contrario, va a mandar un nulo
-                litigios = webcontext.Litigios.Where(i => i.IdLitigio == idLitigio).FirstOrDefault();
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", Response = litigios });
+                // Buscar el litigio por ID y proyectar al DTO
+                var litigioDto = webcontext.Litigios
+                    .Where(l => l.IdLitigio == idLitigio)
+                    .Select(l => new LitigioDTO
+                    {
+                        IdLitigio = l.IdLitigio,
+                        IdLitigioso = l.IdLitigioso,
+                        IdRemate = l.IdRemate,
+                        Procedimiento = l.Procedimiento,
+                        Juzgado = l.Juzgado,
+                        Expediente = l.Expediente,
+                        EdoJuzgado = l.EdoJuzgado,
+                        AdeudoTotal = l.AdeudoTotal
+                    })
+                    .FirstOrDefault();
+
+                if (litigioDto == null)
+                {
+                    return BadRequest("Litigio no encontrado");
+                }
+
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = litigioDto });
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = ex.Message, Response = litigios });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message });
             }
         }
+
 
         //GUARDA UN NUEVO LITIGIO
         [HttpPost]

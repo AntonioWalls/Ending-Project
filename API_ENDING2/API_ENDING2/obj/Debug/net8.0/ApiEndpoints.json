@@ -1,0 +1,535 @@
+[
+  {
+    "ContainingType": "API_ENDING2.Controllers.AdjudicadoController",
+    "Method": "Editar",
+    "RelativePath": "api/Adjudicado/Editar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newAdjudicado",
+        "Type": "API_ENDING2.DTO.AdjudicadoDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING2.Controllers.AdjudicadoController",
+    "Method": "Eliminar",
+    "RelativePath": "api/Adjudicado/Eliminar/{idAdjudicado}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idAdjudicado",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING2.Controllers.AdjudicadoController",
+    "Method": "Guardar",
+    "RelativePath": "api/Adjudicado/Guardar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newAdjudicado",
+        "Type": "API_ENDING2.DTO.AdjudicadoDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING2.Controllers.AdjudicadoController",
+    "Method": "Lista",
+    "RelativePath": "api/Adjudicado/lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING2.Controllers.AdjudicadoController",
+    "Method": "Obtener",
+    "RelativePath": "api/Adjudicado/Obtener/{idAdjudicado}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idAdjudicado",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING.Controllers.IncluyeController",
+    "Method": "EditarIncluye",
+    "RelativePath": "api/Incluye/Editar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newIncluye",
+        "Type": "API_ENDING2.DTO.IncluyeDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING.Controllers.IncluyeController",
+    "Method": "Eliminar",
+    "RelativePath": "api/Incluye/Eliminar/{idAdjudicado}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idAdjudicado",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING.Controllers.IncluyeController",
+    "Method": "AgregarIncluye",
+    "RelativePath": "api/Incluye/Guardar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newIncluye",
+        "Type": "API_ENDING2.DTO.IncluyeDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING.Controllers.IncluyeController",
+    "Method": "Lista",
+    "RelativePath": "api/Incluye/lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING.Controllers.IncluyeController",
+    "Method": "Max_register",
+    "RelativePath": "api/Incluye/max",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING.Controllers.InmobiliariaController",
+    "Method": "Editar",
+    "RelativePath": "api/Inmobiliaria/Editar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newInmobiliaria",
+        "Type": "API_ENDING2.DTO.InmobiliariaDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING.Controllers.InmobiliariaController",
+    "Method": "Eliminar",
+    "RelativePath": "api/Inmobiliaria/Eliminar/{idInmobiliaria}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idInmobiliaria",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING.Controllers.InmobiliariaController",
+    "Method": "Guardar",
+    "RelativePath": "api/Inmobiliaria/Guardar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newInmobiliaria",
+        "Type": "API_ENDING2.DTO.InmobiliariaDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING.Controllers.InmobiliariaController",
+    "Method": "Lista",
+    "RelativePath": "api/Inmobiliaria/lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING.Controllers.InmobiliariaController",
+    "Method": "Obtener",
+    "RelativePath": "api/Inmobiliaria/Obtener/{idInmobiliaria}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idInmobiliaria",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING.Controllers.LitigioController",
+    "Method": "Editar",
+    "RelativePath": "api/Litigio/Editar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newLitigio",
+        "Type": "API_ENDING2.DTO.LitigioDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING.Controllers.LitigioController",
+    "Method": "Eliminar",
+    "RelativePath": "api/Litigio/Eliminar/{idLitigio}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idLitigio",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING.Controllers.LitigioController",
+    "Method": "Guardar",
+    "RelativePath": "api/Litigio/Guardar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newLitigio",
+        "Type": "API_ENDING2.DTO.LitigioDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING.Controllers.LitigioController",
+    "Method": "Lista",
+    "RelativePath": "api/Litigio/lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING.Controllers.LitigioController",
+    "Method": "Obtener",
+    "RelativePath": "api/Litigio/Obtener/{idLitigio}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idLitigio",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING.Controllers.LitigiosoController",
+    "Method": "Editar",
+    "RelativePath": "api/Litigioso/Editar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newLitigioso",
+        "Type": "API_ENDING2.DTO.LitigiosoDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING.Controllers.LitigiosoController",
+    "Method": "Eliminar",
+    "RelativePath": "api/Litigioso/Eliminar/{idLitigioso}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idLitigioso",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING.Controllers.LitigiosoController",
+    "Method": "Guardar",
+    "RelativePath": "api/Litigioso/Guardar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newLitigioso",
+        "Type": "API_ENDING2.DTO.LitigiosoDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING.Controllers.LitigiosoController",
+    "Method": "Lista",
+    "RelativePath": "api/Litigioso/lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING.Controllers.LitigiosoController",
+    "Method": "Obtener",
+    "RelativePath": "api/Litigioso/Obtener/{idLitigioso}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idLitigioso",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING.Controllers.PropiedadController",
+    "Method": "Editar",
+    "RelativePath": "api/Propiedad/Editar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newPropiedad",
+        "Type": "API_ENDING2.DTO.PropiedadDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING.Controllers.PropiedadController",
+    "Method": "Eliminar",
+    "RelativePath": "api/Propiedad/Eliminar/{idPropiedad}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idPropiedad",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING.Controllers.PropiedadController",
+    "Method": "Guardar",
+    "RelativePath": "api/Propiedad/Guardar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newPropiedad",
+        "Type": "API_ENDING2.DTO.PropiedadDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING.Controllers.PropiedadController",
+    "Method": "Lista",
+    "RelativePath": "api/Propiedad/lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING.Controllers.PropiedadController",
+    "Method": "Obtener",
+    "RelativePath": "api/Propiedad/Obtener/{idPropiedad}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idPropiedad",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING2.Controllers.RemateController",
+    "Method": "Editar",
+    "RelativePath": "api/Remate/Editar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newRemate",
+        "Type": "API_ENDING2.DTO.RemateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING2.Controllers.RemateController",
+    "Method": "Eliminar",
+    "RelativePath": "api/Remate/Eliminar/{idRemate}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idRemate",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING2.Controllers.RemateController",
+    "Method": "Guardar",
+    "RelativePath": "api/Remate/Guardar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newRemate",
+        "Type": "API_ENDING2.DTO.RemateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING2.Controllers.RemateController",
+    "Method": "Lista",
+    "RelativePath": "api/Remate/lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING2.Controllers.RemateController",
+    "Method": "Obtener",
+    "RelativePath": "api/Remate/Obtener/{idRemate}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idRemate",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_ENDING2.Controllers.ReportController",
+    "Method": "GetReport",
+    "RelativePath": "api/Report/report",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "startDate",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "endDate",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

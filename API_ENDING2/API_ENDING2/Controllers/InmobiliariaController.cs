@@ -31,7 +31,7 @@ namespace API_ENDING.Controllers
             try
             {
                 inmobiliarias = webcontext.Inmobiliaria.ToList();
-                //return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = inmobiliarias });
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = inmobiliarias });
             }
             catch (Exception ex)
             {
@@ -45,26 +45,33 @@ namespace API_ENDING.Controllers
         [Route("Obtener/{idInmobiliaria:int}")]
         public IActionResult Obtener(int idInmobiliaria)
         {
-            //busca dentro de la tabla inmobiliaria por medio del web context usando el idInmobiliaria
-            Inmobiliaria inmobiliarias = webcontext.Inmobiliaria.Where(i => i.IdInmobiliaria == idInmobiliaria).FirstOrDefault();
-
-            if (inmobiliarias == null)
-            {
-                return BadRequest("Inmobiliaria no encontrada");
-            }
-
             try
             {
-                //llama al objeto inmobiliarias y usando al webcontext incluye los remates de la inmobiliaria que se buscó por medio del id de la inmobiliaria
-                //y en caso de que encuntre datos, manda el primero, en caso contrario, va a mandar un nulo
-                inmobiliarias = webcontext.Inmobiliaria.Where(i => i.IdInmobiliaria == idInmobiliaria).FirstOrDefault();
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", Response = inmobiliarias });
+                // Buscar la inmobiliaria por ID y proyectar al DTO
+                var inmobiliariaDto = webcontext.Inmobiliaria
+                    .Where(i => i.IdInmobiliaria == idInmobiliaria)
+                    .Select(i => new InmobiliariaDTO
+                    {
+                        IdInmobiliaria = i.IdInmobiliaria,
+                        RazonSocial = i.RazonSocial,
+                        Rfc = i.Rfc,
+                        Telefono = i.Telefono
+                    })
+                    .FirstOrDefault();
+
+                if (inmobiliariaDto == null)
+                {
+                    return BadRequest("Inmobiliaria no encontrada");
+                }
+
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = inmobiliariaDto });
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status200OK, new {mensaje = ex.Message, Response = inmobiliarias });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message });
             }
         }
+
 
         //GUARDA UNA NUEVA INMOBILIARIA
         [HttpPost]

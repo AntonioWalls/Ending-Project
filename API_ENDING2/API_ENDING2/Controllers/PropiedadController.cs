@@ -26,12 +26,30 @@ namespace API_ENDING.Controllers
 
             try
             {
-                propiedades = webcontext.Propiedads.ToList();
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = propiedades });
+                // Proyección a DTO
+                var propiedadesDto = webcontext.Propiedads
+                    .Select(i => new PropiedadDTO
+                    {
+                        IdPropiedad = i.IdPropiedad,
+                        Calle = i.Calle,
+                        Num = i.Num,
+                        Colonia = i.Colonia,
+                        Municipio = i.Municipio,
+                        Estado = i.Estado,
+                        Cp = i.Cp,
+                        Subtipo = i.Subtipo,
+                        Latitud = i.Latitud,
+                        Altitud = i.Altitud,
+                        SuperficieTerreno = i.SuperficieTerreno,
+                        SuperficieCons = i.SuperficieCons,
+                    })
+                    .ToList();
+
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = propiedadesDto });
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = ex.Message, response = propiedades });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message });
             }
         }
 
@@ -40,26 +58,41 @@ namespace API_ENDING.Controllers
         [Route("Obtener/{idPropiedad:int}")]
         public IActionResult Obtener(int idPropiedad)
         {
-            //busca dentro de la tabla inmobiliaria por medio del web context usando el idInmobiliaria
-            Propiedad propiedades = webcontext.Propiedads.Where(i => i.IdPropiedad == idPropiedad).FirstOrDefault();
-
-            if (propiedades == null)
-            {
-                return BadRequest("Propiedad no encontrada");
-            }
-
             try
             {
-                //llama al objeto inmobiliarias y usando al webcontext incluye los remates de la inmobiliaria que se buscó por medio del id de la inmobiliaria
-                //y en caso de que encuntre datos, manda el primero, en caso contrario, va a mandar un nulo
-                propiedades = webcontext.Propiedads.Where(i => i.IdPropiedad == idPropiedad).FirstOrDefault();
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", Response = propiedades });
+                // Buscar la propiedad por ID y proyectar al DTO
+                var propiedadDto = webcontext.Propiedads
+                    .Where(p => p.IdPropiedad == idPropiedad)
+                    .Select(p => new PropiedadDTO
+                    {
+                        IdPropiedad = p.IdPropiedad,
+                        Calle = p.Calle,
+                        Num = p.Num,
+                        Colonia = p.Colonia,
+                        Municipio = p.Municipio,
+                        Estado = p.Estado,
+                        Cp = p.Cp,
+                        Subtipo = p.Subtipo,
+                        Latitud = p.Latitud,
+                        Altitud = p.Altitud,
+                        SuperficieTerreno = p.SuperficieTerreno,
+                        SuperficieCons = p.SuperficieCons
+                    })
+                    .FirstOrDefault();
+
+                if (propiedadDto == null)
+                {
+                    return BadRequest("Propiedad no encontrada");
+                }
+
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = propiedadDto });
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = ex.Message, Response = propiedades });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message });
             }
         }
+
 
         //Crea una nueva propiedad
         [HttpPost]

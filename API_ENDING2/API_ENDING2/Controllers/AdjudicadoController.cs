@@ -1,5 +1,6 @@
 ﻿using API_ENDING2.DTO;
 using API_ENDING2.Models;
+using API_ENDING2.Services;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -25,16 +26,35 @@ namespace API_ENDING2.Controllers
         [Route("lista")]
         public IActionResult Lista()
         {
-            List<Adjudicado> adjudicados = new List<Adjudicado>();
-
             try
             {
-                adjudicados = webcontext.Adjudicados.ToList();
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = adjudicados });
+                var adjudicadosDto = webcontext.Adjudicados
+                    .Select(i=> new AdjudicadoDTO
+                    {
+                        IdAdjudicado = i.IdAdjudicado,
+                        IdRemate = i.IdRemate,
+                        Nombres = i.Nombres,
+                        Apellidos = i.Apellidos,
+                        Rfc = i.Rfc,
+                        Curp = i.Curp,
+                        Telefono = i.Telefono,
+                        Calle = i.Calle,
+                        Num = i.Num,
+                        Colonia = i.Colonia,
+                        Municipio = i.Municipio,
+                        Estado = i.Estado,
+                        Cp = i.Cp,
+                        SemafonoEscrituracion = i.SemafonoEscrituracion,
+                        Consideraciones = i.Consideraciones,
+                        EstadoAdjudicacion = i.EstadoAdjudicacion
+                    })
+                    .ToList();
+
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = adjudicadosDto });
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = ex.Message, response = adjudicados });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message });
             }
         }
 
@@ -43,26 +63,45 @@ namespace API_ENDING2.Controllers
         [Route("Obtener/{idAdjudicado:int}")]
         public IActionResult Obtener(int idAdjudicado)
         {
-            //busca dentro de la tabla inmobiliaria por medio del web context usando el idInmobiliaria
-            Adjudicado adjudicados = webcontext.Adjudicados.Find(idAdjudicado);
-
-            if (adjudicados == null)
-            {
-                return BadRequest("Adjudicado no encontrado");
-            }
-
             try
             {
-                //llama al objeto inmobiliarias y usando al webcontext incluye los remates de la inmobiliaria que se buscó por medio del id de la inmobiliaria
-                //y en caso de que encuntre datos, manda el primero, en caso contrario, va a mandar un nulo
-                adjudicados = webcontext.Adjudicados.Where(i => i.IdAdjudicado == idAdjudicado).FirstOrDefault();
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", Response = adjudicados });
+                // Buscar el adjudicado por ID y proyectar al DTO
+                var adjudicadoDto = webcontext.Adjudicados
+                    .Where(a => a.IdAdjudicado == idAdjudicado)
+                    .Select(a => new AdjudicadoDTO
+                    {
+                        IdAdjudicado = a.IdAdjudicado,
+                        IdRemate = a.IdRemate,
+                        Nombres = a.Nombres,
+                        Apellidos = a.Apellidos,
+                        Rfc = a.Rfc,
+                        Curp = a.Curp,
+                        Telefono = a.Telefono,
+                        Calle = a.Calle,
+                        Num = a.Num,
+                        Colonia = a.Colonia,
+                        Municipio = a.Municipio,
+                        Estado = a.Estado,
+                        Cp = a.Cp,
+                        SemafonoEscrituracion = a.SemafonoEscrituracion,
+                        Consideraciones = a.Consideraciones,
+                        EstadoAdjudicacion = a.EstadoAdjudicacion
+                    })
+                    .FirstOrDefault();
+
+                if (adjudicadoDto == null)
+                {
+                    return BadRequest("Adjudicado no encontrado");
+                }
+
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = adjudicadoDto });
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status200OK, new {mensaje = ex.Message, Response = adjudicados });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message });
             }
         }
+
 
         //GUARDA UN NUEVO ADJUDICADO
         [HttpPost]

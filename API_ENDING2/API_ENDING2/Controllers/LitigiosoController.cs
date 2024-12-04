@@ -24,44 +24,74 @@ namespace API_ENDING.Controllers
         [Route("lista")]
         public IActionResult Lista()
         {
-            List<Litigioso> litigiosos = new List<Litigioso>();
-
             try
             {
-                litigiosos = webcontext.Litigiosos.ToList();
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = litigiosos });
+                // Proyección a DTO
+                var litigiosoDto = webcontext.Litigiosos
+                    .Select(i => new LitigiosoDTO
+                    {
+                        IdLitigioso = i.IdLitigioso,
+                        Nombres = i.Nombres,
+                        Apellidos = i.Apellidos,
+                        Rfc = i.Rfc,
+                        Curp = i.Curp,
+                        Telefono = i.Telefono,
+                        Calle = i.Calle,
+                        Num = i.Num,
+                        Colonia = i.Colonia,
+                        Municipio = i.Municipio,
+                        Estado = i.Estado,
+                        Cp = i.Cp,
+                        
+                    })
+                    .ToList(); return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = litigiosoDto });
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = ex.Message, response = litigiosos });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message });
             }
         }
 
-        //BUSCA UN Litigio POR MEDIO DE SU ID
+        //BUSCA UN Litigioso POR MEDIO DE SU ID
         [HttpGet]
         [Route("Obtener/{idLitigioso:int}")]
         public IActionResult Obtener(int idLitigioso)
         {
-            //busca dentro de la tabla inmobiliaria por medio del web context usando el idInmobiliaria
-            Litigioso litigiosos = webcontext.Litigiosos.Where(i => i.IdLitigioso == idLitigioso).FirstOrDefault();
-
-            if (litigiosos == null)
-            {
-                return BadRequest("Litigioso no encontrado");
-            }
-
             try
             {
-                //llama al objeto inmobiliarias y usando al webcontext incluye los remates de la inmobiliaria que se buscó por medio del id de la inmobiliaria
-                //y en caso de que encuntre datos, manda el primero, en caso contrario, va a mandar un nulo
-                litigiosos = webcontext.Litigiosos.Where(i => i.IdLitigioso == idLitigioso).FirstOrDefault();
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", Response = litigiosos });
+                // Buscar el litigioso por ID y proyectar al DTO
+                var litigiosoDto = webcontext.Litigiosos
+                    .Where(l => l.IdLitigioso == idLitigioso)
+                    .Select(l => new LitigiosoDTO
+                    {
+                        IdLitigioso = l.IdLitigioso,
+                        Nombres = l.Nombres,
+                        Apellidos = l.Apellidos,
+                        Rfc = l.Rfc,
+                        Curp = l.Curp,
+                        Telefono = l.Telefono,
+                        Calle = l.Calle,
+                        Num = l.Num,
+                        Colonia = l.Colonia,
+                        Municipio = l.Municipio,
+                        Estado = l.Estado,
+                        Cp = l.Cp
+                    })
+                    .FirstOrDefault();
+
+                if (litigiosoDto == null)
+                {
+                    return BadRequest("Litigioso no encontrado");
+                }
+
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = litigiosoDto });
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = ex.Message, Response = litigiosos });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message });
             }
         }
+
 
         //Crea un nuevo litigioso
         [HttpPost]

@@ -25,18 +25,27 @@ namespace API_ENDING.Controllers
         [Route("lista")]
         public IActionResult Lista()
         {
-            List<Incluye> incluyes = new List<Incluye>();
-
             try
             {
-                incluyes = webcontext.Incluyes.ToList();
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = incluyes });
+                // Proyección a DTO
+                var incluyesDto = webcontext.Incluyes
+                    .Select(i => new IncluyeDTO
+                    {
+                        IdPropiedad = i.IdPropiedad,
+                        IdLitigioso = i.IdLitigioso,
+                        IdLitigio = i.IdLitigio,
+                        IdAdjudicado = i.IdAdjudicado
+                    })
+                    .ToList();
+
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = incluyesDto });
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = ex.Message, response = incluyes });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message });
             }
         }
+
 
         [HttpPost]
         [Route("Guardar")]

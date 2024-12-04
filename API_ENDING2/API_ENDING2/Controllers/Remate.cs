@@ -23,16 +23,25 @@ namespace API_ENDING2.Controllers
         [Route("lista")]
         public IActionResult Lista()
         {
-            List<Remate> remates = new List<Remate>();
-
             try
             {
-                remates = webcontext.Remates.ToList();
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = remates });
+                // Proyección a DTO
+                var remateDto = webcontext.Remates
+                    .Select(i => new RemateDTO
+                    {
+                        IdRemate = i.IdRemate,
+                        IdInmobiliaria = i.IdInmobiliaria,
+                        Fiscalia = i.Fiscalia,
+                        Estado = i.Estado,
+                        Fecha = i.Fecha,
+                        Descripcion = i.Descripcion,
+                    })
+                    .ToList();
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = remateDto });
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = ex.Message, response = remates });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message });
             }
         }
 
@@ -41,26 +50,35 @@ namespace API_ENDING2.Controllers
         [Route("Obtener/{idRemate:int}")]
         public IActionResult Obtener(int idRemate)
         {
-            //busca dentro de la tabla remates por medio del web context usando el idRemate
-            Remate remates = webcontext.Remates.Find(idRemate);
-
-            if (remates == null)
-            {
-                return BadRequest("Remate no encontrado");
-            }
-
             try
             {
-                //llama al objeto inmobiliarias y usando al webcontext incluye los remates de la inmobiliaria que se buscó por medio del id de la inmobiliaria
-                //y en caso de que encuntre datos, manda el primero, en caso contrario, va a mandar un nulo
-                remates = webcontext.Remates.Where(i => i.IdRemate == idRemate).FirstOrDefault();
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", Response = remates });
+                // Buscar el remate por ID y proyectar al DTO
+                var remateDto = webcontext.Remates
+                    .Where(r => r.IdRemate == idRemate)
+                    .Select(r => new RemateDTO
+                    {
+                        IdRemate = r.IdRemate,
+                        IdInmobiliaria = r.IdInmobiliaria,
+                        Fiscalia = r.Fiscalia,
+                        Estado = r.Estado,
+                        Fecha = r.Fecha,
+                        Descripcion = r.Descripcion
+                    })
+                    .FirstOrDefault();
+
+                if (remateDto == null)
+                {
+                    return BadRequest("Remate no encontrado");
+                }
+
+                return StatusCode(StatusCodes.Status200OK, new { mensaje = "ok", response = remateDto });
             }
             catch (Exception ex)
             {
-                return StatusCode(StatusCodes.Status200OK, new { mensaje = ex.Message, Response = remates });
+                return StatusCode(StatusCodes.Status500InternalServerError, new { mensaje = ex.Message });
             }
         }
+
 
 
         //GUARDA UN NUEVO REMATE
