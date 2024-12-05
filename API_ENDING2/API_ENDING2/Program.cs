@@ -29,6 +29,7 @@ builder.Services.AddCors(opt =>
 {
     opt.AddPolicy(name: misReglasCors, builder =>
     {
+        builder.WithOrigins("https://lightskyblue-sheep-259999.hostingersite.com/").AllowAnyHeader().AllowAnyMethod();
         builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
     });
 });
@@ -46,6 +47,8 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseCors(misReglasCors);
+app.UseHttpsRedirection();
+
 
 app.UseAuthorization();
 

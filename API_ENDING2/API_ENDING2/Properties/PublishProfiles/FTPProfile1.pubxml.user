@@ -7,21 +7,21 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA6jm/eXjRxk2srJRN56SfUQAAAAACAAAAAAAQZgAAAAEAACAAAAA8k0f+GYvQnEMy4A/5sSAWXJOTXCQorFMwCmNqUGOcAgAAAAAOgAAAAAIAACAAAABMg3wCkcV5JNDpaxxsJtykalwdF4WedSlg/ecdbVEtACAAAAApVkPWl8pivSNHLiFt1tuY59859/ltZIrQ0rnxpZ9s0EAAAAAXL8BVX+dgLbP0pgMvURIx0m3N5l77fpCAfdlk2QteW+z53ej8u4vdkh92rSRVHeqT3Ka/dkXNT/mUoqoBgzev</EncryptedPassword>
     <_PublishTargetUrl>ftp://155.254.244.27/www.endingapi2.somee.com</_PublishTargetUrl>
-    <History>True|2024-12-04T03:01:18.0740633Z||;</History>
+    <History>True|2024-12-05T01:56:48.6632771Z||;True|2024-12-04T18:42:20.2942291-07:00||;True|2024-12-03T20:01:18.0740633-07:00||;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
     <File Include="API_ENDING2.deps.json">
-      <publishTime>12/03/2024 20:00:16</publishTime>
+      <publishTime>12/04/2024 18:55:36</publishTime>
     </File>
     <File Include="API_ENDING2.dll">
-      <publishTime>12/03/2024 20:00:12</publishTime>
+      <publishTime>12/04/2024 18:55:35</publishTime>
     </File>
     <File Include="API_ENDING2.exe">
-      <publishTime>12/03/2024 20:00:12</publishTime>
+      <publishTime>12/04/2024 18:55:35</publishTime>
     </File>
     <File Include="API_ENDING2.pdb">
-      <publishTime>12/03/2024 20:00:12</publishTime>
+      <publishTime>12/04/2024 18:55:35</publishTime>
     </File>
     <File Include="API_ENDING2.runtimeconfig.json">
       <publishTime>12/03/2024 20:00:13</publishTime>
@@ -162,7 +162,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>10/22/2021 16:49:44</publishTime>
     </File>
     <File Include="web.config">
-      <publishTime>12/03/2024 20:00:16</publishTime>
+      <publishTime>12/04/2024 18:55:36</publishTime>
     </File>
   </ItemGroup>
 </Project>
